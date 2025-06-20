@@ -42,7 +42,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -122,7 +122,9 @@ export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*'"
 
 eval "$(zoxide init --cmd cd zsh)"
 
+export EZA_CONFIG_DIR="$HOME/dotfiles/.config/eza"
 alias ls='eza --long --color=always --icons=always --no-user'
+
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 alias nvf='nvim $(fzf)'
 alias cat='batcat'
