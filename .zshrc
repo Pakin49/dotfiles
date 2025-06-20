@@ -118,7 +118,9 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
-export FZF_DEFAULT_COMMAND='find . -type f -o -type l -o -type d -print 2>/dev/null'
+export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*'"
+
+eval "$(zoxide init zsh)"
 
 alias ls='eza --long --color=always --icons=always'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
