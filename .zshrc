@@ -120,7 +120,10 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND='find . -type f -o -type l -o -type d -print 2>/dev/null'
 
+alias ls='eza --long --color=always --icons=always'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 alias nvf='nvim $(fzf)'
 alias cat='batcat'
 alias ll='ls -al'
+alias n='nvim'
+alias conf='cd ~/dotfiles && ll'
