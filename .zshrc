@@ -122,7 +122,7 @@ export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*'"
 
 eval "$(zoxide init --cmd cd zsh)"
 
-alias ls='eza --long --color=always --icons=always'
+alias ls='eza --long --color=always --icons=always --no-user'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 alias nvf='nvim $(fzf)'
 alias cat='batcat'
