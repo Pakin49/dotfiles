@@ -3,12 +3,13 @@ font-family = JetBrainsMono Nerd Font
 # font-family = SFMono Nerd Font 
 font-size = 13 
 
-theme = tokyonight
+theme = Adventure
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
-cursor-style-blink = true
+cursor-color = f5fffa
+cursor-opacity = 0.7
 #background = #000000
-background-opacity = 0.80
+background-opacity = 0.65
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
