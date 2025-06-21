@@ -326,7 +326,7 @@ function theme.at_screen_connect(s)
 	-- Create battery widget
 	local baticon = wibox.widget.imagebox(theme.widget_battery)
 	local bat = lain.widget.bat({
-		notify = "off",
+		full_notify = "off",
 		settings = function()
 			if bat_now.status and bat_now.status ~= "N/A" then
 				if bat_now.ac_status == 1 then
