@@ -131,3 +131,5 @@ alias cat='batcat'
 alias ll='ls -al'
 alias vim='nvim'
 alias dot='cd ~/dotfiles && ll'
+export TERM=xterm-256color
+export BAT_THEME=tokyonight_night

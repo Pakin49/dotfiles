@@ -34,3 +34,5 @@ window-padding-y = 10
 window-padding-color = extend
 
 clipboard-paste-protection = false
+
+confirm-close-surface = false
