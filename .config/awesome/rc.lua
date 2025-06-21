@@ -112,7 +112,7 @@ awful.util.tagnames =
 	{ "  BROWSER ", "  TERMINAL ", " 󰎤 MISC 1 ", " 󰎧 MISC 2 ", "   DISCORD ", "  SPOTIFY " }
 awful.layout.layouts = {
 	awful.layout.suit.spiral,
-	--awful.layout.suit.tile,
+	awful.layout.suit.tile,
 	--	awful.layout.suit.tile.left,
 	--	awful.layout.suit.tile.bottom,
 	--awful.layout.suit.tile.top,
