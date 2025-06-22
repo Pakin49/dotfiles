@@ -889,42 +889,6 @@ local function backham()
 	end
 end
 
--- attach to minimized state
-client.connect_signal("property::minimized", backham)
--- attach to closed state
-client.connect_signal("unmanage", backham)
--- ensure there is always a selected client during tag switching or logins
-tag.connect_signal("property::selected", backham)
-
--- }}}
-
-beautiful.useless_gap = 10
-
-awful.spawn.with_shell("picom --experimental-backend &")
-awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
---awful.spawn.with_shell("setxkbmap -layout us,th -variant colemak_dh_ortho, -option grp:win_space_toggle")
-awful.spawn.with_shell("lxpolkit")
-
--- this for my laptop when windows are not tiling
---[[
-client.connect_signal("manage", function(c)
-	-- Short delay to let app finish messing with its window
-	gears.timer({
-		timeout = 0.5,
-		autostart = true,
-		single_shot = true,
-		callback = function()
-			if c.valid then
-				c.fullscreen = false
-				c.maximized = false
-				c.floating = false
-				awful.placement.no_overlap(c)
-				awful.placement.no_offscreen(c)
-			end
-		end,
-	})
-end)
---]]
 -- [[
 -- show title bar only in the floating mode
 client.connect_signal("property::floating", function(c)
@@ -952,5 +916,41 @@ tag.connect_signal("property::layout", function(t)
 			awful.titlebar.hide(c)
 		end
 	end
+end)
+--]]
+-- attach to minimized state
+client.connect_signal("property::minimized", backham)
+-- attach to closed state
+client.connect_signal("unmanage", backham)
+-- ensure there is always a selected client during tag switching or logins
+tag.connect_signal("property::selected", backham)
+
+-- }}}
+
+beautiful.useless_gap = 10
+
+awful.spawn.with_shell("picom --experimental-backend &")
+awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
+awful.spawn.with_shell("lxpolkit")
+
+-- this for my laptop when windows are not tiling
+--[[
+client.connect_signal("manage", function(c)
+	-- Short delay to let app finish messing with its window
+	gears.timer({
+		timeout = 0.5,
+		autostart = true,
+		single_shot = true,
+		callback = function()
+			if c.valid then
+				c.fullscreen = false
+				c.maximized = false
+				c.floating =  false
+				awful.placement.no_overlap(c)
+				awful.placement.no_offscreen(c)
+				--awful.placement.centered(c) 
+			end
+		end,
+	})
 end)
 --]]
