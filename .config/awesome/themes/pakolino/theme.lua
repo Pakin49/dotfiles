@@ -15,43 +15,29 @@ theme.font = "JetBrainsMono Nerd Font 11"
 
 -- Foregrounds
 theme.fg_normal = "#FFFFFF"
-theme.fg_focus = "#0099CC"
+theme.fg_focus = "#FF8C00" -- Orange
 theme.fg_urgent = "#CC9393"
 theme.fg_minimize = "#AAAAAA"
 
 -- Backgrounds
 theme.bg_normal = "#242424AA"
 theme.bg_focus = "#303030AA"
-theme.bg_urgent = "#006B8EDD"
+theme.bg_urgent = "#E65C00DD" -- Darker Orange for urgent
 theme.bg_minimize = "#3A3A3ACC"
 
 -- Borders
-theme.border_width = dpi(3)
+theme.border_width = dpi(1.5)
 theme.border_normal = "#252525"
-theme.border_focus = "#0099CC"
-theme.border_marked = "#91231C" -- kept from first
+theme.border_focus = "#FF8C00" -- Orange
+theme.border_marked = "#91231C"
 
 -- Tasklist
-theme.tasklist_bg_focus = "#0099CCAA"
+theme.tasklist_bg_focus = "#FF8C00AA" -- Orange
 theme.tasklist_bg_normal = "#222222"
 theme.tasklist_fg_focus = "#FFFFFF"
 
-local opaque_bg_normal = "#242424" -- Original #242424AA without transparency
-local opaque_bg_focus = "#303030" -- Original #303030AA without transparency
-
--- Titlebar
-theme.titlebar_bg_focus = opaque_bg_focus -- Now uses the fully opaque focus background
-theme.titlebar_bg_normal = opaque_bg_normal -- Now uses the fully opaque normal background
-theme.titlebar_fg_focus = theme.normal
-theme.titlebar_fg_normal = theme.fg_normal
-theme.titlebar_border_focus = theme.border_focus
-theme.titlebar_border_normal = theme.border_normal
-
--- Taglist
-theme.taglist_fg_focus = "#FFFFFF"
-theme.taglist_bg_focus = "#0099CC55"
--- Hotkeys
-theme.hotkeys_modifiers_fg = "#EEEEEE"
+local opaque_bg_normal = "#242424"
+local opaque_bg_focus = "#303030"
 
 theme.menu_height = dpi(16)
 theme.menu_width = dpi(140)

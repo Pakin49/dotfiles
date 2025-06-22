@@ -111,8 +111,8 @@ awful.util.terminal = terminal
 awful.util.tagnames =
 	{ "  BROWSER ", "  TERMINAL ", " 󰎤 MISC 1 ", " 󰎧 MISC 2 ", "   DISCORD ", "  SPOTIFY " }
 awful.layout.layouts = {
-	awful.layout.suit.spiral,
 	awful.layout.suit.tile,
+	awful.layout.suit.spiral,
 	--	awful.layout.suit.tile.left,
 	--	awful.layout.suit.tile.bottom,
 	--awful.layout.suit.tile.top,
@@ -308,10 +308,11 @@ globalkeys = mytable.join(
 		os.execute("screenshot")
 	end, { description = "take a screenshot", group = "hotkeys" }),
 
-	-- X screen locker
+	--[[ X screen locker
 	awful.key({ altkey, "Control" }, "l", function()
 		os.execute(scrlocker)
 	end, { description = "lock screen", group = "hotkeys" }),
+	--]]
 
 	-- Show help
 	awful.key({ modkey, "Shift" }, "h", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
@@ -405,13 +406,14 @@ globalkeys = mytable.join(
 		end
 	end, { description = "toggle wibox", group = "awesome" }),
 
-	-- On-the-fly useless gaps change
+	--[[ On-the-fly useless gaps change
 	awful.key({ altkey, "Control" }, "j", function()
 		lain.util.useless_gaps_resize(1)
 	end, { description = "increment useless gaps", group = "tag" }),
 	awful.key({ altkey, "Control" }, "k", function()
 		lain.util.useless_gaps_resize(-1)
 	end, { description = "decrement useless gaps", group = "tag" }),
+	--]]
 
 	--[[ Dynamic tagging
 	awful.key({ modkey, "Shift" }, "n", function()
