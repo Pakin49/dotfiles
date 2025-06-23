@@ -11,6 +11,6 @@ return {
       },
     }
     -- to use insert this into init.lua
-    vim.cmd 'colorscheme onedark'
+    vim.cmd 'colorscheme onedark_dark'
   end, --]]
 }

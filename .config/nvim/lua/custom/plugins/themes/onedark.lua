@@ -3,13 +3,10 @@ return {
   priority = 1000, -- make sure to load this before all the other start plugins
   config = function()
     require('onedark').setup {
-      style = 'darker',
+      style = 'dark',
       transparent = true,
       highlights = {
-        ['@lsp.type.comment'] = {
-          fg = '#D6D6D6',
-          fmt = 'italic',
-        },
+        --['@lsp.type.comment'] = { fg = '#7F848E', fmt = 'italic' },
       },
     }
     -- Enable theme

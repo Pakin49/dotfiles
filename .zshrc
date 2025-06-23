@@ -77,7 +77,9 @@ DISABLE_LS_COLORS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-interactive-cd)
+#
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,7 +125,6 @@ eval "$(zoxide init --cmd cd zsh)"
 
 export EZA_CONFIG_DIR="$HOME/dotfiles/.config/eza"
 alias ls='eza --long --color=always --icons=always'
-
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 alias nvf='nvim $(fzf)'
 alias cat='batcat'
@@ -131,3 +132,4 @@ alias ll='ls -al'
 alias dot='cd ~/dotfiles && ll'
 export TERM=xterm-256color
 export BAT_THEME=onedark
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)

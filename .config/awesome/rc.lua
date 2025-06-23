@@ -6,7 +6,6 @@ pcall(require, "luarocks.loader")
 
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
@@ -331,15 +330,15 @@ globalkeys = mytable.join(
 	end, { description = "view  previous nonempty", group = "tag" }),
 
 	-- Default client focus
-	--
+	--[[
 	awful.key({ altkey }, "j", function()
 		awful.client.focus.byidx(1)
 	end, { description = "focus next by index", group = "client" }),
 	awful.key({ altkey }, "k", function()
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
-	--
-	--[[ By-direction client focus
+	--]]
+	-- [[ By-direction client focus
 	awful.key({ altkey }, "j", function()
 		awful.client.focus.global_bydirection("down")
 		if client.focus then
@@ -431,7 +430,7 @@ globalkeys = mytable.join(
 	awful.key({ modkey, "Shift" }, "d", function()
 		lain.util.delete_tag()
 	end, { description = "delete tag", group = "tag" }),
-]]
+	]]
 
 	-- Standard program
 	awful.key({ modkey }, "t", function()
