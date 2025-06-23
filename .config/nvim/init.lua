@@ -991,7 +991,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
@@ -1027,3 +1027,15 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Try to create auto command to open neotree when no file is chosen
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = vim.api.nvim_create_augroup('MyStartupEvents', { clear = true }),
+  callback = function()
+    if vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) == '' then
+      vim.cmd 'Neotree reveal'
+      -- vim.cmd("startinsert") -- Start in insert mode
+      -- vim.cmd("Telescope find_files") -- Open Telescope for file finding
+    end
+  end,
+})
