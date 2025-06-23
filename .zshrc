@@ -128,7 +128,6 @@ alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {
 alias nvf='nvim $(fzf)'
 alias cat='batcat'
 alias ll='ls -al'
-alias vim='nvim'
 alias dot='cd ~/dotfiles && ll'
 export TERM=xterm-256color
 export BAT_THEME=onedark
