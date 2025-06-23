@@ -5,6 +5,12 @@ return {
     require('onedark').setup {
       style = 'darker',
       transparent = true,
+      highlights = {
+        ['@lsp.type.comment'] = {
+          fg = '#D6D6D6',
+          fmt = 'italic',
+        },
+      },
     }
     -- Enable theme
     require('onedark').load()

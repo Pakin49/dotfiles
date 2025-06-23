@@ -878,8 +878,8 @@ require('lazy').setup({
     -- my themes
     -- call themes tables in the custom/plugins/themes.lua
     --require 'custom.plugins.themes.tokyonight',
-    --require 'custom.plugins.themes.onedark',
-    require 'custom.plugins.themes.onedarkpro',
+    require 'custom.plugins.themes.onedark',
+    --require 'custom.plugins.themes.onedarkpro',
   },
 
   -- Highlight todo, notes, etc in comments

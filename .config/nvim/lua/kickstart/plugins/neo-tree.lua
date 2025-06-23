@@ -12,9 +12,9 @@ return {
   cmd = 'Neotree',
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
-    { '<C-\\>', ':Neotree close<CR>', desc = 'Neotree close', silent = true },
+    { '<C-\\>', ':Neotree close<CR>', desc = 'NeoTree close', silent = true },
   },
-  optsk = {
+  opts = {
     close_if_last_window = true,
     filesystem = {
       window = {
