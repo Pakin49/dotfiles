@@ -143,7 +143,7 @@ export BAT_THEME=onedark
 
 # ------------ Custom alias ------------
 alias ll='ls -al'
-alias dot='command cd ~/dotfiles && ll'
+alias dot='z ~/dotfiles && ll'
 export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 
