@@ -115,21 +115,36 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# ------------ Neovim ------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+alias nvf='nvm $(fzf)'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ------------ Fuzzy finder ------------
 # Set up fzf key bindings and fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"
+alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 
-eval "$(zoxide init --cmd cd zsh)"
-
+# ------------ Eza : better ls ------------
 export EZA_CONFIG_DIR="$HOME/dotfiles/.config/eza"
 alias ls='eza --long --color=always --icons=always'
-alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
-alias nvf='nvim $(fzf)'
+
+# ------------ Zoxide: better cd------------
+eval "$(zoxide init zsh)" #"--cmd cd" add this before zsh to remap cd to z
+cd_ls(){
+  z "$@" && ls
+}
+alias cd=cd_ls
+
+# ------------ Bat : better cat------------
 alias cat='batcat'
-alias ll='ls -al'
-alias dot='cd ~/dotfiles && ll'
-export TERM=xterm-256color
 export BAT_THEME=onedark
+
+# ------------ Custom alias ------------
+alias ll='ls -al'
+alias dot='command cd ~/dotfiles && ll'
+export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
+
+
