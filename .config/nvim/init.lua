@@ -5,9 +5,9 @@ local my_theme = {
   'oxycarbon', --4
   'kanagawa', --5
 }
-vim.cmd 'set laststatus=3'
 -- call themes tables in the custom/plugins/themes.lua
 local theme_path = string.format('custom.plugins.themes.%s', my_theme[3])
+vim.cmd 'set laststatus=3'
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
