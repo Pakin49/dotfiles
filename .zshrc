@@ -118,7 +118,8 @@ source $ZSH/oh-my-zsh.sh
 # ------------ Neovim ------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias nvf='nvm $(fzf)'
-
+SUDO_EDITOR=/usr/bin/nvim
+export SUDO_EDITOR
 
 # ------------ Fuzzy finder ------------
 # Set up fzf key bindings and fuzzy completion
@@ -147,5 +148,6 @@ export BAT_THEME=onedark
 # ------------ Custom alias ------------
 alias ll='ls -al'
 alias dot='z ~/dotfiles && ll'
+alias data='cd ~/data'
 export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)

@@ -50,3 +50,4 @@ keybind = ctrl+alt+l=resize_split:right,10
 keybind = ctrl+alt+j=resize_split:down,10
 keybind = ctrl+alt+k=resize_split:up,10
 keybind = ctrl+alt+h=resize_split:left,10
+keybind = ctrl+alt+shift+l=clear_screen
