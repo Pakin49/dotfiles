@@ -82,25 +82,25 @@ awful.spawn.with_shell(
 
 local themes = {
 	"blackburn", -- 1
-	"copland", -- 2
-	"dremora", -- 3
-	"holo", -- 4
+	"copland",  -- 2
+	"dremora",  -- 3
+	"holo",     -- 4
 	"multicolor", -- 5
 	"powerarrow", -- 6
 	"powerarrow-dark", -- 7
-	"rainbow", -- 8
+	"rainbow",  -- 8
 	"steamburn", -- 9
-	"vertex", -- 10
+	"vertex",   -- 10
 	"pakolino", -- 11
 	"darkmoon", --12
-	"anime", --13
+	"anime",    --13
 }
 
 local chosen_theme = themes[11]
 local modkey = "Mod4"
 local altkey = "Mod1"
-local terminal = "x-terminal-emulator"
-local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+local terminal = "ghostty"
+local vi_focus = false  -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
 local browser = "firefox"
@@ -108,7 +108,7 @@ local browser = "firefox"
 -- set lay out
 awful.util.terminal = terminal
 awful.util.tagnames =
-	{ "  BROWSER ", "  TERMINAL ", " 󰎤 MISC 1 ", " 󰎧 MISC 2 ", "   DISCORD ", "  SPOTIFY " }
+{ "  BROWSER ", "  TERMINAL ", " 󰎤 MISC 1 ", " 󰎧 MISC 2 ", "   DISCORD ", "  SPOTIFY " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.spiral,
@@ -153,7 +153,7 @@ awful.util.taglist_buttons = mytable.join(
 			client.focus:move_to_tag(t)
 		end
 	end)
-	--[[awful.button({}, 3, awful.tag.viewtoggle),
+--[[awful.button({}, 3, awful.tag.viewtoggle),
 	awful.button({ modkey }, 3, function(t)
 		if client.focus then
 		awful	client.focus:toggle_tag(t)
@@ -200,9 +200,9 @@ local myawesomemenu = {
 			hotkeys_popup.show_help(nil, awful.screen.focused())
 		end,
 	},
-	{ "Manual", string.format("%s -e man awesome", terminal) },
+	{ "Manual",      string.format("%s -e man awesome", terminal) },
 	{ "Edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-	{ "Restart", awesome.restart },
+	{ "Restart",     awesome.restart },
 	{
 		"Quit",
 		function()
@@ -226,11 +226,11 @@ awful.util.mymainmenu = freedesktop.menu.build({
 -- [[
 awful.util.mymainmenu.wibox:connect_signal("mouse::leave", function()
 	if
-		not awful.util.mymainmenu.active_child
-		or (
-			awful.util.mymainmenu.wibox ~= mouse.current_wibox
-			and awful.util.mymainmenu.active_child.wibox ~= mouse.current_wibox
-		)
+	    not awful.util.mymainmenu.active_child
+	    or (
+		    awful.util.mymainmenu.wibox ~= mouse.current_wibox
+		    and awful.util.mymainmenu.active_child.wibox ~= mouse.current_wibox
+	    )
 	then
 		awful.util.mymainmenu:hide()
 	else
@@ -288,8 +288,8 @@ root.buttons(mytable.join(
 	awful.button({}, 3, function()
 		awful.util.mymainmenu:toggle()
 	end)
-	--awful.button({}, 4, awful.tag.viewnext),
-	--awful.button({}, 5, awful.tag.viewprev)
+--awful.button({}, 4, awful.tag.viewnext),
+--awful.button({}, 5, awful.tag.viewprev)
 ))
 
 -- }}}
@@ -297,7 +297,7 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-	-- Destroy all notifications
+-- Destroy all notifications
 	awful.key({ "Control" }, "space", function()
 		naughty.destroy_all_notifications()
 	end, { description = "destroy all notifications", group = "hotkeys" }),
@@ -382,7 +382,8 @@ globalkeys = mytable.join(
 	awful.key({ modkey, "Control" }, "k", function()
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
-	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
+	awful.key({ modkey }, "u", awful.client.urgent.jumpto,
+		{ description = "jump to urgent client", group = "client" }),
 	--[[ awful.key({ modkey }, "Tab", function()
 		awful.client.focus.history.previous()
 		if client.focus then
@@ -438,7 +439,6 @@ globalkeys = mytable.join(
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
-
 	awful.key({ modkey, altkey }, "j", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
@@ -513,7 +513,8 @@ globalkeys = mytable.join(
 		beautiful.volume.update()
 	end, { description = "volume down", group = "hotkeys" }),
 	awful.key({ altkey }, "m", function()
-		os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+		os.execute(string.format("amixer -q set %s toggle",
+			beautiful.volume.togglechannel or beautiful.volume.channel))
 		beautiful.volume.update()
 	end, { description = "toggle mute", group = "hotkeys" }),
 	awful.key({ altkey, "Control" }, "m", function()
@@ -629,11 +630,12 @@ globalkeys = mytable.join(
 			history_path = awful.util.get_cache_dir() .. "/history_eval",
 		})
 	end, { description = "lua execute prompt", group = "awesome" })
-	--]]
+--]]
 )
 
 clientkeys = mytable.join(
-	awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client, { description = "magnify client", group = "client" }),
+	awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client,
+		{ description = "magnify client", group = "client" }),
 	awful.key({ modkey }, "f", function(c)
 		c.fullscreen = not c.fullscreen
 		c:raise()
@@ -662,7 +664,7 @@ clientkeys = mytable.join(
 		-- minimized, since minimized clients can't have the focus.
 		c.minimized = true
 	end, { description = "minimize", group = "client" })
-	--[[
+--[[
 	awful.key({ modkey }, "m", function(c)
 		c.maximized = not c.maximized
 		c:raise()
@@ -800,7 +802,7 @@ awful.rules.rules = {
 	{ rule_ny = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
-	{ rule = { class = "Firefox" }, properties = { screen = 1, tag = "2" } },
+	{ rule = { class = "Firefox" },                properties = { screen = 1, tag = "2" } },
 }
 
 -- }}}
@@ -928,9 +930,8 @@ tag.connect_signal("property::selected", backham)
 
 beautiful.useless_gap = 10
 
-awful.spawn.with_shell("picom --experimental-backend &")
+awful.spawn.with_shell("picom")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
-awful.spawn.with_shell("lxpolkit")
 
 -- this for my laptop when windows are not tiling
 --[[
@@ -947,7 +948,7 @@ client.connect_signal("manage", function(c)
 				c.floating =  false
 				awful.placement.no_overlap(c)
 				awful.placement.no_offscreen(c)
-				--awful.placement.centered(c) 
+				--awful.placement.centered(c)
 			end
 		end,
 	})

@@ -141,10 +141,12 @@ alias cd=cd_ls
 alias cat='batcat'
 export BAT_THEME=onedark
 
+
+# ------------ The fuck! ------------
+  eval "$(thefuck --alias)"
+
 # ------------ Custom alias ------------
 alias ll='ls -al'
 alias dot='z ~/dotfiles && ll'
 export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
-
-
