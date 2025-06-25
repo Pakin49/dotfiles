@@ -138,9 +138,8 @@ cd_ls(){
 alias cd=cd_ls
 
 # ------------ Bat : better cat------------
-alias cat='batcat'
+alias cat='bat'
 export BAT_THEME=onedark
-
 
 # ------------ The fuck! ------------
   eval "$(thefuck --alias)"
