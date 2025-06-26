@@ -301,13 +301,13 @@ globalkeys = mytable.join(
 	awful.key({ "Control" }, "space", function()
 		naughty.destroy_all_notifications()
 	end, { description = "destroy all notifications", group = "hotkeys" }),
-	-- Take a screenshot
+	--[[ Take a screenshot
 	-- https://github.com/lcpz/dots/blob/master/bin/screenshot
 	awful.key({ altkey }, "p", function()
 		os.execute("screenshot")
 	end, { description = "take a screenshot", group = "hotkeys" }),
 
-	--[[ X screen locker
+	-- [[ X screen locker
 	awful.key({ altkey, "Control" }, "l", function()
 		os.execute(scrlocker)
 	end, { description = "lock screen", group = "hotkeys" }),
@@ -317,6 +317,8 @@ globalkeys = mytable.join(
 	awful.key({ modkey, "Shift" }, "h", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 
 	-- Tag browsing
+	awful.key({ modkey }, "h", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	awful.key({ modkey }, "l", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "k", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "j", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
