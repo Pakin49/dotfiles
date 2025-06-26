@@ -317,8 +317,8 @@ globalkeys = mytable.join(
 	awful.key({ modkey, "Shift" }, "h", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 
 	-- Tag browsing
-	awful.key({ modkey }, "h", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ modkey }, "l", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ modkey }, "h", awful.tag.viewprev, { description = "view left", group = "tag" }),
+	awful.key({ modkey }, "l", awful.tag.viewnext, { description = "view right", group = "tag" }),
 	awful.key({ modkey }, "k", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "j", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
@@ -475,7 +475,7 @@ globalkeys = mytable.join(
 		awful.layout.inc(-1)
 	end, { description = "select previous", group = "layout" }),
 
-	awful.key({ altkey, "Shift" }, "n", function()
+	awful.key({ modkey, "Shift" }, "n", function()
 		local c = awful.client.restore()
 		-- Focus restored client
 		if c then
@@ -690,7 +690,7 @@ clientkeys = mytable.join(
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
 	--]]
-	awful.key({ altkey }, "n", function(c)
+	awful.key({ modkey }, "n", function(c)
 		-- The client currently has the input focus, so it cannot be
 		-- minimized, since minimized clients can't have the focus.
 		c.minimized = true
