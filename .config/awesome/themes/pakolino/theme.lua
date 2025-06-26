@@ -15,14 +15,14 @@ theme.font = "JetBrainsMono Nerd Font 11"
 
 -- Foregrounds
 theme.fg_normal = "#FFFFFF"
-theme.fg_focus = "#0099CC"
-theme.fg_urgent = "#CC9393"
+theme.fg_focus = "#F77B2D"
+theme.fg_urgent = "#E0771E"
 theme.fg_minimize = "#AAAAAA"
 
 -- Backgrounds
 theme.bg_normal = "#242424AA"
 theme.bg_focus = "#303030AA"
-theme.bg_urgent = "#006B8EDD"
+theme.bg_urgent = "#242424AA"
 theme.bg_minimize = "#3A3A3ACC"
 
 -- Borders
