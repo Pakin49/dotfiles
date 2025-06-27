@@ -117,7 +117,7 @@ source $ZSH/oh-my-zsh.sh
 
 # ------------ Neovim ------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-alias nvf='nvm $(fzf)'
+alias nvf='nvim $(fzf)'
 SUDO_EDITOR=/usr/bin/nvim
 export SUDO_EDITOR
 
