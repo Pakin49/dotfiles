@@ -160,9 +160,3 @@ alias dot='z ~/dotfiles && ll'
 alias data='cd ~/data'
 export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
-: 1751055141:0;ll
-: 1751055143:0;cd ..
-: 1751055144:0;ll
-: 1751055156:0;nvim .zshrc
-: 1751055162:0;dot
-: 1751055165:0;git add .
