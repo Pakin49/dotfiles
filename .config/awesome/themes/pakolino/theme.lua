@@ -26,7 +26,7 @@ theme.bg_urgent = "#242424AA"
 theme.bg_minimize = "#3A3A3ACC"
 
 -- Borders
-theme.border_width = dpi(3)
+theme.border_width = dpi(2)
 theme.border_normal = "#252525"
 theme.border_focus = "#0099CC"
 theme.border_marked = "#91231C" -- kept from first
