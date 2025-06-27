@@ -987,5 +987,8 @@ beautiful.useless_gap = 10
 --autostart
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
+awful.spawn.with_shell("nm-applet")
 awful.tag.viewonly(root.tags()[4])
-awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
+awful.util.spawn(
+	"ghostty -e 'sleep 0.1 && neofetch && echo System Update && sudo pacman -Syu --noconfirm && sleep 0.5 && zsh'"
+)
