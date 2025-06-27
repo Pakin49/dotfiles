@@ -78,9 +78,7 @@ DISABLE_LS_COLORS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-interactive-cd)
-#
-
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-interactive-cd) 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -145,9 +143,80 @@ export BAT_THEME=onedark
 # ------------ The fuck! ------------
   eval "$(thefuck --alias)"
 
+# ------------ History ------------
+HISTSIZE=3000
+HISTFILE=~/.zshrc
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 # ------------ Custom alias ------------
 alias ll='ls -al'
 alias dot='z ~/dotfiles && ll'
 alias data='cd ~/data'
 export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
+: 1751054455:0;clear
+: 1751054455:0;ls
+: 1751054469:0;cd .config
+: 1751054475:0;nvim .zshrc
+: 1751054480:0;ll
+: 1751054483:0;cd ..
+: 1751054484:0;dot
+: 1751054496:0;nvim .zshrc
+: 1751054524:0;source .zshrc
+: 1751054550:0;ls
+: 1751054555:0;cd ..
+: 1751054557:0;ls -al
+: 1751054574:0;cd .config/
+: 1751054580:0;nvim .zshrc
+: 1751054594:0;cd ..
+: 1751054596:0;nvim .zshrc
+: 1751054622:0;cd dotfiles/.oh-my-zsh/
+: 1751054623:0;ls
+: 1751054629:0;ll
+: 1751054634:0;dot
+: 1751054640:0;cd .oh-my-zsh/
+: 1751054647:0;plugins
+: 1751054648:0;ls
+: 1751054659:0;cd .oh-my-zsh
+: 1751054663:0;ls
+: 1751054673:0;ls plugins
+: 1751054686:0;ls plugins | grep au
+: 1751054696:0;cd ~
+: 1751054702:0;cd /
+: 1751054723:0;sudo find . -iname zsh- 
+: 1751054735:0;sudo find . -iname zsh
+: 1751054828:0;echo $ZSH_CUSTOM
+: 1751054852:0;cd /home/pakin/.oh-my-zsh/custom
+: 1751054856:0;cd plugins/
+: 1751054871:0;rm zsh-syntax-highlightinga
+: 1751054875:0;rmdir zsh-syntax-highlightinga
+: 1751054877:0;rmdir zsh-syntax-highlightinga~
+: 1751054884:0;ls
+: 1751054891:0;rmdir zsh-syntax-highlighting~
+: 1751054905:0;cd ..
+: 1751054907:0;git diff
+: 1751054942:0;git add .zshrc
+: 1751054953:0;dot
+: 1751054957:0;git add .zshrc
+: 1751054969:0;git add .
+: 1751054989:0;cd .oh-my-zsh/custom/plugins/zsh-autocomplete
+: 1751054995:0;cd ..
+: 1751054996:0;ls
+: 1751055016:0;rm -rf zsh-autocomplete
+: 1751055021:0;rm zsh-syntax-highlightinga
+: 1751055026:0;rmdir zsh-syntax-highlightinga
+: 1751055029:0;rmdir zsh-syntax-highlighting~
+: 1751055031:0;cd ~
+: 1751055033:0;git add .
+: 1751055035:0;git commit
+: 1751055039:0;dot
+: 1751055042:0;git add .
+: 1751055043:0;git commit
+: 1751055054:0;git add .
