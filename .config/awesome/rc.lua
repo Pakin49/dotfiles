@@ -985,7 +985,7 @@ end)
 
 beautiful.useless_gap = 10
 --autostart
-awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
 awful.spawn.with_shell("nm-applet")
 awful.tag.viewonly(root.tags()[4])
