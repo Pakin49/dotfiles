@@ -160,6 +160,3 @@ alias dot='z ~/dotfiles && ll'
 alias data='cd ~/data'
 export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
-
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-neofetch
