@@ -645,7 +645,12 @@ globalkeys = mytable.join(
 
 	awful.key({ "Shift" }, "Print", function()
 		awful.util.spawn("flameshot launcher")
-	end, { description = "open spotify", group = "launcher" })
+	end, { description = "open spotify", group = "launcher" }),
+
+	-- obsidian
+	awful.key({ modkey }, "o", function()
+		awful.util.spawn("obsidian")
+	end, { description = "open obsidian", group = "launcher" })
 
 	--[[
 	awful.key({ modkey }, "x", function()
@@ -989,4 +994,4 @@ awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
 awful.spawn.with_shell("nm-applet")
 awful.tag.viewonly(root.tags()[4])
-awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
+--awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
