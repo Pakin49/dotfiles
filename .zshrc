@@ -118,6 +118,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias nvf='nvim $(fzf)'
 SUDO_EDITOR=/usr/bin/nvim
 export SUDO_EDITOR
+export EDITOR=/usr/bin/nvim
 
 # ------------ Fuzzy finder ------------
 # Set up fzf key bindings and fuzzy completion

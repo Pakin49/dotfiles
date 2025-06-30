@@ -108,7 +108,7 @@ local browser = "firefox"
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames = { " DISCORD", " SPOTIFY", "󰟃 MISC", " TERMINAL", " BROWSER", "󰍹 PROGRAM" }
+awful.util.tagnames = { "󰍹 PROGRAM", " TERMINAL", " BROWSER", "󰟃 MISC", " DISCORD", " SPOTIFY" }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.spiral,
@@ -838,9 +838,9 @@ awful.rules.rules = {
 	{ rule_ny = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
 
 	-- Rule to set applications to open on specific tag
-	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[1] } },
+	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[5] } },
 
-	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[2] } },
+	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[6] } },
 }
 
 -- }}}
@@ -993,6 +993,6 @@ beautiful.useless_gap = 10
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
 awful.spawn.with_shell("nm-applet")
-awful.tag.viewonly(root.tags()[4])
+awful.tag.viewonly(root.tags()[2])
 awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
 awful.spawn.with_shell("redshift -l 13.7539:100.5014 -t 6500:4500 -r")
