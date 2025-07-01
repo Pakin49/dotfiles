@@ -1,3 +1,4 @@
+right_format = """$all"""
 [aws]
 symbol = "  "
 
