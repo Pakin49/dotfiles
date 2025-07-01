@@ -1,14 +1,14 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 13 
 
-theme = Adventure
+theme = Dracula
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 cursor-color = f4b278
 cursor-opacity = 0.7
 cursor-style-blink = false
 
-background-opacity = 0.75
+background-opacity = 0.80
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
@@ -18,16 +18,12 @@ window-save-state = always
 #background = 1C2021
 #foreground = d4be98
 
-
 # other
-#copy-on-select = clipboard
-
-#background-opacity = 0.9
-
+copy-on-select = clipboard
 shell-integration = zsh
 window-decoration = false
 
-window-padding-x = 10
+window-padding-x = 15
 window-padding-y = 10
 window-padding-color = extend
 
