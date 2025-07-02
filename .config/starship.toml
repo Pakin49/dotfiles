@@ -3,8 +3,8 @@
 right_format = """
 [](fg:color_bg1)\
 $time\
-$battery\
 """
+
 format = """
 [](color_orange)\
 $os\
@@ -32,7 +32,6 @@ $conda\
 $pixi\
 [](fg:color_bg3 bg:color_bg1)\
 $character"""
-
 
 palette = 'gruvbox_dark'
 
@@ -76,10 +75,13 @@ RedHatEnterprise = "󱄛"
 Pop = ""
 
 # still not working
-[battery]
-full_symbol = '🔋 '
-charging_symbol = '⚡️ '
-discharging_symbol = '💀 '
+[[battery.display]]
+threshold = 15 
+style = 'bold red'
+
+[[battery.display]]
+threshold = 95 
+style = 'green'
 
 [username]
 show_always = true
