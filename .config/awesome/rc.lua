@@ -109,7 +109,7 @@ local browser = "firefox"
 awful.util.terminal = terminal
 -- tags name
 awful.util.tagnames =
-	{ "󰍹 PROGRAM", " TERMINAL", " BROWSER", " 󰟃 MISC ", " 󰓓 GAME ", " DISCORD", " SPOTIFY" }
+	{ " 󰟃 MISC ", "󰍹 PROGRAM", " TERMINAL", " BROWSER", " 󰓓 GAME ", " DISCORD", " SPOTIFY" }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.spiral,

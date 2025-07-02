@@ -164,3 +164,6 @@ export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 
 # ------------ Starship ------------
 eval "$(starship init zsh)"
+
+# ------------ Vivado ------------
+export PATH="$PATH:/opt/Xilinx/2025.1/Vivado/bin/"
