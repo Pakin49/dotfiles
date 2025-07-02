@@ -108,7 +108,8 @@ local browser = "firefox"
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames = { "󰍹 PROGRAM", " TERMINAL", " BROWSER", "󰟃 MISC", " DISCORD", " SPOTIFY" }
+awful.util.tagnames =
+	{ "󰍹 PROGRAM", " TERMINAL", " BROWSER", " 󰟃 MISC ", " 󰓓 GAME ", " DISCORD", " SPOTIFY" }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.spiral,
@@ -719,7 +720,7 @@ clientkeys = mytable.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 6 do
+for i = 1, 7 do
 	globalkeys = mytable.join(
 		globalkeys,
 		-- View tag only.
@@ -838,9 +839,11 @@ awful.rules.rules = {
 	{ rule_ny = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
 
 	-- Rule to set applications to open on specific tag
-	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[5] } },
+	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[6] } },
 
-	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[6] } },
+	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[7] } },
+
+	{ rule = { class = "steam" }, properties = { screen = 1, tag = awful.util.tagnames[5] } },
 }
 
 -- }}}
@@ -992,7 +995,6 @@ beautiful.useless_gap = 5
 --autostart
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
-awful.spawn.with_shell("nm-applet")
 awful.tag.viewonly(root.tags()[4])
 awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
 awful.spawn.with_shell("redshift -l 13.7539:100.5014 -t 6500:4500 -r")
