@@ -995,6 +995,6 @@ beautiful.useless_gap = 5
 --autostart
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
-awful.tag.viewonly(root.tags()[4])
+awful.tag.viewonly(root.tags()[3])
 awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
 awful.spawn.with_shell("redshift -l 13.7539:100.5014 -t 6500:4500 -r")
