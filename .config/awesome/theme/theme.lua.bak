@@ -354,63 +354,41 @@ function theme.at_screen_connect(s)
 		position = "top",
 		screen = s,
 		height = dpi(20),
-		width = dpi(200),
-		shape = my_shape,
+		--width = dpi(1350),
+		--shape = my_shape,
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
-		border_width = dpi(5),
+		--border_width = dpi(5),
 	})
 
-	-- [[ Create the wibox
-	s.mywibox_tag = wibox({
+	--[[ Create the wibox
+	s.mywibox_task = awful.wibar({
+		position = "top",
 		screen = s,
-		x = 10,
-		y = 5,
-		type = "dock",
-		visible = true,
-		height = dpi(20),
-		width = dpi(600),
+		visible = false,
+		height = dpi(28),
+		width = dpi(1350),
 		shape = my_shape,
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
+		border_width = dpi(10),
 	})
 	--]]
 
-	s.mywibox_wid = wibox({
-		screen = s,
-		x = 1520,
-		y = 5,
-		type = "dock",
-		visible = true,
-		height = dpi(20),
-		width = dpi(400),
-		shape = my_shape,
-		bg = theme.bg_normal,
-		fg = theme.fg_normal,
-	})
 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
-		nil,
+		{ -- Left widgets
+			layout = wibox.layout.fixed.horizontal,
+			spr,
+			spr,
+			first,
+			s.mytaglist,
+			--spr,
+		},
 		--s.mytasklist,
 		clock, -- Middle widget
-		nil,
-	})
-	-- [[
-	s.mywibox_tag:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "none",
-		nil,
-		s.mytaglist,
-		nil,
-	})
-	--]]
-	s.mywibox_wid:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "none",
-		nil,
-		nil,
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			wibox.widget.systray(),
@@ -430,9 +408,17 @@ function theme.at_screen_connect(s)
 			spr,
 			s.mylayoutbox,
 			spr,
-			spr,
 		},
 	})
+	--[[
+	s.mywibox_task:setup({
+		layout = wibox.layout.align.horizontal,
+		expand = "none",
+		nil,
+		s.mytasklist,
+		nil,
+	})
+	--]]
 end
 
 return theme

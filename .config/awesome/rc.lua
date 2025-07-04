@@ -91,13 +91,12 @@ local browser = "firefox"
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames =
-	{ " 󰟃 MISC ", "󰍹 PROGRAM", " TERMINAL", " BROWSER", " 󰓓 GAME ", " DISCORD", " SPOTIFY" }
+awful.util.tagnames = { "  ", " 󰍹 ", "  ", "  ", "  ", "  ", "  " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.spiral,
-	--	awful.layout.suit.tile.left,
-	--	awful.layout.suit.tile.bottom,
+	--awful.layout.suit.tile.left,
+	--awful.layout.suit.tile.bottom,
 	--awful.layout.suit.tile.top,
 	--awful.layout.suit.fair,
 	awful.layout.suit.floating,
@@ -968,10 +967,10 @@ client.connect_signal("manage", function(c)
 end)
 --]]
 
-beautiful.useless_gap = 5
 --autostart
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
 awful.tag.viewonly(root.tags()[3])
-awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
-awful.spawn.with_shell("redshift -l 13.7539:100.5014 -t 6500:4500 -r")
+--awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
+--awful.spawn.with_shell("redshift -l 13.7539:100.5014 -t 6500:4500 -r")
+awful.spawn.with_shell("nm-applet")
