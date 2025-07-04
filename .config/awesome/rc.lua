@@ -80,23 +80,6 @@ awful.spawn.with_shell(
 
 -- {{{ Variable definitions
 
-local themes = {
-	"blackburn", -- 1
-	"copland", -- 2
-	"dremora", -- 3
-	"holo", -- 4
-	"multicolor", -- 5
-	"powerarrow", -- 6
-	"powerarrow-dark", -- 7
-	"rainbow", -- 8
-	"steamburn", -- 9
-	"vertex", -- 10
-	"pakolino", -- 11
-	"darkmoon", --12
-	"anime", --13
-}
-
-local chosen_theme = themes[11]
 local modkey = "Mod4"
 local altkey = "Mod1"
 local terminal = "ghostty"
@@ -187,7 +170,7 @@ awful.util.tasklist_buttons = mytable.join(
 	end)
 )
 
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
+beautiful.init(string.format("%s/.config/awesome/theme/theme.lua", os.getenv("HOME")))
 
 -- }}}
 
@@ -398,10 +381,6 @@ globalkeys = mytable.join(
 			s.mywibox.visible = not s.mywibox.visible
 			if s.mybottomwibox then
 				s.mybottomwibox.visible = not s.mybottomwibox.visible
-			end
-			-- for my wibox
-			if s.mywibox_task then
-				s.mywibox_task.visible = not s.mywibox_task.visible
 			end
 		end
 	end, { description = "toggle wibox", group = "awesome" }),
