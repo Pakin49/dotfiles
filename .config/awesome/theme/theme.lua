@@ -355,7 +355,7 @@ function theme.at_screen_connect(s)
 	})
 
 	my_shape = function(cr, width, height)
-		gears.shape.rounded_bar(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 5)
 	end
 
 	-- Create the middle wibox
