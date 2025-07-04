@@ -412,7 +412,7 @@ function theme.at_screen_connect(s)
 	-- Right wibox
 	s.mywibox_wid = wibox({
 		screen = s,
-		x = 1500,
+		x = 1540,
 		y = wibox_offset_y,
 		type = "dock",
 		visible = true,
