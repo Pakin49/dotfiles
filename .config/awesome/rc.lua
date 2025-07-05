@@ -378,9 +378,8 @@ globalkeys = mytable.join(
 	awful.key({ modkey, "Control" }, "b", function()
 		for s in screen do
 			s.mywibox.visible = not s.mywibox.visible
-			if s.mybottomwibox then
-				s.mybottomwibox.visible = not s.mybottomwibox.visible
-			end
+			s.mywibox_wid.visible = not s.mywibox_wid.visible
+			s.mywibox_tag.visible = not s.mywibox_tag.visible
 		end
 	end, { description = "toggle wibox", group = "awesome" }),
 

@@ -355,7 +355,7 @@ function theme.at_screen_connect(s)
 	})
 
 	my_shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 5)
+		gears.shape.octogon(cr, width, height, 10)
 	end
 
 	-- Create the middle wibox
@@ -412,12 +412,12 @@ function theme.at_screen_connect(s)
 	-- Right wibox
 	s.mywibox_wid = wibox({
 		screen = s,
-		x = 1540,
+		x = 1500,
 		y = wibox_offset_y,
 		type = "dock",
 		visible = true,
 		height = theme.wibox_height,
-		width = dpi(360),
+		width = dpi(400),
 		shape = my_shape,
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
