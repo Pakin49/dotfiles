@@ -11,8 +11,8 @@ local theme = {}
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 theme.wallpaper = theme.dir .. "/wall.png"
-theme.font = "Hack Nerd Font 11"
-theme.desktop_font = "Hack Nerd Font Bold 13"
+theme.font = "JetBrains Mono Nerd Font 11"
+theme.desktop_font = "JetBrains Mono Nerd Font Bold 13"
 
 -- OneDark Darker color palette
 local colors = {
@@ -422,6 +422,7 @@ function theme.at_screen_connect(s)
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
 		border_width = theme.border_width,
+		border_color = colors.blue .. "AA",
 	})
 
 	s.mywibox_wid:setup({
