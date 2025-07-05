@@ -16,7 +16,7 @@ theme.desktop_font = "Hack Nerd Font Bold 13"
 
 -- OneDark Darker color palette
 local colors = {
-	bg = "#242424",
+	bg = "#232323",
 	bg_light = "#303030",
 	bg_lighter = "#3a3a3a",
 	fg = "#e6e6e6",
@@ -40,10 +40,10 @@ theme.fg_urgent = colors.red
 theme.fg_minimize = colors.comment
 
 -- Backgrounds
-theme.bg_normal = colors.bg .. "DD" -- Semi-transparent
-theme.bg_focus = colors.bg_light .. "DD" -- Semi-transparent
-theme.bg_urgent = colors.bg .. "DD"
-theme.bg_minimize = colors.selection .. "CC"
+theme.bg_normal = colors.bg .. "CC" -- Semi-transparent
+theme.bg_focus = colors.bg_light .. "CC" -- Semi-transparent
+theme.bg_urgent = colors.bg .. "CC"
+theme.bg_minimize = colors.selection .. "AA"
 
 -- Borders
 theme.border_width = dpi(2)
@@ -158,7 +158,7 @@ end)
 theme.cal = lain.widget.cal({
 	attach_to = { clock },
 	notification_preset = {
-		fg = "#FFFFFF",
+		fg = theme.fg_normal,
 		bg = theme.bg_normal,
 		position = "top_middle",
 		font = theme.font,
@@ -355,7 +355,7 @@ function theme.at_screen_connect(s)
 	})
 
 	my_shape = function(cr, width, height)
-		gears.shape.octogon(cr, width, height, 10)
+		gears.shape.rounded_rect(cr, width, height, 5)
 	end
 
 	-- Create the middle wibox
