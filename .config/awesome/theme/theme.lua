@@ -12,27 +12,28 @@ theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 theme.wallpaper = theme.dir .. "/wall.png"
 theme.font = "JetBrains Mono Nerd Font 11"
-theme.desktop_font = "JetBrains Mono Nerd Font Bold 13"
+theme.desktop_font = "JetBrains Mono Nerd Font Semibold 11"
 
--- OneDark Darker color palette
+-- Arch Linux inspired color palette
 local colors = {
-	bg = "#242424",
-	bg_light = "#303030",
-	bg_lighter = "#3a3a3a",
+	arch_blue = "#1793d1",
+	arch_grey = "#2f2f2f",
+	bg = "#1e1e1e",
+	bg_light = "#2a2a2a",
+	bg_lighter = "#353535",
 	fg = "#e6e6e6",
 	fg_light = "#f5f5f5",
-	red = "#e06c75",
-	green = "#98c379",
-	yellow = "#e5c07b",
-	blue = "#61afef",
-	purple = "#c678dd",
-	cyan = "#56b6c2",
-	orange = "#d19a66",
-	comment = "#5c6370",
-	selection = "#303030",
-	line = "#252525",
+	red = "#ff6b6b",
+	green = "#51cc5e",
+	yellow = "#ffcc02",
+	blue = "#1793d1",
+	purple = "#bd93f9",
+	cyan = "#8be9fd",
+	orange = "#ffb86c",
+	comment = "#6c6c6c",
+	selection = "#2a2a2a",
+	line = "#404040",
 }
-
 -- Foregrounds
 theme.fg_normal = colors.fg
 theme.fg_focus = colors.blue
@@ -63,13 +64,9 @@ theme.taglist_bg_focus = colors.blue .. "55"
 theme.taglist_fg_normal = colors.fg
 theme.taglist_bg_normal = "transparent"
 
--- Opaque versions for titlebars
-local opaque_bg_normal = colors.bg
-local opaque_bg_focus = colors.bg_light
-
 -- Titlebar
-theme.titlebar_bg_focus = opaque_bg_focus
-theme.titlebar_bg_normal = opaque_bg_normal
+theme.titlebar_bg_focus = colors.bg
+theme.titlebar_bg_normal = colors.bg_light
 theme.titlebar_fg_focus = colors.fg_light
 theme.titlebar_fg_normal = colors.fg
 theme.titlebar_border_focus = colors.blue
@@ -79,8 +76,8 @@ theme.titlebar_border_normal = colors.line
 theme.hotkeys_modifiers_fg = colors.fg_light
 
 -- Systray
-theme.systray_icon_spacing = 10
-theme.bg_systray = theme.bg_normal
+theme.systray_icon_spacing = dpi(5)
+theme.bg_systray = colors.bg_lighter
 
 theme.wibox_height = dpi(30)
 
@@ -146,11 +143,9 @@ theme.layout_txt_termfair = "[termfair]"
 theme.layout_txt_centerfair = "[centerfair]"
 
 local markup = lain.util.markup
-local white = theme.fg_focus
-local gray = theme.fg_normal
 
 -- Textclock
-local clock = awful.widget.watch("date +'%d/%m/%Y %H:%M'", 60, function(widget, stdout)
+local clock = awful.widget.watch("date +'%a %d %b %R'", 60, function(widget, stdout)
 	widget:set_markup(" " .. markup.font(theme.desktop_font, stdout))
 end)
 
@@ -200,42 +195,48 @@ theme.fs = lain.widget.fs({
     end
 })
 --]]
+-- Simple volume widget (icon + text)
+local volume_icon = wibox.widget.textbox()
+local volume_text = wibox.widget.textbox()
 
--- ALSA volume bar
-theme.volume = lain.widget.alsabar({
-	ticks = true,
-	width = dpi(67),
-	notification_preset = { font = theme.font },
+theme.volume = lain.widget.alsa({
+	settings = function()
+		local vol_icon = "  "
+		if volume_now.status == "off" then
+			vol_icon = "  "
+		elseif tonumber(volume_now.level) <= 30 then
+			vol_icon = "  "
+		end
+
+		volume_icon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, vol_icon)))
+		volume_text:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+	end,
 })
-theme.volume.tooltip.wibox.fg = theme.fg_focus
-theme.volume.tooltip.wibox.font = theme.font
-theme.volume.bar:buttons(my_table.join(
+
+-- Add click functionality
+local volume_widget = wibox.widget({
+	volume_icon,
+	volume_text,
+	layout = wibox.layout.fixed.horizontal,
+})
+
+volume_widget:buttons(my_table.join(
 	awful.button({}, 1, function()
 		awful.spawn(string.format("%s -e alsamixer", terminal))
 	end),
-	awful.button({}, 2, function()
-		os.execute(string.format("%s set %s 100%%", theme.volume.cmd, theme.volume.channel))
-		theme.volume.update()
-	end),
 	awful.button({}, 3, function()
-		os.execute(
-			string.format("%s set %s toggle", theme.volume.cmd, theme.volume.togglechannel or theme.volume.channel)
-		)
+		os.execute("amixer -q set Master toggle")
 		theme.volume.update()
 	end),
 	awful.button({}, 4, function()
-		os.execute(string.format("%s set %s 1%%+", theme.volume.cmd, theme.volume.channel))
+		os.execute("amixer -q set Master 5%+")
 		theme.volume.update()
 	end),
 	awful.button({}, 5, function()
-		os.execute(string.format("%s set %s 1%%-", theme.volume.cmd, theme.volume.channel))
+		os.execute("amixer -q set Master 5%-")
 		theme.volume.update()
 	end)
-))
-local volumebg = wibox.container.background(theme.volume.bar, "#585858", gears.shape.rectangle)
-local volumewidget = wibox.container.margin(volumebg, dpi(7), dpi(7), dpi(5), dpi(5))
-
--- Weather
+)) -- Weather
 --[[ to be set before use
 theme.weather = lain.widget.weather({
     --APPID =
@@ -270,11 +271,29 @@ local net = lain.widget.net({
 	end,
 })
 
--- Separators
-local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color("#61afef", "  |")))
-local spr = wibox.widget.textbox("  ")
+-- helper function to create styled boxes/containers
+local function widgetbox(wid)
+	local padded_widget = wibox.container.margin(wid, dpi(8), dpi(8), 0, 0)
 
-local wibox_offset_y = 10
+	local bg_widget = wibox.container.background(padded_widget, colors.arch_blue .. "11")
+	bg_widget.fg = theme.fg_normal
+	bg_widget.shape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 6)
+	end
+	bg_widget.shape_border_width = 1
+	bg_widget.shape_border_color = colors.arch_blue
+
+	-- External margins (spacing between widgets)
+	return wibox.container.margin(bg_widget, 0, 0, dpi(2), dpi(2))
+end
+
+-- Metho
+
+-- Separators
+local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
+local spr = wibox.widget.textbox("  ")
+local big_spr = wibox.widget.textbox("    ")
+
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
@@ -336,110 +355,68 @@ function theme.at_screen_connect(s)
 				else
 					baticon:set_image(theme.widget_battery)
 				end
-				widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
+				widget:set_markup(markup.font(theme.font, bat_now.perc .. "% "))
 			else
-				widget:set_markup(markup.font(theme.font, " AC "))
+				widget:set_markup(markup.font(theme.font, "AC "))
 				baticon:set_image(theme.widget_ac)
 			end
 		end,
 	})
 
+	local battery_widget = wibox.widget({
+		baticon,
+		bat.widget,
+		layout = wibox.layout.fixed.horizontal,
+	})
+
 	my_shape = function(cr, width, height)
 		gears.shape.octogon(cr, width, height, 10)
 	end
-
-	-- Create the middle wibox
-	s.mywibox = wibox({
-		type = "dock",
-		visible = true,
+	-- [[
+	s.mywibar = awful.wibar({
+		position = "top",
 		screen = s,
 		height = theme.wibox_height,
-		width = dpi(230),
-		shape = my_shape,
-		bg = theme.bg_normal,
+		bg = colors.bg .. "88",
 		fg = theme.fg_normal,
-		y = wibox_offset_y,
-		x = (s.geometry.width - dpi(230)) / 2,
-		border_width = theme.border_width,
-		border_color = colors.blue .. "AA",
 	})
-	-- Reserve space
-	s.mywibox:struts({
-		top = dpi(2 * wibox_offset_y + s.mywibox.height),
-	})
+	--]]
 	-- Add widgets to the wibox
-	s.mywibox:setup({
+	s.mywibar:setup({
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
-		nil,
-		clock,
-		nil,
-	})
-
-	-- Left Wibox
-	s.mywibox_tag = wibox({
-		screen = s,
-		x = 40,
-		y = wibox_offset_y,
-		type = "dock",
-		visible = true,
-		height = theme.wibox_height,
-		width = dpi(335),
-		shape = my_shape,
-		bg = theme.bg_normal,
-		fg = theme.fg_normal,
-		border_width = theme.border_width,
-		border_color = colors.blue .. "AA",
-	})
-	s.mywibox_tag:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "inside",
-		first,
-		s.mytaglist,
-		nil,
-	})
-
-	-- Right wibox
-	s.mywibox_wid = wibox({
-		screen = s,
-		x = 1500,
-		y = wibox_offset_y,
-		type = "dock",
-		visible = true,
-		height = theme.wibox_height,
-		width = dpi(400),
-		shape = my_shape,
-		bg = theme.bg_normal,
-		fg = theme.fg_normal,
-		border_width = theme.border_width,
-		border_color = colors.blue .. "AA",
-	})
-
-	s.mywibox_wid:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "inside",
-		{ -- Left widgets
-			layout = wibox.layout.fixed.horizontal,
+		{
+			layout = wibox.layout.align.horizontal,
+			expand = "inside",
 			spr,
-			spr,
-			wibox.widget.systray(),
+			first,
+			s.mytaglist,
 		},
-		nil,
-		{ -- Right widgets
-			layout = wibox.layout.fixed.horizontal,
-			spr,
-			mykeyboardlayout,
-			spr,
-			--theme.mpd.widget,
-			--theme.mail.widget,
-			--theme.fs.widget,
-			volumewidget,
-			spr,
-			baticon,
-			bat.widget,
-			spr,
-			s.mylayoutbox,
-			spr,
+		clock,
+		{
+			layout = wibox.layout.align.horizontal,
+			expand = "inside",
+			{ -- Left widgets
+				layout = wibox.layout.fixed.horizontal,
+				wibox.widget.systray(),
+				big_spr,
+				big_spr,
+			},
+			nil,
+			{ -- Right widgets
+				layout = wibox.layout.fixed.horizontal,
+				mykeyboardlayout,
+				spr,
+				--theme.mpd.widget,
+				--theme.mail.widget,
+				--theme.fs.widget,
+				volume_widget,
+				spr,
+				battery_widget,
+				spr,
+				s.mylayoutbox,
+				spr,
+			},
 		},
 	})
 end
