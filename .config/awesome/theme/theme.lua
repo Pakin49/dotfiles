@@ -165,7 +165,7 @@ theme.cal = lain.widget.cal({
 	},
 })
 
--- MPD
+--[[MPD
 theme.mpd = lain.widget.mpd({
 	settings = function()
 		mpd_notification_preset.fg = white
@@ -184,9 +184,8 @@ theme.mpd = lain.widget.mpd({
 		widget:set_markup(markup.font(theme.font, markup(gray, artist) .. markup(white, title)))
 	end,
 })
-
 -- /home fs
---[[ commented because it needs Gio/Glib >= 2.54
+-- [[ commented because it needs Gio/Glib >= 2.54
 theme.fs = lain.widget.fs({
     notification_preset = { fg = white, bg = theme.bg_normal, font = "Terminus 10.5" },
     settings  = function()
@@ -275,17 +274,8 @@ local net = lain.widget.net({
 local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color("#61afef", "  |")))
 local spr = wibox.widget.textbox("  ")
 
-local function update_txt_layoutbox(s)
-	-- Writes a string representation of the current layout in a textbox widget
-	local txt_l = theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))] or ""
-	s.mytxtlayoutbox:set_text(txt_l)
-end
-
 local wibox_offset_y = 10
 function theme.at_screen_connect(s)
-	-- Quake application
-	s.quake = lain.util.quake({ app = awful.util.terminal })
-
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
 	if type(wallpaper) == "function" then
