@@ -16,7 +16,7 @@ theme.desktop_font = "JetBrains Mono Nerd Font Bold 13"
 
 -- OneDark Darker color palette
 local colors = {
-	bg = "#232323",
+	bg = "#242424",
 	bg_light = "#303030",
 	bg_lighter = "#3a3a3a",
 	fg = "#e6e6e6",
@@ -43,7 +43,7 @@ theme.fg_minimize = colors.comment
 theme.bg_normal = colors.bg .. "CC" -- Semi-transparent
 theme.bg_focus = colors.bg_light .. "CC" -- Semi-transparent
 theme.bg_urgent = colors.bg .. "CC"
-theme.bg_minimize = colors.selection .. "AA"
+theme.bg_minimize = colors.selection .. "CC"
 
 -- Borders
 theme.border_width = dpi(2)
