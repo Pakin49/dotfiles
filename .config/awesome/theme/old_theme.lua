@@ -12,28 +12,27 @@ theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 theme.wallpaper = theme.dir .. "/wall.png"
 theme.font = "JetBrains Mono Nerd Font 11"
-theme.desktop_font = "JetBrains Mono Nerd Font Semibold 11"
+theme.desktop_font = "JetBrains Mono Nerd Font Bold 13"
 
--- Arch Linux inspired color palette
+-- OneDark Darker color palette
 local colors = {
-	arch_blue = "#1793d1",
-	arch_grey = "#2f2f2f",
-	bg = "#1e1e1e",
-	bg_light = "#2a2a2a",
-	bg_lighter = "#353535",
+	bg = "#242424",
+	bg_light = "#303030",
+	bg_lighter = "#3a3a3a",
 	fg = "#e6e6e6",
 	fg_light = "#f5f5f5",
-	red = "#ff6b6b",
-	green = "#51cc5e",
-	yellow = "#ffcc02",
-	blue = "#1793d1",
-	purple = "#bd93f9",
-	cyan = "#8be9fd",
-	orange = "#ffb86c",
-	comment = "#6c6c6c",
-	selection = "#2a2a2a",
-	line = "#404040",
+	red = "#e06c75",
+	green = "#98c379",
+	yellow = "#e5c07b",
+	blue = "#61afef",
+	purple = "#c678dd",
+	cyan = "#56b6c2",
+	orange = "#d19a66",
+	comment = "#5c6370",
+	selection = "#303030",
+	line = "#252525",
 }
+
 -- Foregrounds
 theme.fg_normal = colors.fg
 theme.fg_focus = colors.blue
@@ -41,8 +40,8 @@ theme.fg_urgent = colors.red
 theme.fg_minimize = colors.comment
 
 -- Backgrounds
-theme.bg_normal = colors.bg_light .. "CC" -- Semi-transparent
-theme.bg_focus = colors.bg_lighter .. "CC" -- Semi-transparent
+theme.bg_normal = colors.bg .. "CC" -- Semi-transparent
+theme.bg_focus = colors.bg_light .. "CC" -- Semi-transparent
 theme.bg_urgent = colors.bg .. "CC"
 theme.bg_minimize = colors.selection .. "CC"
 
@@ -64,9 +63,13 @@ theme.taglist_bg_focus = colors.blue .. "55"
 theme.taglist_fg_normal = colors.fg
 theme.taglist_bg_normal = "transparent"
 
+-- Opaque versions for titlebars
+local opaque_bg_normal = colors.bg
+local opaque_bg_focus = colors.bg_light
+
 -- Titlebar
-theme.titlebar_bg_focus = colors.bg
-theme.titlebar_bg_normal = colors.bg_light
+theme.titlebar_bg_focus = opaque_bg_focus
+theme.titlebar_bg_normal = opaque_bg_normal
 theme.titlebar_fg_focus = colors.fg_light
 theme.titlebar_fg_normal = colors.fg
 theme.titlebar_border_focus = colors.blue
@@ -76,8 +79,8 @@ theme.titlebar_border_normal = colors.line
 theme.hotkeys_modifiers_fg = colors.fg_light
 
 -- Systray
-theme.systray_icon_spacing = dpi(5)
-theme.bg_systray = colors.bg_lighter
+theme.systray_icon_spacing = 10
+theme.bg_systray = theme.bg_normal
 
 theme.wibox_height = dpi(30)
 
@@ -129,6 +132,10 @@ theme.titlebar_maximized_button_normal_active = theme.default_dir .. "/titlebar/
 theme.titlebar_maximized_button_focus_active = theme.default_dir .. "/titlebar/maximized_focus_active.png"
 
 -- themes for wigets yanked from power-arrow dark
+theme.widget_ac = theme.dir .. "/icons/ac.png"
+theme.widget_battery = theme.dir .. "/icons/battery.png"
+theme.widget_battery_low = theme.dir .. "/icons/battery_low.png"
+theme.widget_battery_empty = theme.dir .. "/icons/battery_empty.png"
 theme.widget_net = theme.dir .. "/icons/net.png"
 theme.widget_temp = theme.dir .. "/icons/temp.png"
 -- lain related
@@ -139,9 +146,11 @@ theme.layout_txt_termfair = "[termfair]"
 theme.layout_txt_centerfair = "[centerfair]"
 
 local markup = lain.util.markup
+local white = theme.fg_focus
+local gray = theme.fg_normal
 
 -- Textclock
-local clock = awful.widget.watch("date +'%a %d %b %R'", 60, function(widget, stdout)
+local clock = awful.widget.watch("date +'%d/%m/%Y %H:%M'", 60, function(widget, stdout)
 	widget:set_markup(" " .. markup.font(theme.desktop_font, stdout))
 end)
 
@@ -191,47 +200,42 @@ theme.fs = lain.widget.fs({
     end
 })
 --]]
--- Simple volume widget (icon + text)
-local volume_icon = wibox.widget.textbox()
-local volume_text = wibox.widget.textbox()
 
-theme.volume = lain.widget.alsa({
-	settings = function()
-		local vol_icon = "  "
-		if volume_now.status == "off" then
-			vol_icon = "  "
-		elseif tonumber(volume_now.level) <= 30 then
-			vol_icon = "  "
-		end
-
-		volume_icon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, vol_icon)))
-		volume_text:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
-	end,
+-- ALSA volume bar
+theme.volume = lain.widget.alsabar({
+	ticks = true,
+	width = dpi(67),
+	notification_preset = { font = theme.font },
 })
--- Add click functionality
-local volume_widget = wibox.widget({
-	volume_icon,
-	volume_text,
-	layout = wibox.layout.fixed.horizontal,
-})
-
-volume_widget:buttons(my_table.join(
+theme.volume.tooltip.wibox.fg = theme.fg_focus
+theme.volume.tooltip.wibox.font = theme.font
+theme.volume.bar:buttons(my_table.join(
 	awful.button({}, 1, function()
 		awful.spawn(string.format("%s -e alsamixer", terminal))
 	end),
+	awful.button({}, 2, function()
+		os.execute(string.format("%s set %s 100%%", theme.volume.cmd, theme.volume.channel))
+		theme.volume.update()
+	end),
 	awful.button({}, 3, function()
-		os.execute("amixer -q set Master toggle")
+		os.execute(
+			string.format("%s set %s toggle", theme.volume.cmd, theme.volume.togglechannel or theme.volume.channel)
+		)
 		theme.volume.update()
 	end),
 	awful.button({}, 4, function()
-		os.execute("amixer -q set Master 5%+")
+		os.execute(string.format("%s set %s 1%%+", theme.volume.cmd, theme.volume.channel))
 		theme.volume.update()
 	end),
 	awful.button({}, 5, function()
-		os.execute("amixer -q set Master 5%-")
+		os.execute(string.format("%s set %s 1%%-", theme.volume.cmd, theme.volume.channel))
 		theme.volume.update()
 	end)
-)) -- Weather
+))
+local volumebg = wibox.container.background(theme.volume.bar, "#585858", gears.shape.rectangle)
+local volumewidget = wibox.container.margin(volumebg, dpi(7), dpi(7), dpi(5), dpi(5))
+
+-- Weather
 --[[ to be set before use
 theme.weather = lain.widget.weather({
     --APPID =
@@ -266,30 +270,11 @@ local net = lain.widget.net({
 	end,
 })
 
--- helper function to create styled boxes/containers
-local function widgetbox(wid)
-	local padded_widget = wibox.container.margin(wid, dpi(8), dpi(8), 0, 0)
-
-	local bg_widget = wibox.container.background(padded_widget, colors.arch_blue .. "11")
-	bg_widget.fg = theme.fg_normal
-	bg_widget.shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 6)
-	end
-	bg_widget.shape_border_width = 1
-	bg_widget.shape_border_color = colors.arch_blue
-
-	-- External margins (spacing between widgets)
-	return wibox.container.margin(bg_widget, 0, 0, dpi(2), dpi(2))
-end
-
--- Metho
-
 -- Separators
-local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
+local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color("#61afef", "  |")))
 local spr = wibox.widget.textbox("  ")
-local big_spr = wibox.widget.textbox("    ")
 
-local wibox_offset_y = 5
+local wibox_offset_y = 10
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
@@ -337,37 +322,41 @@ function theme.at_screen_connect(s)
 	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
 	-- Create battery widget
-	local baticon = wibox.widget.textbox()
+	local baticon = wibox.widget.imagebox(theme.widget_battery)
 	local bat = lain.widget.bat({
 		full_notify = "off",
 		settings = function()
-			local bat_icon = "󱊣"
 			if bat_now.status and bat_now.status ~= "N/A" then
 				if bat_now.ac_status == 1 then
-					bat_icon = "󰂄 "
-				elseif bat_now.perc and tonumber(bat_now.perc) <= 15 then
-					bat_icon = "󱊡 "
-				elseif bat_now.perc and tonumber(bat_now.perc) <= 50 then
-					bat_icon = "󱊢 "
+					baticon:set_image(theme.widget_ac)
+				elseif not bat_now.perc and tonumber(bat_now.perc) <= 5 then
+					baticon:set_image(theme.widget_battery_empty)
+				elseif not bat_now.perc and tonumber(bat_now.perc) <= 15 then
+					baticon:set_image(theme.widget_battery_low)
+				else
+					baticon:set_image(theme.widget_battery)
 				end
-				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, bat_icon)))
-				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
+				widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
 			else
-				widget:set_markup(markup.font(theme.font, "AC "))
-				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, "󱉝 ")))
+				widget:set_markup(markup.font(theme.font, " AC "))
+				baticon:set_image(theme.widget_ac)
 			end
 		end,
 	})
 
-	local battery_widget = wibox.widget({
-		baticon,
-		bat.widget,
-		layout = wibox.layout.fixed.horizontal,
-	})
-
 	my_shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 8)
+		gears.shape.octogon(cr, width, height, 10)
 	end
+	--[[
+	s.mywibar = awful.wibar({
+		position = "top",
+		screen = s,
+		height = theme.wibox_height + 15,
+		bg = colors.bg .. "88",
+		fg = theme.fg_normal,
+	})
+	--]]
+	-- Create the middle wibox
 	s.mywibox = wibox({
 		type = "dock",
 		visible = true,
@@ -452,9 +441,10 @@ function theme.at_screen_connect(s)
 			--theme.mpd.widget,
 			--theme.mail.widget,
 			--theme.fs.widget,
-			volume_widget,
+			volumewidget,
 			spr,
-			battery_widget,
+			baticon,
+			bat.widget,
 			spr,
 			s.mylayoutbox,
 			spr,

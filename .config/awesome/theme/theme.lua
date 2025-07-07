@@ -129,10 +129,6 @@ theme.titlebar_maximized_button_normal_active = theme.default_dir .. "/titlebar/
 theme.titlebar_maximized_button_focus_active = theme.default_dir .. "/titlebar/maximized_focus_active.png"
 
 -- themes for wigets yanked from power-arrow dark
-theme.widget_ac = theme.dir .. "/icons/ac.png"
-theme.widget_battery = theme.dir .. "/icons/battery.png"
-theme.widget_battery_low = theme.dir .. "/icons/battery_low.png"
-theme.widget_battery_empty = theme.dir .. "/icons/battery_empty.png"
 theme.widget_net = theme.dir .. "/icons/net.png"
 theme.widget_temp = theme.dir .. "/icons/temp.png"
 -- lain related
@@ -341,30 +337,31 @@ function theme.at_screen_connect(s)
 	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
 	-- Create battery widget
-	local baticon = wibox.widget.imagebox(theme.widget_battery)
+	local baticon = wibox.widget.textbox()
 	local bat = lain.widget.bat({
 		full_notify = "off",
 		settings = function()
+			local bat_icon = "󱊣"
 			if bat_now.status and bat_now.status ~= "N/A" then
 				if bat_now.ac_status == 1 then
-					baticon:set_image(theme.widget_ac)
-				elseif not bat_now.perc and tonumber(bat_now.perc) <= 5 then
-					baticon:set_image(theme.widget_battery_empty)
-				elseif not bat_now.perc and tonumber(bat_now.perc) <= 15 then
-					baticon:set_image(theme.widget_battery_low)
-				else
-					baticon:set_image(theme.widget_battery)
+					bat_icon = "󰂄 "
+				elseif bat_now.perc and tonumber(bat_now.perc) <= 15 then
+					bat_icon = "󱊡 "
+				elseif bat_now.perc and tonumber(bat_now.perc) <= 50 then
+					bat_icon = "󱊢 "
 				end
-				widget:set_markup(markup.font(theme.font, bat_now.perc .. "% "))
+				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, bat_icon)))
+				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
 			else
 				widget:set_markup(markup.font(theme.font, "AC "))
-				baticon:set_image(theme.widget_ac)
+				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, "󱉝 ")))
 			end
 		end,
 	})
 
 	local battery_widget = wibox.widget({
 		baticon,
+		spr,
 		bat.widget,
 		layout = wibox.layout.fixed.horizontal,
 	})
