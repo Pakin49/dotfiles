@@ -41,8 +41,8 @@ theme.fg_urgent = colors.red
 theme.fg_minimize = colors.comment
 
 -- Backgrounds
-theme.bg_normal = colors.bg_light .. "CC" -- Semi-transparent
-theme.bg_focus = colors.bg_lighter .. "CC" -- Semi-transparent
+theme.bg_normal = colors.bg .. "CC" -- Semi-transparent
+theme.bg_focus = colors.bg_light .. "CC" -- Semi-transparent
 theme.bg_urgent = colors.bg .. "CC"
 theme.bg_minimize = colors.selection .. "CC"
 
@@ -208,6 +208,7 @@ theme.volume = lain.widget.alsa({
 		volume_text:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
 	end,
 })
+
 -- Add click functionality
 local volume_widget = wibox.widget({
 	volume_icon,
@@ -289,7 +290,6 @@ local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.co
 local spr = wibox.widget.textbox("  ")
 local big_spr = wibox.widget.textbox("    ")
 
-local wibox_offset_y = 5
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
@@ -354,110 +354,66 @@ function theme.at_screen_connect(s)
 				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
 			else
 				widget:set_markup(markup.font(theme.font, "AC "))
-				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, "󱉝 ")))
+				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, " ")))
 			end
 		end,
 	})
 
 	local battery_widget = wibox.widget({
 		baticon,
+		spr,
 		bat.widget,
 		layout = wibox.layout.fixed.horizontal,
 	})
 
 	my_shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 8)
+		gears.shape.octogon(cr, width, height, 10)
 	end
-	s.mywibox = wibox({
-		type = "dock",
-		visible = true,
+	-- [[
+	s.mywibar = awful.wibar({
+		position = "top",
 		screen = s,
 		height = theme.wibox_height,
-		width = dpi(230),
-		shape = my_shape,
-		bg = theme.bg_normal,
+		bg = colors.bg .. "88",
 		fg = theme.fg_normal,
-		y = wibox_offset_y,
-		x = (s.geometry.width - dpi(230)) / 2,
-		border_width = theme.border_width,
-		border_color = colors.blue .. "AA",
 	})
-	-- Reserve space
-	s.mywibox:struts({
-		top = dpi(2 * wibox_offset_y + s.mywibox.height),
-	})
+	--]]
 	-- Add widgets to the wibox
-	s.mywibox:setup({
+	s.mywibar:setup({
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
-		nil,
-		clock,
-		nil,
-	})
-
-	-- Left Wibox
-	s.mywibox_tag = wibox({
-		screen = s,
-		x = 40,
-		y = wibox_offset_y,
-		type = "dock",
-		visible = true,
-		height = theme.wibox_height,
-		width = dpi(335),
-		shape = my_shape,
-		bg = theme.bg_normal,
-		fg = theme.fg_normal,
-		border_width = theme.border_width,
-		border_color = colors.blue .. "AA",
-	})
-	s.mywibox_tag:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "inside",
-		first,
-		s.mytaglist,
-		nil,
-	})
-
-	-- Right wibox
-	s.mywibox_wid = wibox({
-		screen = s,
-		x = 1500,
-		y = wibox_offset_y,
-		type = "dock",
-		visible = true,
-		height = theme.wibox_height,
-		width = dpi(400),
-		shape = my_shape,
-		bg = theme.bg_normal,
-		fg = theme.fg_normal,
-		border_width = theme.border_width,
-		border_color = colors.blue .. "AA",
-	})
-
-	s.mywibox_wid:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "inside",
-		{ -- Left widgets
-			layout = wibox.layout.fixed.horizontal,
+		{
+			layout = wibox.layout.align.horizontal,
+			expand = "inside",
 			spr,
-			spr,
-			wibox.widget.systray(),
+			first,
+			s.mytaglist,
 		},
-		nil,
-		{ -- Right widgets
-			layout = wibox.layout.fixed.horizontal,
-			spr,
-			mykeyboardlayout,
-			spr,
-			--theme.mpd.widget,
-			--theme.mail.widget,
-			--theme.fs.widget,
-			volume_widget,
-			spr,
-			battery_widget,
-			spr,
-			s.mylayoutbox,
-			spr,
+		clock,
+		{
+			layout = wibox.layout.align.horizontal,
+			expand = "inside",
+			{ -- Left widgets
+				layout = wibox.layout.fixed.horizontal,
+				wibox.widget.systray(),
+				big_spr,
+				big_spr,
+			},
+			nil,
+			{ -- Right widgets
+				layout = wibox.layout.fixed.horizontal,
+				mykeyboardlayout,
+				spr,
+				--theme.mpd.widget,
+				--theme.mail.widget,
+				--theme.fs.widget,
+				volume_widget,
+				spr,
+				battery_widget,
+				spr,
+				s.mylayoutbox,
+				spr,
+			},
 		},
 	})
 end

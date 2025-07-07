@@ -18,6 +18,7 @@ theme.desktop_font = "JetBrains Mono Nerd Font Semibold 11"
 local colors = {
 	arch_blue = "#1793d1",
 	arch_grey = "#2f2f2f",
+	arch_white = "#F8F8F2",
 	bg = "#1e1e1e",
 	bg_light = "#2a2a2a",
 	bg_lighter = "#353535",
@@ -41,10 +42,11 @@ theme.fg_urgent = colors.red
 theme.fg_minimize = colors.comment
 
 -- Backgrounds
-theme.bg_normal = colors.bg .. "CC" -- Semi-transparent
-theme.bg_focus = colors.bg_light .. "CC" -- Semi-transparent
+theme.bg_normal = colors.bg_light .. "CC" -- Semi-transparent
+theme.bg_focus = colors.bg_lighter .. "CC" -- Semi-transparent
 theme.bg_urgent = colors.bg .. "CC"
 theme.bg_minimize = colors.selection .. "CC"
+theme.bg_bar = colors.arch_grey
 
 -- Borders
 theme.border_width = dpi(2)
@@ -208,7 +210,6 @@ theme.volume = lain.widget.alsa({
 		volume_text:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
 	end,
 })
-
 -- Add click functionality
 local volume_widget = wibox.widget({
 	volume_icon,
@@ -288,8 +289,8 @@ end
 -- Separators
 local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
 local spr = wibox.widget.textbox("  ")
-local big_spr = wibox.widget.textbox("    ")
 
+local wibox_offset_y = 8
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
@@ -304,8 +305,8 @@ function theme.at_screen_connect(s)
 	-- Create a promptbox for each screen
 	--s.mypromptbox = awful.widget.prompt()
 
-	s.mylayoutbox = awful.widget.layoutbox(s)
-	s.mylayoutbox:buttons(my_table.join(
+	s.layoutbox = awful.widget.layoutbox(s)
+	s.layoutbox:buttons(my_table.join(
 		awful.button({}, 1, function()
 			awful.layout.inc(1)
 		end),
@@ -322,6 +323,7 @@ function theme.at_screen_connect(s)
 			awful.layout.inc(-1)
 		end)
 	))
+	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(4), dpi(4))
 
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
@@ -341,35 +343,101 @@ function theme.at_screen_connect(s)
 	local bat = lain.widget.bat({
 		full_notify = "off",
 		settings = function()
-			local bat_icon = "󱊣"
+			local bat_icon = " 󱊣 "
 			if bat_now.status and bat_now.status ~= "N/A" then
 				if bat_now.ac_status == 1 then
-					bat_icon = "󰂄 "
+					bat_icon = " 󰂄 "
 				elseif bat_now.perc and tonumber(bat_now.perc) <= 15 then
-					bat_icon = "󱊡 "
+					bat_icon = " 󱊡 "
 				elseif bat_now.perc and tonumber(bat_now.perc) <= 50 then
-					bat_icon = "󱊢 "
+					bat_icon = " 󱊢 "
 				end
 				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, bat_icon)))
 				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
 			else
 				widget:set_markup(markup.font(theme.font, "AC "))
-				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, "󱉝 ")))
+				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, "  ")))
 			end
 		end,
 	})
 
 	local battery_widget = wibox.widget({
 		baticon,
-		spr,
 		bat.widget,
 		layout = wibox.layout.fixed.horizontal,
 	})
 
-	my_shape = function(cr, width, height)
-		gears.shape.octogon(cr, width, height, 10)
+	myshape = function(cr, width, height)
+		gears.shape.rounded_rect(cr, width, height, 5)
 	end
-	-- [[
+
+	local arch_btw = wibox.widget.textbox("Arch-btw")
+
+	local function createbox(pos_x, bg_color, fg_color, w)
+		bg_color = bg_color or theme.bg_bar
+		fg_color = fg_color or theme.fg_normal
+		return wibox({
+			type = "dock",
+			visible = true,
+			screen = s,
+			height = theme.wibox_height,
+			width = dpi(w),
+			shape = myshape,
+			bg = bg_color,
+			fg = fg_color,
+			y = wibox_offset_y,
+			x = pos_x,
+			border_width = 0.5,
+			border_color = colors.arch_blue,
+		})
+	end
+	--s.mywibox_bat = createbox(1610, colors.arch_blue .. "AA", nil, 70)
+	-- Create wiboxes
+	s.mywibox_tag = createbox(40, nil, nil, 300)
+	s.mywibox = createbox((s.geometry.width - dpi(185)) / 2, nil, nil, 185)
+	s.mywibox_volume = createbox(1500, nil, nil, 90)
+	s.mywibox_bat = createbox(1610, nil, nil, 70)
+	s.mywibox_clock = createbox(1700, nil, nil, 190)
+	-- Reserve space
+	s.mywibox:struts({
+		top = dpi(2 * wibox_offset_y + s.mywibox.height),
+	})
+	-- Add widgets to the wibox
+	s.mywibox:setup({
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+		nil,
+		arch_btw,
+		first,
+	})
+	s.mywibox_tag:setup({
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+		spr,
+		s.mytaglist,
+		nil,
+	})
+	s.mywibox_volume:setup({
+		spr,
+		volume_widget,
+		spr,
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+	})
+
+	s.mywibox_bat:setup({
+		spr,
+		battery_widget,
+		spr,
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+	})
+	s.mywibox_clock:setup({
+		layout = wibox.layout.align.horizontal,
+		wibox.container.margin(clock, 10, 5, 0, 0),
+		s.mylayoutbox,
+	})
+	--[[ unused wibar
 	s.mywibar = awful.wibar({
 		position = "top",
 		screen = s,
@@ -377,7 +445,6 @@ function theme.at_screen_connect(s)
 		bg = colors.bg .. "88",
 		fg = theme.fg_normal,
 	})
-	--]]
 	-- Add widgets to the wibox
 	s.mywibar:setup({
 		layout = wibox.layout.align.horizontal,
@@ -415,7 +482,7 @@ function theme.at_screen_connect(s)
 				spr,
 			},
 		},
-	})
+	})--]]
 end
 
 return theme

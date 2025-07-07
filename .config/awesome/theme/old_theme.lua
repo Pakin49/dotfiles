@@ -344,7 +344,7 @@ function theme.at_screen_connect(s)
 		end,
 	})
 
-	my_shape = function(cr, width, height)
+	myshape = function(cr, width, height)
 		gears.shape.octogon(cr, width, height, 10)
 	end
 	--[[
@@ -363,7 +363,7 @@ function theme.at_screen_connect(s)
 		screen = s,
 		height = theme.wibox_height,
 		width = dpi(230),
-		shape = my_shape,
+		shape = myshape,
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
 		y = wibox_offset_y,
@@ -393,7 +393,7 @@ function theme.at_screen_connect(s)
 		visible = true,
 		height = theme.wibox_height,
 		width = dpi(335),
-		shape = my_shape,
+		shape = myshape,
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
 		border_width = theme.border_width,
@@ -416,7 +416,7 @@ function theme.at_screen_connect(s)
 		visible = true,
 		height = theme.wibox_height,
 		width = dpi(400),
-		shape = my_shape,
+		shape = myshape,
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
 		border_width = theme.border_width,
