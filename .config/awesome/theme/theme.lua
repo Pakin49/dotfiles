@@ -362,11 +362,11 @@ function theme.at_screen_connect(s)
 				else
 					bat_icon = " 󱊣 "
 				end
-				baticon = wibox.widget.textbox(bat_icon)
+				baticon:set_markup(markup.font(theme.font, bat_icon))
 				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
 			else
 				widget:set_markup(markup.font(theme.font, "AC "))
-				baticon = wibox.widget.textbox("  ")
+				baticon:set_markup(markup.font(theme.font, "  "))
 			end
 		end,
 	})
