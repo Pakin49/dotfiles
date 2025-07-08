@@ -393,10 +393,10 @@ function theme.at_screen_connect(s)
 	end
 	--s.mywibox_bat = createbox(1610, colors.arch_blue .. "AA", nil, 70)
 	-- Create wiboxes
-	s.mywibox_tag = createbox(40, nil, nil, 300)
+	s.mywibox_tag = createbox(40, nil, nil, 290)
 	s.mywibox = createbox((s.geometry.width - dpi(185)) / 2, nil, nil, 185)
-	s.mywibox_volume = createbox(1500, nil, nil, 90)
-	s.mywibox_bat = createbox(1610, nil, nil, 70)
+	s.mywibox_volume = createbox(1480, nil, nil, 90)
+	s.mywibox_bat = createbox(1590, nil, nil, 90)
 	s.mywibox_clock = createbox(1700, nil, nil, 190)
 	-- Reserve space
 	s.mywibox:struts({
