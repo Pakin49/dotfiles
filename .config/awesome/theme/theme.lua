@@ -289,7 +289,9 @@ end
 -- Separators
 local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
 local spr = wibox.container.margin(
-	wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font Mono 11", markup.fg.color(colors.arch_blue, "|"))),
+	wibox.widget.textbox(
+		markup.font("JetBrains Mono Nerd Font Mono 11", markup.fg.color(colors.arch_blue .. "AA", "|"))
+	),
 	dpi(5),
 	dpi(5),
 	dpi(2),
@@ -345,7 +347,7 @@ function theme.at_screen_connect(s)
 	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
 	-- Create battery widget
-	local baticon = wibox.widget.textbox()
+	local baticon = wibox.widget.textbox(" 󱊣 ")
 	local bat = lain.widget.bat({
 		full_notify = "off",
 		settings = function()
@@ -353,10 +355,12 @@ function theme.at_screen_connect(s)
 			if bat_now.status and bat_now.status ~= "N/A" then
 				if bat_now.ac_status == 1 then
 					bat_icon = " 󰂄 "
-				elseif bat_now.perc and tonumber(bat_now.perc) <= 15 then
+				elseif bat_now.perc and tonumber(bat_now.perc) <= 33 then
 					bat_icon = " 󱊡 "
-				elseif bat_now.perc and tonumber(bat_now.perc) <= 50 then
+				elseif bat_now.perc and tonumber(bat_now.perc) <= 66 then
 					bat_icon = " 󱊢 "
+				else
+					bat_icon = " 󱊣 "
 				end
 				baticon = wibox.widget.textbox(bat_icon)
 				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
