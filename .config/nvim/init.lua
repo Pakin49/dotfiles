@@ -6,7 +6,7 @@ local my_theme = {
   'kanagawa', --5
 }
 -- call themes tables in the custom/plugins/themes.lua
-local theme_path = string.format('custom.plugins.themes.%s', my_theme[3])
+local theme_path = string.format('custom.plugins.themes.%s', my_theme[2])
 vim.cmd 'set laststatus=3'
 -- Set <space> as the leader key
 -- See `:help mapleader`

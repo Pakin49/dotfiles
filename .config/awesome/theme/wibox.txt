@@ -1,0 +1,45 @@
+	--s.mywibox_bat = createbox(1610, colors.arch_blue .. "AA", nil, 70)
+	-- Create wiboxes
+	--s.mywibox_tag = createbox(40, nil, nil, 290)
+	--s.mywibox = createbox((s.geometry.width - dpi(185)) / 2, nil, nil, 185)
+	--s.mywibox_volume = createbox(1480, nil, nil, 90)
+	--s.mywibox_bat = createbox(1590, colors.fg, colors.arch_blue, 90)
+	--s.mywibox_clock = createbox(1700, nil, nil, 190)
+	--[[Reserve space
+	s.mywibox:struts({
+		top = dpi(2 * wibox_offset_y + s.mywibox.height),
+	}) 	-- Add widgets to the wibox
+	s.mywibox:setup({
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+		nil,
+		first,
+		nil,
+	})
+	s.mywibox_tag:setup({
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+		spr,
+		s.mytaglist,
+		nil,
+	})
+	s.mywibox_volume:setup({
+		spr,
+		volume_widget,
+		spr,
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+	})
+
+	s.mywibox_bat:setup({
+		spr,
+		battery_widget,
+		spr,
+		layout = wibox.layout.align.horizontal,
+		expand = "outside",
+	})
+	s.mywibox_clock:setup({
+		layout = wibox.layout.align.horizontal,
+		wibox.container.margin(clock, 10, 5, 0, 0),
+		s.mylayoutbox,
+	})--]]

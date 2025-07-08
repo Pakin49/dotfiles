@@ -11,8 +11,8 @@ local theme = {}
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 theme.wallpaper = theme.dir .. "/wall.png"
-theme.font = "JetBrains Mono Nerd Font 11"
-theme.desktop_font = "JetBrains Mono Nerd Font Semibold 11"
+theme.font = "JetBrains Mono Nerd Font Propo 11"
+theme.desktop_font = "JetBrains Mono Nerd Font Propo 11"
 
 -- Arch Linux inspired color palette
 local colors = {
@@ -65,7 +65,9 @@ theme.taglist_fg_focus = colors.fg_light
 theme.taglist_bg_focus = colors.blue .. "55"
 theme.taglist_fg_normal = colors.fg
 theme.taglist_bg_normal = "transparent"
-
+-- Yank from holo
+theme.taglist_squares_sel = theme.dir .. "/icons/square_sel.png"
+theme.taglist_squares_unsel = theme.dir .. "/icons/square_unsel.png"
 -- Titlebar
 theme.titlebar_bg_focus = colors.bg
 theme.titlebar_bg_normal = colors.bg_light
@@ -95,8 +97,6 @@ theme.tasklist_maximized_vertical = ""
 theme.tasklist_disable_icon = true
 theme.awesome_icon = theme.dir .. "/icons/awesome.png"
 theme.menu_submenu_icon = theme.dir .. "/icons/submenu.png"
-theme.taglist_squares_sel = theme.dir .. "/icons/square_sel.png"
-theme.taglist_squares_unsel = theme.dir .. "/icons/square_unsel.png"
 theme.useless_gap = 5
 theme.layout_tile = theme.dir .. "/icons/tile.png"
 theme.layout_tileleft = theme.dir .. "/icons/tileleft.png"
@@ -143,10 +143,9 @@ theme.layout_txt_centerfair = "[centerfair]"
 
 local markup = lain.util.markup
 
--- Textclock
-local clock = awful.widget.watch("date +'%a %d %b %R'", 60, function(widget, stdout)
-	widget:set_markup(" " .. markup.font(theme.desktop_font, stdout))
-end)
+-- Clock
+clockwidget = wibox.widget.textclock()
+clockwidget.font = theme.font
 
 -- Calendar
 theme.cal = lain.widget.cal({
@@ -289,7 +288,14 @@ end
 
 -- Separators
 local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
-local spr = wibox.widget.textbox("  ")
+local spr = wibox.container.margin(
+	wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font Mono 11", markup.fg.color(colors.arch_blue, "|"))),
+	dpi(5),
+	dpi(5),
+	dpi(2),
+	dpi(5)
+)
+local space = wibox.widget.textbox(" ")
 
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
@@ -403,7 +409,7 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		{
-			spr,
+			space,
 			s.mytaglist,
 			nil,
 			layout = wibox.layout.align.horizontal,
@@ -419,57 +425,13 @@ function theme.at_screen_connect(s)
 			volume_widget,
 			spr,
 			battery_widget,
-			wibox.container.margin(clock, 5, 5, 0, 0),
+			spr,
+			clockwidget,
 			spr,
 			s.mylayoutbox,
-			spr,
+			space,
 		},
 	}) --]]
-	--s.mywibox_bat = createbox(1610, colors.arch_blue .. "AA", nil, 70)
-	-- Create wiboxes
-	--s.mywibox_tag = createbox(40, nil, nil, 290)
-	--s.mywibox = createbox((s.geometry.width - dpi(185)) / 2, nil, nil, 185)
-	--s.mywibox_volume = createbox(1480, nil, nil, 90)
-	--s.mywibox_bat = createbox(1590, colors.fg, colors.arch_blue, 90)
-	--s.mywibox_clock = createbox(1700, nil, nil, 190)
-	--[[Reserve space
-	s.mywibox:struts({
-		top = dpi(2 * wibox_offset_y + s.mywibox.height),
-	}) 	-- Add widgets to the wibox
-	s.mywibox:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "outside",
-		nil,
-		first,
-		nil,
-	})
-	s.mywibox_tag:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "outside",
-		spr,
-		s.mytaglist,
-		nil,
-	})
-	s.mywibox_volume:setup({
-		spr,
-		volume_widget,
-		spr,
-		layout = wibox.layout.align.horizontal,
-		expand = "outside",
-	})
-
-	s.mywibox_bat:setup({
-		spr,
-		battery_widget,
-		spr,
-		layout = wibox.layout.align.horizontal,
-		expand = "outside",
-	})
-	s.mywibox_clock:setup({
-		layout = wibox.layout.align.horizontal,
-		wibox.container.margin(clock, 10, 5, 0, 0),
-		s.mylayoutbox,
-	})--]]
 end
 
 return theme
