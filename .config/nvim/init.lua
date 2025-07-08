@@ -595,7 +595,7 @@ require('lazy').setup({
         --hdl_checker = {},
         svlangserver = {},
         --opls = {},
-        asm_lsp {},
+        --asm_lsp {},
         pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs

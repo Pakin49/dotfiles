@@ -46,7 +46,7 @@ theme.bg_normal = colors.bg_light .. "CC" -- Semi-transparent
 theme.bg_focus = colors.bg_lighter .. "CC" -- Semi-transparent
 theme.bg_urgent = colors.bg .. "CC"
 theme.bg_minimize = colors.selection .. "CC"
-theme.bg_bar = colors.arch_grey
+theme.bg_bar = colors.bg .. "cc"
 
 -- Borders
 theme.border_width = dpi(2)
@@ -82,6 +82,7 @@ theme.systray_icon_spacing = dpi(5)
 theme.bg_systray = colors.bg_lighter
 
 theme.wibox_height = dpi(30)
+local wibox_offset_y = 5
 
 theme.menu_height = dpi(16)
 theme.menu_width = dpi(140)
@@ -153,7 +154,7 @@ theme.cal = lain.widget.cal({
 	notification_preset = {
 		fg = theme.fg_normal,
 		bg = theme.bg_normal,
-		position = "top_middle",
+		position = "top_right",
 		font = theme.font,
 	},
 })
@@ -290,7 +291,6 @@ end
 local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
 local spr = wibox.widget.textbox("  ")
 
-local wibox_offset_y = 8
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
@@ -323,7 +323,7 @@ function theme.at_screen_connect(s)
 			awful.layout.inc(-1)
 		end)
 	))
-	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(4), dpi(4))
+	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(6), dpi(6))
 
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
@@ -352,11 +352,11 @@ function theme.at_screen_connect(s)
 				elseif bat_now.perc and tonumber(bat_now.perc) <= 50 then
 					bat_icon = " 󱊢 "
 				end
-				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, bat_icon)))
+				baticon = wibox.widget.textbox(bat_icon)
 				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
 			else
 				widget:set_markup(markup.font(theme.font, "AC "))
-				baticon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, "  ")))
+				baticon = wibox.widget.textbox("  ")
 			end
 		end,
 	})
@@ -370,8 +370,6 @@ function theme.at_screen_connect(s)
 	myshape = function(cr, width, height)
 		gears.shape.rounded_rect(cr, width, height, 5)
 	end
-
-	local arch_btw = wibox.widget.textbox("Arch-btw")
 
 	local function createbox(pos_x, bg_color, fg_color, w)
 		bg_color = bg_color or theme.bg_bar
@@ -387,28 +385,64 @@ function theme.at_screen_connect(s)
 			fg = fg_color,
 			y = wibox_offset_y,
 			x = pos_x,
-			border_width = 0.5,
-			border_color = colors.arch_blue,
+			--border_width = 0.5,
+			--border_color = colors.arch_blue,
 		})
 	end
-	--s.mywibox_bat = createbox(1610, colors.arch_blue .. "AA", nil, 70)
-	-- Create wiboxes
-	s.mywibox_tag = createbox(40, nil, nil, 290)
-	s.mywibox = createbox((s.geometry.width - dpi(185)) / 2, nil, nil, 185)
-	s.mywibox_volume = createbox(1480, nil, nil, 90)
-	s.mywibox_bat = createbox(1590, nil, nil, 90)
-	s.mywibox_clock = createbox(1700, nil, nil, 190)
-	-- Reserve space
-	s.mywibox:struts({
-		top = dpi(2 * wibox_offset_y + s.mywibox.height),
+
+	-- [[ unused wibar
+	s.mywibar = awful.wibar({
+		position = "top",
+		screen = s,
+		height = theme.wibox_height + 2 * wibox_offset_y,
+		bg = colors.bg .. "88",
+		fg = theme.fg_normal,
 	})
 	-- Add widgets to the wibox
+	s.mywibar:setup({
+		layout = wibox.layout.align.horizontal,
+		expand = "none",
+		{
+			spr,
+			s.mytaglist,
+			nil,
+			layout = wibox.layout.align.horizontal,
+		},
+		first,
+		{
+			layout = wibox.layout.fixed.horizontal,
+			mykeyboardlayout,
+			spr,
+			--theme.mpd.widget,
+			--theme.mail.widget,
+			--theme.fs.widget,
+			volume_widget,
+			spr,
+			battery_widget,
+			spr,
+			wibox.container.margin(clock, 10, 5, 0, 0),
+			spr,
+			s.mylayoutbox,
+			spr,
+		},
+	}) --]]
+	--s.mywibox_bat = createbox(1610, colors.arch_blue .. "AA", nil, 70)
+	-- Create wiboxes
+	--s.mywibox_tag = createbox(40, nil, nil, 290)
+	--s.mywibox = createbox((s.geometry.width - dpi(185)) / 2, nil, nil, 185)
+	--s.mywibox_volume = createbox(1480, nil, nil, 90)
+	--s.mywibox_bat = createbox(1590, colors.fg, colors.arch_blue, 90)
+	--s.mywibox_clock = createbox(1700, nil, nil, 190)
+	--[[Reserve space
+	s.mywibox:struts({
+		top = dpi(2 * wibox_offset_y + s.mywibox.height),
+	}) 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
 		expand = "outside",
 		nil,
-		arch_btw,
 		first,
+		nil,
 	})
 	s.mywibox_tag:setup({
 		layout = wibox.layout.align.horizontal,
@@ -436,52 +470,6 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		wibox.container.margin(clock, 10, 5, 0, 0),
 		s.mylayoutbox,
-	})
-	--[[ unused wibar
-	s.mywibar = awful.wibar({
-		position = "top",
-		screen = s,
-		height = theme.wibox_height,
-		bg = colors.bg .. "88",
-		fg = theme.fg_normal,
-	})
-	-- Add widgets to the wibox
-	s.mywibar:setup({
-		layout = wibox.layout.align.horizontal,
-		expand = "none",
-		{
-			layout = wibox.layout.align.horizontal,
-			expand = "inside",
-			spr,
-			first,
-			s.mytaglist,
-		},
-		clock,
-		{
-			layout = wibox.layout.align.horizontal,
-			expand = "inside",
-			{ -- Left widgets
-				layout = wibox.layout.fixed.horizontal,
-				wibox.widget.systray(),
-				big_spr,
-				big_spr,
-			},
-			nil,
-			{ -- Right widgets
-				layout = wibox.layout.fixed.horizontal,
-				mykeyboardlayout,
-				spr,
-				--theme.mpd.widget,
-				--theme.mail.widget,
-				--theme.fs.widget,
-				volume_widget,
-				spr,
-				battery_widget,
-				spr,
-				s.mylayoutbox,
-				spr,
-			},
-		},
 	})--]]
 end
 
