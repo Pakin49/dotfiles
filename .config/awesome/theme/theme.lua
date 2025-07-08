@@ -323,7 +323,7 @@ function theme.at_screen_connect(s)
 			awful.layout.inc(-1)
 		end)
 	))
-	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(6), dpi(6))
+	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(8), dpi(8))
 
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
@@ -419,8 +419,7 @@ function theme.at_screen_connect(s)
 			volume_widget,
 			spr,
 			battery_widget,
-			spr,
-			wibox.container.margin(clock, 10, 5, 0, 0),
+			wibox.container.margin(clock, 5, 5, 0, 0),
 			spr,
 			s.mylayoutbox,
 			spr,
