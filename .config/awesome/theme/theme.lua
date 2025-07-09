@@ -370,7 +370,7 @@ function theme.at_screen_connect(s)
 	})
 
 	myshape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 8)
+		gears.shape.rounded_rect(cr, width, height, 4)
 	end
 
 	local widget_highlight = function(wid)
