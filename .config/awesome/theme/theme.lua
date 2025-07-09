@@ -207,7 +207,7 @@ theme.volume = lain.widget.alsa({
 		end
 
 		volume_icon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, vol_icon)))
-		volume_text:set_markup(markup.font(theme.font, " " .. volume_now.level .. "% "))
+		volume_text:set_markup(markup.font(theme.font, volume_now.level .. "% "))
 	end,
 })
 -- Add click functionality
@@ -287,8 +287,8 @@ end
 -- Metho
 
 -- Separators
-local awesome_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 17", "  "))
-local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
+local awesome_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 15", "  "))
+local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 20", markup.fg.color(colors.arch_blue, "   ")))
 local space = wibox.widget.textbox("  ")
 
 function theme.at_screen_connect(s)
