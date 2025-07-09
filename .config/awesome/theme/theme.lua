@@ -287,7 +287,8 @@ end
 -- Metho
 
 -- Separators
-local first = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
+local awesome_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 17", "  "))
+local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
 local spr = wibox.container.margin(
 	wibox.widget.textbox(
 		markup.font("JetBrains Mono Nerd Font Mono 11", markup.fg.color(colors.arch_blue .. "AA", "|"))
@@ -413,12 +414,13 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		{
+			wibox.container.margin(awesome_icon, dpi(5), dpi(15), 0, 0),
 			space,
 			s.mytaglist,
-			nil,
 			layout = wibox.layout.align.horizontal,
+			expand = "inside",
 		},
-		first,
+		arch_icon,
 		{
 			layout = wibox.layout.fixed.horizontal,
 			mykeyboardlayout,

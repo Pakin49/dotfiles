@@ -1,14 +1,14 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 13 
 
-theme = Tomorrow Night
+theme = Tomorrow Night Bright
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 cursor-color = f4b278
 cursor-opacity = 0.7
 cursor-style-blink = false
 
-background-opacity = 0.85
+background-opacity = 0.7
 unfocused-split-opacity = 0.85
 
 mouse-hide-while-typing = true
