@@ -86,7 +86,6 @@ unzip
 vial-appimage
 vim
 virtualbox
-virtualbox-host-modules-arch
 vlc
 wget
 wireplumber
