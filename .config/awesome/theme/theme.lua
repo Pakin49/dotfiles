@@ -289,16 +289,7 @@ end
 -- Separators
 local awesome_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 17", "  "))
 local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 17", markup.fg.color(colors.arch_blue, "   ")))
-local spr = wibox.container.margin(
-	wibox.widget.textbox(
-		markup.font("JetBrains Mono Nerd Font Mono 11", markup.fg.color(colors.arch_blue .. "AA", "|"))
-	),
-	dpi(5),
-	dpi(5),
-	dpi(2),
-	dpi(5)
-)
-local space = wibox.widget.textbox(" ")
+local space = wibox.widget.textbox("  ")
 
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
@@ -379,26 +370,12 @@ function theme.at_screen_connect(s)
 	})
 
 	myshape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 5)
+		gears.shape.rounded_rect(cr, width, height, 8)
 	end
 
-	local function createbox(pos_x, bg_color, fg_color, w)
-		bg_color = bg_color or theme.bg_bar
-		fg_color = fg_color or theme.fg_normal
-		return wibox({
-			type = "dock",
-			visible = true,
-			screen = s,
-			height = theme.wibox_height,
-			width = dpi(w),
-			shape = myshape,
-			bg = bg_color,
-			fg = fg_color,
-			y = wibox_offset_y,
-			x = pos_x,
-			--border_width = 0.5,
-			--border_color = colors.arch_blue,
-		})
+	local widget_highlight = function(wid)
+		local background = wibox.container.background(wid, colors.bg .. "88", myshape)
+		return wibox.container.margin(background, dpi(5), dpi(5), dpi(5), dpi(5))
 	end
 
 	-- [[ unused wibar
@@ -424,16 +401,16 @@ function theme.at_screen_connect(s)
 		{
 			layout = wibox.layout.fixed.horizontal,
 			mykeyboardlayout,
-			spr,
+			space,
 			--theme.mpd.widget,
 			--theme.mail.widget,
 			--theme.fs.widget,
-			volume_widget,
-			spr,
-			battery_widget,
-			spr,
-			clockwidget,
-			spr,
+			widget_highlight(volume_widget),
+			space,
+			widget_highlight(battery_widget),
+			space,
+			widget_highlight(clockwidget),
+			space,
 			s.mylayoutbox,
 			space,
 		},

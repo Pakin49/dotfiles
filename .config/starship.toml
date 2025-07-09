@@ -31,7 +31,8 @@ style = "bold white"
 
 [directory]
 truncation_length = 3
-format = "[$path]($style)[$read_only]($read_only_style) "
+format = "[$path]($style)[$read_only]($read_only_style)($style) "
+style = "blue"
 
 [git_branch]
 format = "[$symbol$branch]($style) "

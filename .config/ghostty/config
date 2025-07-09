@@ -1,7 +1,7 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 13 
 
-theme = Tomorrow Night Bright
+theme = Adventure
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 cursor-color = f4b278
@@ -48,3 +48,6 @@ keybind = ctrl+alt+j=resize_split:down,10
 keybind = ctrl+alt+k=resize_split:up,10
 keybind = ctrl+alt+h=resize_split:left,10
 keybind = ctrl+alt+shift+l=clear_screen
+
+background = #000000
+#palette = 6=#1793d1

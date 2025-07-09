@@ -1,3 +1,22 @@
+	local function createbox(pos_x, bg_color, fg_color, w)
+		bg_color = bg_color or theme.bg_bar
+		fg_color = fg_color or theme.fg_normal
+		return wibox({
+			type = "dock",
+			visible = true,
+			screen = s,
+			height = theme.wibox_height,
+			width = dpi(w),
+			shape = myshape,
+			bg = bg_color,
+			fg = fg_color,
+			y = wibox_offset_y,
+			x = pos_x,
+			--border_width = 0.5,
+			--border_color = colors.arch_blue,
+		})
+	end
+
 	--s.mywibox_bat = createbox(1610, colors.arch_blue .. "AA", nil, 70)
 	-- Create wiboxes
 	--s.mywibox_tag = createbox(40, nil, nil, 290)
