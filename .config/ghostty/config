@@ -1,7 +1,7 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 13 
 
-theme = Adventure
+theme = tokyonight
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 cursor-color = f4b278
