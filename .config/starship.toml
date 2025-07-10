@@ -55,6 +55,7 @@ format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
 [sudo]
 format = "[$symbol]($style)"
 symbol = "󰡗 "
+style = "yellow"
 disabled = false
 
 [character]
