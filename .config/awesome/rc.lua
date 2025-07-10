@@ -388,7 +388,12 @@ globalkeys = mytable.join(
 
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 
-	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	awful.key({ modkey, altkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+
+	awful.key({ modkey, "Shift" }, "q", function()
+		local rofi_path = os.getenv("HOME") .. "/.config/rofi/scripts/powermenu_t4"
+		awful.util.spawn(rofi_path)
+	end, { description = "Power menu", group = "awesome" }),
 
 	awful.key({ modkey, altkey }, "j", function()
 		awful.tag.incmwfact(0.05)
@@ -562,7 +567,7 @@ globalkeys = mytable.join(
 	--
 	-- Rofi launcher
 	awful.key({ modkey }, "r", function()
-		local rofi_path = os.getenv("HOME") .. "/.config/rofi/launchers/type-2/launcher.sh"
+		local rofi_path = os.getenv("HOME") .. "/.config/rofi/scripts/launcher_t3"
 		awful.util.spawn(rofi_path)
 	end, { description = "App launcher", group = "launcher" }),
 
@@ -615,17 +620,15 @@ globalkeys = mytable.join(
 clientkeys = mytable.join(
 	awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client, { description = "magnify client", group = "client" }),
 	awful.key({ modkey }, "f", function(c)
-		c.fullscreen = not c.fullscreen
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
-
-	awful.key({ modkey, "Control" }, "q", function(c)
-		c:kill()
-	end, { description = "close", group = "client" }),
 
 	awful.key({ altkey }, "F4", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
+	awful.key({ modkey, "Control" }, "q", function(c)
+		c:kill()
+	end, {}),
 
 	awful.key(
 		{ modkey, "Control" },
