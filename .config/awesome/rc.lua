@@ -372,43 +372,14 @@ globalkeys = mytable.join(
 			client.focus:raise()
 		end
 	end, { description = "go back", group = "client" }),
-  ]]
+  --]]
 
 	-- Show/hide wibox
 	awful.key({ modkey, "Control" }, "b", function()
 		for s in screen do
-			s.mywibox.visible = not s.mywibox.visible
-			s.mywibox_wid.visible = not s.mywibox_wid.visible
-			s.mywibox_tag.visible = not s.mywibox_tag.visible
+			s.mywibar.visible = not s.mywibar.visible
 		end
 	end, { description = "toggle wibox", group = "awesome" }),
-
-	--[[ On-the-fly useless gaps change
-	awful.key({ altkey, "Control" }, "j", function()
-		lain.util.useless_gaps_resize(1)
-	end, { description = "increment useless gaps", group = "tag" }),
-	awful.key({ altkey, "Control" }, "k", function()
-		lain.util.useless_gaps_resize(-1)
-	end, { description = "decrement useless gaps", group = "tag" }),
-	--]]
-
-	--[[ Dynamic tagging
-	awful.key({ modkey, "Shift" }, "n", function()
-		lain.util.add_tag()
-	end, { description = "add new tag", group = "tag" }),
-	awful.key({ modkey, "Shift" }, "r", function()
-		lain.util.rename_tag()
-	end, { description = "rename tag", group = "tag" }),
-	awful.key({ modkey, "Shift" }, "Left", function()
-		lain.util.move_tag(-1)
-	end, { description = "move tag to the left", group = "tag" }),
-	awful.key({ modkey, "Shift" }, "Right", function()
-		lain.util.move_tag(1)
-	end, { description = "move tag to the right", group = "tag" }),
-	awful.key({ modkey, "Shift" }, "d", function()
-		lain.util.delete_tag()
-	end, { description = "delete tag", group = "tag" }),
-	]]
 
 	-- Standard program
 	awful.key({ modkey }, "t", function()
@@ -459,10 +430,11 @@ globalkeys = mytable.join(
 		end
 	end, { description = "restore minimized", group = "client" }),
 
-	-- Dropdown application ???
+	--[[ Dropdown application
 	awful.key({ modkey }, "z", function()
 		awful.screen.focused().quake:toggle()
 	end, { description = "dropdown application", group = "launcher" }),
+	--]]
 
 	-- Widgets popups
 	awful.key({ altkey }, "c", function()
@@ -873,10 +845,11 @@ client.connect_signal("request::titlebars", function(c)
 			layout = wibox.layout.flex.horizontal,
 		},
 		{ -- Right
-			awful.titlebar.widget.floatingbutton(c),
+			--awful.titlebar.widget.floatingbutton(c),
+			awful.titlebar.widget.minimizebutton(c),
 			awful.titlebar.widget.maximizedbutton(c),
-			awful.titlebar.widget.stickybutton(c),
-			awful.titlebar.widget.ontopbutton(c),
+			--awful.titlebar.widget.stickybutton(c),
+			--awful.titlebar.widget.ontopbutton(c),
 			awful.titlebar.widget.closebutton(c),
 			layout = wibox.layout.fixed.horizontal(),
 		},
@@ -970,5 +943,5 @@ end)
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
 awful.tag.viewonly(root.tags()[3])
-awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
+--awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
 --awful.spawn.with_shell("redshift -l 13.7539:100.5014 -t 6500:4500 -r")
