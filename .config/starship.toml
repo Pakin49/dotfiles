@@ -6,6 +6,7 @@ add_newline = true
 format = """
 $os\
 $hostname\
+$username\
 $directory\
 $git_branch\
 $git_commit\
@@ -25,9 +26,15 @@ format = "[   ]($style)"
 style = "bold blue"
 
 [hostname]
-ssh_only = false
 format = "[$hostname]($style) "
 style = "bold white"
+
+
+[username]
+format = '[$user]($style) '
+disabled = false
+show_always = true
+style_root = 'red bold'
 
 [directory]
 truncation_length = 3
