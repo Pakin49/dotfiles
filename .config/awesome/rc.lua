@@ -91,7 +91,7 @@ local browser = "firefox"
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames = { "  ", " 󰍹 ", "  ", "  ", "  ", "  ", "  " }
+awful.util.tagnames = { "  ", "  ", "  ", "  ", " 󰍹  ", "  ", "  " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.spiral,
