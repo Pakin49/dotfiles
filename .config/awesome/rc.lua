@@ -86,12 +86,12 @@ local terminal = "ghostty"
 local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
-local browser = "firefox"
+local browser = "qutebrowser"
 
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames = { "  ", "  ", "  ", "  ", " 󰍹 ", "  ", "  " }
+awful.util.tagnames = { "  ", "  ", "  ", "  ", " 󰍹 ", "  ", "  " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.spiral,
@@ -576,8 +576,13 @@ globalkeys = mytable.join(
 		awful.util.spawn("rofi -show window")
 	end, { description = "List open applications", group = "launcher" }),
 
-	-- Firefox
+	-- Qutebrowser
 	awful.key({ modkey }, "b", function()
+		awful.util.spawn("qutebrowser")
+	end, { description = "qutebrowser", group = "launcher" }),
+
+	-- Firefox
+	awful.key({ modkey }, "f", function()
 		awful.util.spawn("firefox")
 	end, { description = "firefox", group = "launcher" }),
 
@@ -947,4 +952,4 @@ awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
 awful.tag.viewonly(root.tags()[3])
 --awful.util.spawn("ghostty -e 'sleep 0.1 && neofetch && zsh'")
---awful.spawn.with_shell("redshift -l 13.7539:100.5014 -t 6500:4500 -r")
+awful.spawn.with_shell("pgrep redshift > /dev/null || redshift -l 13.7539:100.5014 -t 6500:4500 -r")

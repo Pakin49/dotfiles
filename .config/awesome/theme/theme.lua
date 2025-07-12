@@ -362,8 +362,8 @@ function theme.at_screen_connect(s)
 	end
 
 	local widget_highlight = function(wid)
-		local background = wibox.container.background(wid, colors.bg .. "88", myshape)
-		return wibox.container.margin(background, dpi(5), dpi(5), dpi(5), dpi(5))
+		local background = wibox.container.background(wid, colors.bg .. "77", myshape)
+		return wibox.container.margin(background, dpi(5), dpi(5), dpi(3), dpi(3))
 	end
 
 	-- [[ unused wibar
@@ -379,11 +379,9 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		{
-			wibox.container.margin(awesome_icon, dpi(5), dpi(15), 0, 0),
-			space,
+			wibox.container.margin(awesome_icon, dpi(10), dpi(50), 0, 0),
 			s.mytaglist,
-			layout = wibox.layout.align.horizontal,
-			expand = "inside",
+			layout = wibox.layout.fixed.horizontal,
 		},
 		arch_icon,
 		{
