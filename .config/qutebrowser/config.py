@@ -673,10 +673,10 @@ c.content.autoplay = True
 ## extracting it from the `location` parameter of the subscribe URL and
 ## URL-decoding it).
 ## Type: List of Url
-c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
+c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt',  "https://secure.fanboy.co.nz/fanboy-annoyance.txt"]
 
 ## Enable the ad/host blocker
-## Type: Bool
+## Type: Bool,
 c.content.blocking.enabled = True
 
 ## Block subdomains of blocked hosts. Note: If only a single subdomain is
@@ -708,7 +708,7 @@ c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack
 ##   - adblock: Use Brave's ABP-style adblocker
 ##   - hosts: Use hosts blocking
 ##   - both: Use both hosts blocking and Brave's ABP-style adblocker
-c.content.blocking.method = 'auto'
+c.content.blocking.method = 'adblock'
 
 ## A list of patterns that should always be loaded, despite being blocked
 ## by the ad-/host-blocker. Local domains are always exempt from
@@ -772,7 +772,7 @@ c.content.canvas_reading = True
 ##   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
 ##   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
 ##   - never: Don't accept cookies at all.
-c.content.cookies.accept = 'no-unknown-3rdparty'
+c.content.cookies.accept = 'no-3rdparty'
 
 ## Store cookies.
 ## Type: Bool
