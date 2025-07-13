@@ -22,7 +22,7 @@ c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save
 ## Time interval (in milliseconds) between auto-saves of
 ## config/cookies/etc.
 ## Type: Int
-c.auto_save.interval = 15000
+c.auto_save.interval = 60000
 
 ## Always restore open sites when qutebrowser is reopened. Without this
 ## option set, `:wq` (`:quit --save`) needs to be used to save open tabs
@@ -31,7 +31,7 @@ c.auto_save.interval = 15000
 ## session which was last loaded. This behavior can be customized via the
 ## `session.default_name` setting.
 ## Type: Bool
-c.auto_save.session = False
+c.auto_save.session = True
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebEngine and QtWebKit (not
@@ -772,7 +772,7 @@ c.content.canvas_reading = True
 ##   - no-3rdparty: Accept cookies from the same origin only. This is known to break some sites, such as GMail.
 ##   - no-unknown-3rdparty: Accept cookies from the same origin only, unless a cookie is already set for the domain. On QtWebEngine, this is the same as no-3rdparty.
 ##   - never: Don't accept cookies at all.
-c.content.cookies.accept = 'all'
+c.content.cookies.accept = 'no-unknown-3rdparty'
 
 ## Store cookies.
 ## Type: Bool

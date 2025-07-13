@@ -86,7 +86,7 @@ local terminal = "ghostty"
 local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
-local browser = "qutebrowser"
+local browser = "firefox"
 
 -- set layout
 awful.util.terminal = terminal
@@ -624,7 +624,8 @@ globalkeys = mytable.join(
 
 clientkeys = mytable.join(
 	awful.key({ altkey, "Shift" }, "m", lain.util.magnify_client, { description = "magnify client", group = "client" }),
-	awful.key({ modkey }, "f", function(c)
+
+	awful.key({ modkey }, "m", function(c)
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
 
