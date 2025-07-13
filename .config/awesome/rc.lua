@@ -576,13 +576,8 @@ globalkeys = mytable.join(
 		awful.util.spawn("rofi -show window")
 	end, { description = "List open applications", group = "launcher" }),
 
-	-- Qutebrowser
-	awful.key({ modkey }, "b", function()
-		awful.util.spawn("qutebrowser")
-	end, { description = "qutebrowser", group = "launcher" }),
-
 	-- Firefox
-	awful.key({ modkey }, "f", function()
+	awful.key({ modkey }, "b", function()
 		awful.util.spawn("firefox")
 	end, { description = "firefox", group = "launcher" }),
 
