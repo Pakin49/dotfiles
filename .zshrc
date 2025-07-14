@@ -167,3 +167,5 @@ eval "$(starship init zsh)"
 
 # ------------ Vivado ------------
 export PATH="$PATH:/opt/Xilinx/2025.1/Vivado/bin/"
+
+neofetch
