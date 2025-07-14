@@ -300,15 +300,15 @@ globalkeys = mytable.join(
 	awful.key({ modkey, "Shift" }, "h", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 
 	-- Tag browsing
-	awful.key({ modkey }, "k", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ modkey }, "j", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ modkey }, "h", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	awful.key({ modkey }, "l", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
 	-- Non-empty tag browsing
-	awful.key({ modkey }, "h", function()
+	awful.key({ modkey }, "k", function()
 		lain.util.tag_view_nonempty(-1)
 	end, { description = "view  previous nonempty", group = "tag" }),
-	awful.key({ modkey }, "l", function()
+	awful.key({ modkey }, "j", function()
 		lain.util.tag_view_nonempty(1)
 	end, { description = "view  previous nonempty", group = "tag" }),
 
