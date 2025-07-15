@@ -794,8 +794,6 @@ awful.rules.rules = {
 	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[6] } },
 
 	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[7] } },
-
-	{ rule = { class = "steam" }, properties = { screen = 1, tag = awful.util.tagnames[5] } },
 }
 
 -- }}}
