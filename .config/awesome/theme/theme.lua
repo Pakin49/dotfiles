@@ -12,29 +12,10 @@ theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 theme.wallpaper = theme.dir .. "/wall.png"
 theme.font = "JetBrains Mono Nerd Font Propo 11"
-theme.desktop_font = "JetBrains Mono Nerd Font Propo 11"
+theme.desktop_font = "JetBrains Mono Nerd Font Bold 11"
 
--- Arch Linux inspired color palette
-local colors = {
-	arch_blue = "#1793d1",
-	arch_grey = "#2f2f2f",
-	arch_white = "#F8F8F2",
-	bg = "#1e1e1e",
-	bg_light = "#2a2a2a",
-	bg_lighter = "#353535",
-	fg = "#e6e6e6",
-	fg_light = "#f5f5f5",
-	red = "#ff6b6b",
-	green = "#51cc5e",
-	yellow = "#ffcc02",
-	blue = "#1793d1",
-	purple = "#bd93f9",
-	cyan = "#8be9fd",
-	orange = "#ffb86c",
-	comment = "#6c6c6c",
-	selection = "#2a2a2a",
-	line = "#404040",
-}
+local color_scheme = "arch"
+local colors = require("theme.colors." .. color_scheme)
 -- Foregrounds
 theme.fg_normal = colors.fg
 theme.fg_focus = colors.blue
@@ -133,7 +114,7 @@ local markup = lain.util.markup
 
 -- Clock
 clockwidget = wibox.widget.textclock()
-clockwidget.font = theme.font
+clockwidget.font = theme.desktop_font
 
 -- Calendar
 theme.cal = lain.widget.cal({
@@ -194,7 +175,7 @@ theme.volume = lain.widget.alsa({
 			vol_icon = "  "
 		end
 
-		volume_icon:set_markup(markup.font(theme.desktop_font, markup.fg.color(colors.fg, vol_icon)))
+		volume_icon:set_markup(markup.font(theme.font, markup.fg.color(colors.fg, vol_icon)))
 		volume_text:set_markup(markup.font(theme.font, volume_now.level .. "% "))
 	end,
 })
@@ -379,11 +360,11 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		{
-			wibox.container.margin(awesome_icon, dpi(10), dpi(50), 0, 0),
+			wibox.container.margin(arch_icon, dpi(10), dpi(10), 0, 0),
 			s.mytaglist,
 			layout = wibox.layout.fixed.horizontal,
 		},
-		arch_icon,
+		clockwidget,
 		{
 			layout = wibox.layout.fixed.horizontal,
 			mykeyboardlayout,
@@ -394,8 +375,6 @@ function theme.at_screen_connect(s)
 			widget_highlight(volume_widget),
 			space,
 			widget_highlight(battery_widget),
-			space,
-			widget_highlight(clockwidget),
 			space,
 			s.mylayoutbox,
 			space,

@@ -1,0 +1,21 @@
+-- Arch Linux inspired color palette
+return {
+	arch_blue = "#1793d1",
+	arch_grey = "#2f2f2f",
+	arch_white = "#F8F8F2",
+	bg = "#1e1e1e",
+	bg_light = "#2a2a2a",
+	bg_lighter = "#353535",
+	fg = "#e6e6e6",
+	fg_light = "#f5f5f5",
+	red = "#ff6b6b",
+	green = "#51cc5e",
+	yellow = "#ffcc02",
+	blue = "#1793d1",
+	purple = "#bd93f9",
+	cyan = "#8be9fd",
+	orange = "#ffb86c",
+	comment = "#6c6c6c",
+	selection = "#2a2a2a",
+	line = "#404040",
+}
