@@ -598,12 +598,7 @@ globalkeys = mytable.join(
 
 	awful.key({ "Shift" }, "Print", function()
 		awful.util.spawn("flameshot launcher")
-	end, { description = "open spotify", group = "launcher" }),
-
-	-- obsidian
-	awful.key({ modkey }, "o", function()
-		awful.util.spawn("obsidian")
-	end, { description = "open obsidian", group = "launcher" })
+	end, { description = "open spotify", group = "launcher" })
 
 	--[[
 	awful.key({ modkey }, "x", function()

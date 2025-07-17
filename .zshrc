@@ -139,7 +139,7 @@ alias cd=cd_ls
 
 # ------------ Bat : better cat------------
 alias cat='bat'
-export BAT_THEME=OneHalfDark
+export BAT_THEME=tokyonight_night
 
 # ------------ The fuck! ------------
   eval "$(thefuck --alias)"

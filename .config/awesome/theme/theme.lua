@@ -263,7 +263,7 @@ local function widgetbox(wid)
 	local bg_widget = wibox.container.background(padded_widget, colors.arch_blue .. "11")
 	bg_widget.fg = theme.fg_normal
 	bg_widget.shape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 6)
+		gears.shape.rounded_bar(cr, width, height)
 	end
 	bg_widget.shape_border_width = 1
 	bg_widget.shape_border_color = colors.arch_blue
