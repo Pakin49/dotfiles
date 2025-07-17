@@ -7,64 +7,25 @@ local dpi = require("beautiful.xresources").apply_dpi
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
-local theme = {}
+-- available theme onedark, arch, tokyonight
+local color_scheme = "tokyonight"
+local theme = require("theme.colors." .. color_scheme)
+
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
 theme.wallpaper = theme.dir .. "/wall.png"
 theme.font = "JetBrains Mono Nerd Font Propo 11"
 theme.desktop_font = "JetBrains Mono Nerd Font Bold 11"
 
-local color_scheme = "arch"
-local colors = require("theme.colors." .. color_scheme)
--- Foregrounds
-theme.fg_normal = colors.fg
-theme.fg_focus = colors.blue
-theme.fg_urgent = colors.red
-theme.fg_minimize = colors.comment
-
--- Backgrounds
-theme.bg_normal = colors.bg_light .. "CC" -- Semi-transparent
-theme.bg_focus = colors.bg_lighter .. "CC" -- Semi-transparent
-theme.bg_urgent = colors.bg .. "CC"
-theme.bg_minimize = colors.selection .. "CC"
-theme.bg_bar = colors.bg .. "cc"
-
--- Borders
-theme.border_width = dpi(2)
-theme.border_normal = colors.line
-theme.border_focus = colors.blue .. "AA"
-theme.border_marked = colors.red
-
--- Tasklist
-theme.tasklist_bg_focus = colors.blue .. "AA"
-theme.tasklist_bg_normal = colors.bg_light
-theme.tasklist_fg_focus = colors.fg_light
-theme.tasklist_fg_normal = colors.fg
-
--- Taglist
-theme.taglist_fg_focus = colors.fg_light
-theme.taglist_bg_focus = colors.blue .. "55"
-theme.taglist_fg_normal = colors.fg
-theme.taglist_bg_normal = "transparent"
--- Yank from holo
-theme.taglist_squares_sel = theme.dir .. "/icons/square_sel.png"
-theme.taglist_squares_unsel = theme.dir .. "/icons/square_unsel.png"
--- Titlebar
-theme.titlebar_bg_focus = colors.bg
-theme.titlebar_bg_normal = colors.bg_light
-theme.titlebar_fg_focus = colors.fg_light
-theme.titlebar_fg_normal = colors.fg
-theme.titlebar_border_focus = colors.blue
-theme.titlebar_border_normal = colors.line
-
--- Hotkeys
-theme.hotkeys_modifiers_fg = colors.fg_light
+-- Arch-specific colors
+local arch_blue = "#1793d1" -- Arch Linux blue
+local arch_grey = "#2f2f2f" -- dark grey
 
 -- Systray
 theme.systray_icon_spacing = dpi(5)
-theme.bg_systray = colors.bg_lighter
+theme.bg_systray = theme.bg_lighter
 
-theme.wibox_height = dpi(30)
+theme.wibox_height = dpi(28)
 local wibox_offset_y = 5
 
 theme.menu_height = dpi(16)
@@ -109,6 +70,9 @@ theme.layout_txt_cascadetile = "[cascadetile]"
 theme.layout_txt_centerwork = "[centerwork]"
 theme.layout_txt_termfair = "[termfair]"
 theme.layout_txt_centerfair = "[centerfair]"
+-- Yank from holo
+theme.taglist_squares_sel = theme.dir .. "/icons/square_sel.png"
+theme.taglist_squares_unsel = theme.dir .. "/icons/square_unsel.png"
 
 local markup = lain.util.markup
 
@@ -118,7 +82,7 @@ clockwidget.font = theme.desktop_font
 
 -- Calendar
 theme.cal = lain.widget.cal({
-	attach_to = { clock },
+	attach_to = { clockwidget },
 	notification_preset = {
 		fg = theme.fg_normal,
 		bg = theme.bg_normal,
@@ -175,7 +139,7 @@ theme.volume = lain.widget.alsa({
 			vol_icon = "  "
 		end
 
-		volume_icon:set_markup(markup.font(theme.font, markup.fg.color(colors.fg, vol_icon)))
+		volume_icon:set_markup(markup.font(theme.font, markup.fg.color(theme.fg_normal, vol_icon)))
 		volume_text:set_markup(markup.font(theme.font, volume_now.level .. "% "))
 	end,
 })
@@ -241,13 +205,13 @@ local net = lain.widget.net({
 local function widgetbox(wid)
 	local padded_widget = wibox.container.margin(wid, dpi(8), dpi(8), 0, 0)
 
-	local bg_widget = wibox.container.background(padded_widget, colors.arch_blue .. "11")
+	local bg_widget = wibox.container.background(padded_widget, arch_blue .. "11")
 	bg_widget.fg = theme.fg_normal
 	bg_widget.shape = function(cr, width, height)
 		gears.shape.rounded_bar(cr, width, height)
 	end
 	bg_widget.shape_border_width = 1
-	bg_widget.shape_border_color = colors.arch_blue
+	bg_widget.shape_border_color = arch_blue
 
 	-- External margins (spacing between widgets)
 	return wibox.container.margin(bg_widget, 0, 0, dpi(2), dpi(2))
@@ -257,7 +221,7 @@ end
 
 -- Separators
 local awesome_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 15", "  "))
-local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 20", markup.fg.color(colors.arch_blue, "   ")))
+local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 20", markup.fg.color(arch_blue, "   ")))
 local space = wibox.widget.textbox("  ")
 
 function theme.at_screen_connect(s)
@@ -343,7 +307,7 @@ function theme.at_screen_connect(s)
 	end
 
 	local widget_highlight = function(wid)
-		local background = wibox.container.background(wid, colors.bg .. "77", myshape)
+		local background = wibox.container.background(wid, theme.bg_normal .. "77", myshape)
 		return wibox.container.margin(background, dpi(5), dpi(5), dpi(3), dpi(3))
 	end
 
@@ -352,7 +316,7 @@ function theme.at_screen_connect(s)
 		position = "top",
 		screen = s,
 		height = theme.wibox_height + 2 * wibox_offset_y,
-		bg = colors.bg .. "88",
+		bg = theme.bg_normal,
 		fg = theme.fg_normal,
 	})
 	-- Add widgets to the wibox
