@@ -25,7 +25,7 @@ local arch_grey = "#2f2f2f" -- dark grey
 theme.systray_icon_spacing = dpi(5)
 theme.bg_systray = theme.bg_lighter
 
-theme.wibox_height = dpi(28)
+theme.wibox_height = dpi(20)
 local wibox_offset_y = 5
 
 theme.menu_height = dpi(16)
@@ -139,7 +139,7 @@ theme.volume = lain.widget.alsa({
 			vol_icon = "  "
 		end
 
-		volume_icon:set_markup(markup.font(theme.font, markup.fg.color(theme.fg_normal, vol_icon)))
+		volume_icon:set_markup(markup.font(theme.font, vol_icon))
 		volume_text:set_markup(markup.font(theme.font, volume_now.level .. "% "))
 	end,
 })
@@ -256,7 +256,7 @@ function theme.at_screen_connect(s)
 			awful.layout.inc(-1)
 		end)
 	))
-	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(8), dpi(8))
+	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(4), dpi(4))
 
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
@@ -276,6 +276,7 @@ function theme.at_screen_connect(s)
 	local bat = lain.widget.bat({
 		full_notify = "off",
 		settings = function()
+			local color = theme.colors.yellow
 			local bat_icon = " 󱊣 "
 			if bat_now.status and bat_now.status ~= "N/A" then
 				if bat_now.ac_status == 1 then
@@ -316,7 +317,7 @@ function theme.at_screen_connect(s)
 		position = "top",
 		screen = s,
 		height = theme.wibox_height + 2 * wibox_offset_y,
-		bg = theme.bg_normal,
+		bg = theme.bg_normal .. "99",
 		fg = theme.fg_normal,
 	})
 	-- Add widgets to the wibox

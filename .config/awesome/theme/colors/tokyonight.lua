@@ -1,6 +1,6 @@
 -- Tokyonight-inspired theme with Arch palete
 local palete = {
-	fg = "#a9b1d6", -- editor foreground
+	fg = "#ffffff", --"#a9b1d6", -- editor foreground
 	fg_light = "#c0caf5", -- variables, class names
 	bg = "#1a1b26", -- night background
 	bg_light = "#24283b", -- storm background
