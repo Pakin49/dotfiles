@@ -307,9 +307,10 @@ function theme.at_screen_connect(s)
 		gears.shape.rounded_rect(cr, width, height, 4)
 	end
 
-	local widget_highlight = function(wid)
-		local background = wibox.container.background(wid, theme.bg_normal .. "77", myshape)
-		return wibox.container.margin(background, dpi(5), dpi(5), dpi(3), dpi(3))
+	local widget_highlight = function(wid, bg)
+		local bg_color = bg or theme.bg_normal .. "77"
+		local background = wibox.container.background(wid, bg_color, myshape)
+		return wibox.container.margin(background, dpi(4), dpi(4), dpi(2), dpi(2))
 	end
 
 	-- [[ unused wibar
@@ -325,7 +326,7 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		{
-			wibox.container.margin(arch_icon, dpi(10), dpi(10), 0, 0),
+			wibox.container.margin(arch_icon, dpi(10), dpi(5), 0, 0),
 			s.mytaglist,
 			layout = wibox.layout.fixed.horizontal,
 		},
