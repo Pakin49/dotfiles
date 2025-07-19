@@ -26,7 +26,7 @@ theme.systray_icon_spacing = dpi(5)
 theme.bg_systray = theme.bg_lighter
 
 theme.wibox_height = dpi(20)
-local wibox_offset_y = 5
+theme.wibox_offset_y = 5
 
 theme.menu_height = dpi(16)
 theme.menu_width = dpi(140)
@@ -36,7 +36,6 @@ theme.tasklist_ontop = theme.ocol .. "[T]</span>"
 theme.tasklist_floating = theme.ocol .. "[F]</span>"
 theme.tasklist_maximized_horizontal = theme.ocol .. "[M] </span>"
 theme.tasklist_maximized_vertical = ""
-theme.tasklist_disable_icon = true
 theme.awesome_icon = theme.dir .. "/icons/awesome.png"
 theme.menu_submenu_icon = theme.dir .. "/icons/submenu.png"
 theme.useless_gap = 5
@@ -78,7 +77,7 @@ local markup = lain.util.markup
 
 -- Clock
 clockwidget = wibox.widget.textclock()
-clockwidget.font = theme.desktop_font
+clockwidget.font = theme.font
 
 -- Calendar
 theme.cal = lain.widget.cal({
@@ -317,7 +316,7 @@ function theme.at_screen_connect(s)
 	s.mywibar = awful.wibar({
 		position = "top",
 		screen = s,
-		height = theme.wibox_height + 2 * wibox_offset_y,
+		height = theme.wibox_height + 2 * theme.wibox_offset_y,
 		bg = theme.bg_normal .. "99",
 		fg = theme.fg_normal,
 	})
