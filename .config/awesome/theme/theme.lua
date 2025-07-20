@@ -25,7 +25,7 @@ local arch_grey = "#2f2f2f" -- dark grey
 theme.systray_icon_spacing = dpi(5)
 theme.bg_systray = theme.bg_lighter
 
-theme.wibox_height = dpi(20)
+theme.wibox_height = dpi(24)
 theme.wibox_offset_y = 5
 
 theme.menu_height = dpi(16)
@@ -308,6 +308,9 @@ function theme.at_screen_connect(s)
 
 	local widget_highlight = function(wid, bg)
 		local bg_color = bg or theme.bg_normal .. "77"
+		if bg_color ~= theme.bg_normal .. "77" then
+			local fg_color = theme.colors.bg
+		end
 		local background = wibox.container.background(wid, bg_color, myshape)
 		return wibox.container.margin(background, dpi(4), dpi(4), dpi(2), dpi(2))
 	end
