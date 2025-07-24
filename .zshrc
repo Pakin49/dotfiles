@@ -124,7 +124,7 @@ export EDITOR=/usr/bin/nvim
 # Set up fzf key bindings and fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(fzf --zsh)"
-alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+alias fzf='fzf --preview "bat --color=always --style=full --line-range=:500 {}"'
 
 # ------------ Eza : better ls ------------
 export EZA_CONFIG_DIR="$HOME/dotfiles/.config/eza"
