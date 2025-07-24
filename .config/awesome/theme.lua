@@ -25,7 +25,7 @@ local arch_grey = "#2f2f2f" -- dark grey
 theme.systray_icon_spacing = dpi(5)
 theme.bg_systray = theme.bg_lighter
 
-theme.wibox_height = dpi(24)
+theme.wibox_height = dpi(20)
 theme.wibox_offset_y = 5
 
 theme.menu_height = dpi(16)
