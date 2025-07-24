@@ -194,10 +194,10 @@ keys.globalkeys = mytable.join(
 
 	-- Screen brightness
 	awful.key({}, "XF86MonBrightnessUp", function()
-		os.execute("brightnessctl set +10% ")
+		os.execute("brightnessctl set 10%+ ")
 	end, { description = "backlight +10%", group = "hotkeys" }),
 	awful.key({}, "XF86MonBrightnessDown", function()
-		os.execute("xbrightnessctl set -10%")
+		os.execute("brightnessctl set 10%-")
 	end, { description = "backlight -10%", group = "hotkeys" }),
 	--]]
 	-- ALSA volume controh
