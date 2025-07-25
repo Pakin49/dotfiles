@@ -13,8 +13,38 @@ local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 -- }}}
 
-require("src.error_handling")
+--require("src.error_handling")
 
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+	naughty.notify({
+		preset = naughty.config.presets.critical,
+		title = "Oops, there were errors during startup!",
+		text = awesome.startup_errors,
+	})
+end
+
+-- Handle runtime errors after startup
+do
+	local in_error = false
+
+	awesome.connect_signal("debug::error", function(err)
+		if in_error then
+			return
+		end
+
+		in_error = true
+
+		naughty.notify({
+			preset = naughty.config.presets.critical,
+			title = "Oops, an error happened!",
+			text = tostring(err),
+		})
+
+		in_error = false
+	end)
+end
 -- {{{ Variable definitions
 
 local modkey = "Mod4"
@@ -106,7 +136,7 @@ awful.util.tasklist_buttons = mytable.join(
 	end)
 )
 
-beautiful.init(string.format("%s/.config/awesome/theme.lua", os.getenv("HOME")))
+beautiful.init(string.format("%s/.config/awesome/src/theme.lua", os.getenv("HOME")))
 
 -- }}}
 

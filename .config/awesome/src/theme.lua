@@ -9,10 +9,10 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 -- available theme onedark, arch, tokyonight
 local color_scheme = "tokyonight"
-local theme = require("theme.colors." .. color_scheme)
+local theme = require("src.assets.colors." .. color_scheme)
 
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
-theme.dir = os.getenv("HOME") .. "/.config/awesome/theme"
+theme.dir = os.getenv("HOME") .. "/.config/awesome/src/assets"
 theme.wallpaper = theme.dir .. "/wall.png"
 theme.font = "JetBrains Mono Nerd Font Propo 11"
 theme.desktop_font = "JetBrains Mono Nerd Font Bold 11"
@@ -23,7 +23,7 @@ local arch_grey = "#2f2f2f" -- dark grey
 
 -- Systray
 theme.systray_icon_spacing = dpi(5)
-theme.bg_systray = theme.bg_lighter
+theme.bg_systray = theme.colors.bg .. "88"
 
 theme.wibox_height = dpi(20)
 theme.wibox_offset_y = 5
@@ -77,7 +77,7 @@ local markup = lain.util.markup
 
 -- Clock
 clockwidget = wibox.widget.textclock()
-clockwidget.font = theme.font
+clockwidget.font = theme.desktop_font
 
 -- Calendar
 theme.cal = lain.widget.cal({
@@ -308,10 +308,11 @@ function theme.at_screen_connect(s)
 
 	local widget_highlight = function(wid, bg)
 		local bg_color = bg or theme.bg_normal .. "77"
+		local background = wibox.container.background(wid, bg_color, myshape)
 		if bg_color ~= theme.bg_normal .. "77" then
 			local fg_color = theme.colors.bg
+			background.fg = fg_color
 		end
-		local background = wibox.container.background(wid, bg_color, myshape)
 		return wibox.container.margin(background, dpi(4), dpi(4), dpi(2), dpi(2))
 	end
 
@@ -320,7 +321,7 @@ function theme.at_screen_connect(s)
 		position = "top",
 		screen = s,
 		height = theme.wibox_height + 2 * theme.wibox_offset_y,
-		bg = theme.bg_normal .. "99",
+		bg = theme.bg_normal .. "CC",
 		fg = theme.fg_normal,
 	})
 	-- Add widgets to the wibox
@@ -337,12 +338,14 @@ function theme.at_screen_connect(s)
 			layout = wibox.layout.fixed.horizontal,
 			mykeyboardlayout,
 			space,
+			wibox.widget.systray(),
+			space,
 			--theme.mpd.widget,
 			--theme.mail.widget,
 			--theme.fs.widget,
-			widget_highlight(volume_widget),
+			widget_highlight(volume_widget, theme.colors.green),
 			space,
-			widget_highlight(battery_widget),
+			widget_highlight(battery_widget, theme.colors.yellow),
 			space,
 			s.mylayoutbox,
 			space,
