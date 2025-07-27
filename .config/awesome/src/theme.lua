@@ -112,20 +112,33 @@ theme.taglist_squares_unsel = theme.dir .. "/icons/square_unsel.png"
 
 local markup = lain.util.markup
 
+local space = wibox.widget.textbox("  ")
+
 local widget_highlight = function(wid, bg)
-	local bg_color = bg or theme.bg_normal .. "77"
-	local background = wibox.container.background(wid, bg_color, myshape)
-	background.font = theme.font
-	if bg_color ~= theme.bg_normal .. "77" then
+	local bg_color = bg or theme.bg_normal .. "DD"
+	local margin = wibox.container.margin(wid, dpi(6), dpi(6), 0, 0)
+	local background = wibox.container.background(margin, bg_color, myshape)
+	if bg_color ~= theme.bg_normal .. "DD" then
 		local fg_color = theme.colors.bg
 		background.fg = fg_color
 	end
 	return wibox.container.margin(background, dpi(4), dpi(4), dpi(2), dpi(2))
 end
 
--- Clock
-clockwidget = wibox.widget.textclock()
-clockwidget.font = theme.desktop_font
+myshape = function(cr, width, height)
+	gears.shape.rounded_rect(cr, width, height, 4)
+end
+
+-- Textclock
+local clockicon = wibox.widget.textbox(markup.font(theme.font, " 󰥔 "))
+local clock = awful.widget.watch("date +'%R'", 60, function(widget, stdout)
+	widget:set_markup(" " .. markup.font(theme.font, stdout))
+end)
+local clockwidget = wibox.widget({
+	clockicon,
+	clock,
+	layout = wibox.layout.fixed.horizontal,
+})
 
 -- Calendar
 theme.cal = lain.widget.cal({
@@ -223,7 +236,15 @@ theme.weather = lain.widget.weather({
 --]]
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+local mykeyboardlayout = awful.widget.keyboardlayout()
+mykeyboardlayout.widget.font = theme.font
+local keyboard_icon = wibox.widget.textbox(markup.font(theme.font, " 󰌌"))
+local keyboardwidget = wibox.widget({
+	keyboard_icon,
+	mykeyboardlayout,
+	layout = wibox.layout.fixed.horizontal,
+})
+keyboardwidget = widget_highlight(keyboardwidget, theme.colors.red)
 
 -- Coretemp
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
@@ -248,12 +269,9 @@ local net = lain.widget.net({
 	end,
 })
 
--- widget from https://github.com/streetturtle/awesome-wm-widgets
-local volume_widget2 = require("awesome-wm-widgets.volume-widget.volume")
 -- Separators
-local awesome_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 15", "  "))
-local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 20", markup.fg.color(arch_blue, "   ")))
-local space = wibox.widget.textbox("  ")
+local awesome_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", "  "))
+local arch_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 20", markup.fg.color(arch_blue, "   ")))
 
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
@@ -287,7 +305,6 @@ function theme.at_screen_connect(s)
 			awful.layout.inc(-1)
 		end)
 	))
-	s.mylayoutbox = wibox.container.margin(s.layoutbox, 0, 0, dpi(4), dpi(4))
 
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
@@ -295,7 +312,7 @@ function theme.at_screen_connect(s)
 		filter = awful.widget.taglist.filter.all,
 		buttons = awful.util.taglist_buttons,
 		style = {
-			font = "JetBrainsMono Nerd Font 13",
+			font = "JetBrains Mono Nerd Font 13",
 		},
 	})
 
@@ -334,11 +351,6 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.fixed.horizontal,
 	})
 
-	myshape = function(cr, width, height)
-		gears.shape.rounded_rect(cr, width, height, 4)
-	end
-
-	-- [[ unused wibar
 	s.mywibar = awful.wibar({
 		position = "top",
 		screen = s,
@@ -355,10 +367,10 @@ function theme.at_screen_connect(s)
 			s.mytaglist,
 			layout = wibox.layout.fixed.horizontal,
 		},
-		clockwidget,
+		nil,
 		{
 			layout = wibox.layout.fixed.horizontal,
-			widget_highlight(mykeyboardlayout, theme.colors.blue),
+			keyboardwidget,
 			space,
 			--theme.mpd.widget,
 			--theme.mail.widget,
@@ -367,7 +379,9 @@ function theme.at_screen_connect(s)
 			space,
 			widget_highlight(battery_widget, theme.colors.yellow),
 			space,
-			s.mylayoutbox,
+			widget_highlight(clockwidget, theme.colors.cyan),
+			space,
+			s.layoutbox,
 			space,
 		},
 	}) --]]
