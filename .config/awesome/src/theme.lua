@@ -75,6 +75,16 @@ theme.taglist_squares_unsel = theme.dir .. "/icons/square_unsel.png"
 
 local markup = lain.util.markup
 
+local widget_highlight = function(wid, bg)
+	local bg_color = bg or theme.bg_normal .. "77"
+	local background = wibox.container.background(wid, bg_color, myshape)
+	if bg_color ~= theme.bg_normal .. "77" then
+		local fg_color = theme.colors.bg
+		background.fg = fg_color
+	end
+	return wibox.container.margin(background, dpi(4), dpi(4), dpi(2), dpi(2))
+end
+
 -- Clock
 clockwidget = wibox.widget.textclock()
 clockwidget.font = theme.desktop_font
@@ -306,16 +316,6 @@ function theme.at_screen_connect(s)
 		gears.shape.rounded_rect(cr, width, height, 4)
 	end
 
-	local widget_highlight = function(wid, bg)
-		local bg_color = bg or theme.bg_normal .. "77"
-		local background = wibox.container.background(wid, bg_color, myshape)
-		if bg_color ~= theme.bg_normal .. "77" then
-			local fg_color = theme.colors.bg
-			background.fg = fg_color
-		end
-		return wibox.container.margin(background, dpi(4), dpi(4), dpi(2), dpi(2))
-	end
-
 	-- [[ unused wibar
 	s.mywibar = awful.wibar({
 		position = "top",
@@ -336,7 +336,7 @@ function theme.at_screen_connect(s)
 		clockwidget,
 		{
 			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
+			widget_highlight(mykeyboardlayout, theme.colors.blue),
 			space,
 			wibox.widget.systray(),
 			space,
