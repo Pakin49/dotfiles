@@ -9,14 +9,51 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 -- available theme onedark, arch, tokyonight
 local color_scheme = "tokyonight"
-local theme = require("src.assets.colors." .. color_scheme)
+local colors = require("src.assets.colors." .. color_scheme)
 
+local theme = {}
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/src/assets"
 theme.wallpaper = theme.dir .. "/wall.png"
 theme.font = "JetBrains Mono Nerd Font Propo 11"
 theme.desktop_font = "JetBrains Mono Nerd Font Bold 11"
 
+theme.fg_normal = colors.fg
+theme.fg_focus = colors.blue
+theme.fg_urgent = colors.red
+theme.fg_minimize = colors.comment
+-- Backgrounds
+theme.bg_normal = colors.bg_light
+theme.bg_focus = colors.bg_lighter
+theme.bg_urgent = colors.bg
+theme.bg_minimize = colors.selection
+theme.bg_bar = colors.bg
+-- Borders
+theme.border_width = 2
+theme.border_normal = colors.line
+theme.border_focus = colors.blue .. "AA"
+theme.border_marked = colors.red
+-- Tasklist
+theme.tasklist_bg_focus = colors.blue .. "AA"
+theme.tasklist_bg_normal = colors.bg_light
+theme.tasklist_fg_focus = colors.fg_light
+theme.tasklist_fg_normal = colors.fg
+-- Taglist
+theme.taglist_fg_focus = colors.fg_light
+theme.taglist_bg_focus = colors.blue .. "55"
+theme.taglist_fg_normal = colors.fg
+theme.taglist_bg_normal = "transparent"
+-- Titlebar
+theme.titlebar_bg_focus = colors.bg
+theme.titlebar_bg_normal = colors.bg_light
+theme.titlebar_fg_focus = colors.fg_light
+theme.titlebar_fg_normal = colors.fg
+theme.titlebar_border_focus = colors.blue
+theme.titlebar_border_normal = colors.line
+
+-- Hotkeys
+theme.hotkeys_modifiers_fg = colors.fg_light
+theme.colors = colors
 -- Arch-specific colors
 local arch_blue = "#1793d1" -- Arch Linux blue
 local arch_grey = "#2f2f2f" -- dark grey
@@ -78,6 +115,7 @@ local markup = lain.util.markup
 local widget_highlight = function(wid, bg)
 	local bg_color = bg or theme.bg_normal .. "77"
 	local background = wibox.container.background(wid, bg_color, myshape)
+	background.font = theme.font
 	if bg_color ~= theme.bg_normal .. "77" then
 		local fg_color = theme.colors.bg
 		background.fg = fg_color
@@ -210,24 +248,8 @@ local net = lain.widget.net({
 	end,
 })
 
--- helper function to create styled boxes/containers
-local function widgetbox(wid)
-	local padded_widget = wibox.container.margin(wid, dpi(8), dpi(8), 0, 0)
-
-	local bg_widget = wibox.container.background(padded_widget, arch_blue .. "11")
-	bg_widget.fg = theme.fg_normal
-	bg_widget.shape = function(cr, width, height)
-		gears.shape.rounded_bar(cr, width, height)
-	end
-	bg_widget.shape_border_width = 1
-	bg_widget.shape_border_color = arch_blue
-
-	-- External margins (spacing between widgets)
-	return wibox.container.margin(bg_widget, 0, 0, dpi(2), dpi(2))
-end
-
--- Metho
-
+-- widget from https://github.com/streetturtle/awesome-wm-widgets
+local volume_widget2 = require("awesome-wm-widgets.volume-widget.volume")
 -- Separators
 local awesome_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 15", "  "))
 local arch_icon = wibox.widget.textbox(markup.font("Hack Nerd Font 20", markup.fg.color(arch_blue, "   ")))
@@ -337,8 +359,6 @@ function theme.at_screen_connect(s)
 		{
 			layout = wibox.layout.fixed.horizontal,
 			widget_highlight(mykeyboardlayout, theme.colors.blue),
-			space,
-			wibox.widget.systray(),
 			space,
 			--theme.mpd.widget,
 			--theme.mail.widget,

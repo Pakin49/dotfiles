@@ -24,48 +24,4 @@ local palete = {
 	pink = "#b4f9f8",
 	Hsubtext = "#9aa5ce",
 }
-local theme = {
-	fg_normal = palete.fg,
-	fg_focus = palete.blue,
-	fg_urgent = palete.red,
-	fg_minimize = palete.comment,
-
-	-- Backgrounds
-	bg_normal = palete.bg_light,
-	bg_focus = palete.bg_lighter,
-	bg_urgent = palete.bg,
-	bg_minimize = palete.selection,
-	bg_bar = palete.bg,
-
-	-- Borders
-	border_width = 2,
-	border_normal = palete.line,
-	border_focus = palete.blue .. "AA",
-	border_marked = palete.red,
-
-	-- Tasklist
-	tasklist_bg_focus = palete.blue .. "AA",
-	tasklist_bg_normal = palete.bg_light,
-	tasklist_fg_focus = palete.fg_light,
-	tasklist_fg_normal = palete.fg,
-
-	-- Taglist
-	taglist_fg_focus = palete.fg_light,
-	taglist_bg_focus = palete.blue .. "55",
-	taglist_fg_normal = palete.fg,
-	taglist_bg_normal = "transparent",
-
-	-- Titlebar
-	titlebar_bg_focus = palete.bg,
-	titlebar_bg_normal = palete.bg_light,
-	titlebar_fg_focus = palete.fg_light,
-	titlebar_fg_normal = palete.fg,
-	titlebar_border_focus = palete.blue,
-	titlebar_border_normal = palete.line,
-
-	-- Hotkeys
-	hotkeys_modifiers_fg = palete.fg_light,
-	colors = palete,
-}
-
-return theme
+return palete
