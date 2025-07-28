@@ -137,6 +137,7 @@ end)
 local clockwidget = wibox.widget({
 	clockicon,
 	clock,
+	space,
 	layout = wibox.layout.fixed.horizontal,
 })
 
@@ -381,7 +382,6 @@ function theme.at_screen_connect(s)
 			space,
 			widget_highlight(clockwidget, theme.colors.cyan),
 			space,
-			s.layoutbox,
 			space,
 		},
 	}) --]]
