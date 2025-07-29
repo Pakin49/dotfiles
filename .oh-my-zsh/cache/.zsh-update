@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
 LAST_EPOCH=20297
+=======
+LAST_EPOCH=20298
+>>>>>>> Stashed changes
 EXIT_STATUS=1
 ERROR='fatal: invalid reference: master'
