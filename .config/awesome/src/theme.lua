@@ -364,11 +364,10 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		{
-			wibox.container.margin(arch_icon, dpi(10), dpi(5), 0, 0),
-			s.mytaglist,
+			wibox.container.margin(arch_icon, dpi(5), dpi(5), 0, 0),
 			layout = wibox.layout.fixed.horizontal,
 		},
-		nil,
+		s.mytaglist,
 		{
 			layout = wibox.layout.fixed.horizontal,
 			keyboardwidget,
