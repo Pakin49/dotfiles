@@ -1,0 +1,8 @@
+[opener]
+pdf = [
+    { run = 'zathura "$@"', desc = "Open with Zathura" }
+]
+[open]
+prepend_rules = [
+    { name = "*.pdf", use = "pdf" }
+]
