@@ -60,8 +60,8 @@ theme.hotkeys_modifiers_fg = colors.fg_light
 theme.colors = colors
 
 -- Systray
-theme.systray_icon_spacing = dpi(5)
-theme.bg_systray = theme.colors.bg .. "88"
+theme.systray_icon_spacing = dpi(4)
+theme.bg_systray = arch_grey
 
 theme.wibox_height = dpi(20)
 theme.wibox_offset_y = 5
@@ -123,7 +123,7 @@ local widget_highlight = function(wid, bg)
 		local fg_color = theme.colors.bg
 		background.fg = fg_color
 	end
-	return wibox.container.margin(background, dpi(4), dpi(4), dpi(2), dpi(2))
+	return wibox.container.margin(background, dpi(4), dpi(4), dpi(3), dpi(3))
 end
 
 myshape = function(cr, width, height)
@@ -237,6 +237,9 @@ theme.weather = lain.widget.weather({
 })
 --]]
 
+-- Systemtray
+local systray = wibox.widget.systray()
+
 -- Keyboard map indicator and switcher
 local mykeyboardlayout = awful.widget.keyboardlayout()
 mykeyboardlayout.widget.font = theme.font
@@ -273,7 +276,7 @@ local net = lain.widget.net({
 
 -- Separators
 local awesome_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", "  "))
-local arch_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 20", markup.fg.color(arch_blue, "   ")))
+local arch_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 17", markup.fg.color(arch_blue, "   ")))
 
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
