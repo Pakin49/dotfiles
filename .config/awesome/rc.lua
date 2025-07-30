@@ -53,12 +53,12 @@ local terminal = "ghostty"
 local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
-local browser = "firefox"
+local browser = "zen-browser"
 
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames = { "  ", "  ", "  ", "  ", " 󰍹 ", "  ", "  " }
+awful.util.tagnames = { "  ", "  ", "  ", "  ", " 󰍹 ", "  ", "  " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	--awful.layout.suit.spiral,
@@ -237,9 +237,9 @@ end)
 root.buttons(mytable.join(
 	awful.button({}, 3, function()
 		awful.util.mymainmenu:toggle()
-	end),
-	awful.button({}, 4, awful.tag.viewnext),
-	awful.button({}, 5, awful.tag.viewprev)
+	end)
+	--awful.button({}, 4, awful.tag.viewnext),
+	--awful.button({}, 5, awful.tag.viewprev)
 ))
 
 -- }}}
@@ -495,7 +495,6 @@ run_once({
 	"pgrep redshift > /dev/null || redshift -l 13.7539:100.5014 -t 6500:4500 -r",
 })
 
-awful.tag.viewonly(root.tags()[3])
 -- This function implements the XDG autostart specification
 --[[
 awful.spawn.with_shell(

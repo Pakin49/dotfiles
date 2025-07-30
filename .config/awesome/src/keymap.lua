@@ -7,6 +7,7 @@ local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 
+local browser = "zen-browser"
 local modkey = "Mod4"
 local altkey = "Mod1"
 
@@ -310,8 +311,8 @@ keys.globalkeys = mytable.join(
 
 	-- Firefox
 	awful.key({ modkey }, "b", function()
-		awful.util.spawn("firefox")
-	end, { description = "firefox", group = "launcher" }),
+		awful.util.spawn(browser)
+	end, { description = browser, group = "launcher" }),
 
 	--Discord
 	awful.key({ modkey }, "d", function()

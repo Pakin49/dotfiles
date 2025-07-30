@@ -17,7 +17,6 @@ $c\
 $cpp\
 $rust\
 $python\
-$sudo\
 $character"""
 
 [os]

@@ -11,6 +11,10 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local color_scheme = "tokyonight"
 local colors = require("src.assets.colors." .. color_scheme)
 
+-- Arch-specific colors
+local arch_blue = "#1793d1" -- Arch Linux blue
+local arch_grey = "#2f2f2f" -- dark grey
+
 local theme = {}
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/src/assets"
@@ -31,7 +35,7 @@ theme.bg_bar = colors.bg
 -- Borders
 theme.border_width = 2
 theme.border_normal = colors.line
-theme.border_focus = colors.blue .. "AA"
+theme.border_focus = arch_blue .. "AA"
 theme.border_marked = colors.red
 -- Tasklist
 theme.tasklist_bg_focus = colors.blue .. "AA"
@@ -54,9 +58,6 @@ theme.titlebar_border_normal = colors.line
 -- Hotkeys
 theme.hotkeys_modifiers_fg = colors.fg_light
 theme.colors = colors
--- Arch-specific colors
-local arch_blue = "#1793d1" -- Arch Linux blue
-local arch_grey = "#2f2f2f" -- dark grey
 
 -- Systray
 theme.systray_icon_spacing = dpi(5)
@@ -356,7 +357,7 @@ function theme.at_screen_connect(s)
 		position = "top",
 		screen = s,
 		height = theme.wibox_height + 2 * theme.wibox_offset_y,
-		bg = theme.bg_normal .. "CC",
+		bg = theme.bg_normal .. "EE",
 		fg = theme.fg_normal,
 	})
 	-- Add widgets to the wibox
