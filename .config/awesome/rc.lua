@@ -468,7 +468,7 @@ client.connect_signal("manage", function(c)
 			if c.valid then
 				c.fullscreen = false
 				c.maximized = false
-				c.floating =  false
+				c.floating = false
 				awful.placement.no_overlap(c)
 				awful.placement.no_offscreen(c)
 				--awful.placement.centered(c)
