@@ -1,9 +1,6 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -110,9 +107,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # ------------ Neovim ------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias nvf='nvim $(fzf)'
@@ -127,7 +121,7 @@ eval "$(fzf --zsh)"
 alias fzf='fzf --preview "bat --color=always --style=full --line-range=:500 {}"'
 
 # ------------ Eza : better ls ------------
-export EZA_CONFIG_DIR="$HOME/dotfiles/.config/eza"
+export EZA_CONFIG_DIR="$HOME/.config/eza"
 alias ls='eza --long --color=always --icons=always'
 
 # ------------ Zoxide: better cd------------
@@ -157,7 +151,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 # ------------ Custom alias ------------
 alias ll='ls -al'
-alias dot='z ~/dotfiles && ll'
+alias dot='z ~/.dotfiles && ll'
 alias data='cd ~/data'
 export TERM=xterm-256color
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)

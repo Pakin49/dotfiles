@@ -1,6 +1,6 @@
 [opener]
 pdf = [
-    { run = 'zathura "$@"', desc = "Open with Zathura" }
+    { run = 'xreader "$@"', desc = "Open with Xreader" }
 ]
 [open]
 prepend_rules = [
