@@ -456,7 +456,7 @@ tag.connect_signal("property::selected", backham)
 -- }}}
 
 -- this for my laptop when windows are not tiling
---[[
+--[[fixtiling
 client.connect_signal("manage", function(c)
 	-- Short delay to let app finish messing with its window
 	gears.timer({
