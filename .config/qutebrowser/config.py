@@ -11,7 +11,7 @@
 #   qute://help/settings.html
 
 # Change the argument to True to still load settings configured via autoconfig.yml
-config.load_autoconfig(True)
+config.load_autoconfig(False)
 
 c.tabs.title.format = "{audio}{current_title}"
 c.fonts.web.size.default = 20
