@@ -455,28 +455,6 @@ tag.connect_signal("property::selected", backham)
 
 -- }}}
 
--- this for my laptop when windows are not tiling
---[[fixtiling
-client.connect_signal("manage", function(c)
-	-- Short delay to let app finish messing with its window
-	gears.timer({
-		timeout = 0.5,
-		autostart = true,
-		single_shot = true,
-		callback = function()
-			if c.valid then
-				c.fullscreen = false
-				c.maximized = false
-				c.floating = false
-				awful.placement.no_overlap(c)
-				awful.placement.no_offscreen(c)
-				--awful.placement.centered(c)
-			end
-		end,
-	})
-end)
---]]
-
 -- {{{ Autostart windowless processes
 
 -- This function will run once every time Awesome is started
@@ -503,4 +481,26 @@ awful.spawn.with_shell(
     'dex --environment Awesome --autostart --search-paths ' ..
     '"${XDG_CONFIG_HOME:-$HOME/.config}/autostart:${XDG_CONFIG_DIRS:-/etc/xdg}/autostart";' -- https://github.com/jceb/dex
 )
+--]]
+
+-- this for my laptop when windows are not tiling
+-- [[ force tiling
+client.connect_signal("manage", function(c)
+	-- Short delay to let app finish messing with its window
+	gears.timer({
+		timeout = 0.5,
+		autostart = true,
+		single_shot = true,
+		callback = function()
+			if c.valid then
+				c.fullscreen = false
+				c.maximized = false
+				c.floating = false
+				awful.placement.no_overlap(c)
+				awful.placement.no_offscreen(c)
+				--awful.placement.centered(c)
+			end
+		end,
+	})
+end)
 --]]

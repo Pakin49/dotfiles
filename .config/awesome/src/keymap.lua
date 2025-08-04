@@ -29,6 +29,13 @@ keys.globalkeys = mytable.join(
 	end, { description = "lock screen", group = "hotkeys" }),
 	--]]
 
+	-- toggle between force tiling to fix not properlly tile clients
+
+	awful.key({ modkey, "Control", "Shift" }, "r", function()
+		awful.spawn.with_shell("~/Templates/scripts/force_tile.sh")
+		awesome.restart()
+	end, { description = "reload awesome", group = "awesome" }),
+
 	-- Show help
 	awful.key({ modkey, "Shift" }, "h", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 

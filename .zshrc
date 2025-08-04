@@ -159,4 +159,4 @@ export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 # ------------ Starship ------------
 eval "$(starship init zsh)"
 
-alias mimi="source /home/pakin/Templates/mimi.sh"
+alias mimi="source /home/pakin/Templates/scripts/mimi.sh"
