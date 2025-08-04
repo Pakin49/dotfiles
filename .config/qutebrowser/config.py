@@ -1,7 +1,11 @@
+############################################################
+#                                                          #
+#                       General config                     #
+#                                                          #
+############################################################
+
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
-
-# ---------------- From Bread ----------------
 
 #c.tabs.title.format = "{audio}{current_title}"
 c.fonts.web.size.default = 20
@@ -20,6 +24,34 @@ c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'his
 
 c.auto_save.session = True # save tabs on quit/restart
 
+############################################################
+#                                                          #
+#                   Style and Colors                       #
+#                                                          #
+############################################################
+# c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
+c.tabs.indicator.width = 0 # no tab indicators
+c.window.transparent = True # apparently not needed
+
+c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
+c.colors.tabs.odd.bg = "#00000000"
+c.colors.tabs.bar.bg = "#00000000"
+
+c.colors.webpage.preferred_color_scheme = "dark"
+c.backend = 'webengine'
+
+# dark mode setup
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.webpage.darkmode.policy.images = 'never'
+#config.set('colors.webpage.darkmode.enabled', False, 'file://*')
+
+
+############################################################
+#                                                          #
+#                        Privacy                           #
+#                                                          #
+############################################################
 # privacy - adjust these settings based on your preference
 config.set("completion.cmd_history_max_items", 200)
 # config.set("content.private_browsing", True)
@@ -30,25 +62,6 @@ config.set("content.webrtc_ip_handling_policy", "default-public-interface-only")
 config.set("content.cookies.accept", "all")
 config.set("content.cookies.store", True)
 # config.set("content.javascript.enabled", False) # tsh keybind to toggle
-
-# styles, cosmetics
-# c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
-c.tabs.indicator.width = 0 # no tab indicators
-c.window.transparent = True # apparently not needed
-
-c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
-c.colors.tabs.odd.bg = "#00000000"
-c.colors.tabs.bar.bg = "#00000000"
-# -------------- My config ----------------
-
-c.colors.webpage.preferred_color_scheme = "dark"
-c.backend = 'webengine'
-
-# dark mode setup
-c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
-c.colors.webpage.darkmode.policy.images = 'never'
-#config.set('colors.webpage.darkmode.enabled', False, 'file://*')
 
 # ads block
 c.content.blocking.enabled = True
@@ -71,7 +84,12 @@ c.content.blocking.adblock.lists = [
          "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
          "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
          "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt" ]
 
-# keybinding
-config.bind('ed', 'config-cycle colors.webpage.darkmode.enabled true false')
+############################################################
+#                                                          #
+#                     Key binding                          #
+#                                                          #
+############################################################
+config.bind('<space>d', 'config-cycle colors.webpage.darkmode.enabled true false')
+config.bind('<space>pw', 'spawn --userscript qute-bitwarden')
