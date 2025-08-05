@@ -484,7 +484,7 @@ awful.spawn.with_shell(
 --]]
 
 -- this for my laptop when windows are not tiling
--- [[ force tiling
+--[[ force tiling
 client.connect_signal("manage", function(c)
 	-- Short delay to let app finish messing with its window
 	gears.timer({
