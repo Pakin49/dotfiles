@@ -167,7 +167,7 @@ keys.globalkeys = mytable.join(
 		awful.layout.inc(-1)
 	end, { description = "select previous", group = "layout" }),
 
-	awful.key({ modkey, "Shift" }, "n", function()
+	awful.key({ modkey }, "m", function()
 		local c = awful.client.restore()
 		-- Focus restored client
 		if c then

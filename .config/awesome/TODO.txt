@@ -1,1 +1,2 @@
-add rules for applications to run on specific windows
+add widget to the left side of the wibar
+refactor the code so it is eaisier to read

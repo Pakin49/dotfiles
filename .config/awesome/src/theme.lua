@@ -112,8 +112,8 @@ theme.taglist_squares_sel = theme.dir .. "/icons/square_sel.png"
 theme.taglist_squares_unsel = theme.dir .. "/icons/square_unsel.png"
 
 -- Notication
-theme.notification_max_width = dpi(400)
-theme.notifiaction_max_height = dpi(80)
+--theme.notification_max_width = dpi(400)
+--theme.notifiaction_max_height = dpi(80)
 
 local markup = lain.util.markup
 
