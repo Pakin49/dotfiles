@@ -7,14 +7,36 @@ local dpi = require("beautiful.xresources").apply_dpi
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
--- available theme onedark, arch, tokyonight
-local color_scheme = "tokyonight"
-local colors = require("src.assets.colors." .. color_scheme)
-
 -- Arch-specific colors
 local arch_blue = "#1793d1" -- Arch Linux blue
 local arch_grey = "#2f2f2f" -- dark grey
 
+-- colors inspired by Tokyonight theme
+colors = {
+	fg = "#ffffff", --"#a9b1d6", -- editor foreground
+	fg_light = "#c0caf5", -- variables, class names
+	bg = "#1a1b26", -- night background
+	bg_light = "#24283b", -- storm background
+	bg_lighter = "#414868", -- terminal black
+
+	red = "#f7768e", -- keywords, HTML elements
+	orange = "#ff9e64", -- number, booleans
+	yellow = "#e0af68", -- function params
+	green = "#9ece6a", -- strings, class names
+	cyan = "#7dcfff", -- markdown/code/import
+	blue = "#7aa2f7", -- function names
+	purple = "#bb9af7", -- control keywords
+
+	comment = "#565f89", -- comments
+	selection = "#414868", -- reused
+	line = "#414868", -- reused
+
+	-- extras
+	teal = "#73daca",
+	aqua = "#2ac3de",
+	pink = "#b4f9f8",
+	Hsubtext = "#9aa5ce",
+}
 local theme = {}
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/src/assets"
@@ -321,13 +343,56 @@ function theme.at_screen_connect(s)
 		filter = awful.widget.taglist.filter.all,
 		buttons = awful.util.taglist_buttons,
 		style = {
-			font = "JetBrains Mono Nerd Font 13",
+			font = "JetBrains Mono Nerd Font Bold 13",
 		},
 	})
 
 	-- Create a tasklist widget
-	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
-
+	--	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+	s.mytasklist = awful.widget.tasklist({
+		screen = s,
+		filter = awful.widget.tasklist.filter.currenttags,
+		buttons = tasklist_buttons,
+		layout = {
+			spacing_widget = {
+				{
+					forced_width = 5,
+					forced_height = 24,
+					thickness = 1,
+					color = "#777777",
+					widget = wibox.widget.separator,
+				},
+				valign = "center",
+				halign = "center",
+				widget = wibox.container.place,
+			},
+			spacing = 1,
+			layout = wibox.layout.fixed.horizontal,
+		},
+		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
+		-- not a widget instance.
+		widget_template = {
+			{
+				wibox.widget.base.make_widget(),
+				forced_height = 5,
+				id = "background_role",
+				widget = wibox.container.background,
+			},
+			{
+				{
+					id = "clienticon",
+					widget = awful.widget.clienticon,
+				},
+				margins = 5,
+				widget = wibox.container.margin,
+			},
+			nil,
+			create_callback = function(self, c, index, objects) --luacheck: no unused args
+				self:get_children_by_id("clienticon")[1].client = c
+			end,
+			layout = wibox.layout.align.vertical,
+		},
+	})
 	-- Create battery widget
 	local baticon = wibox.widget.textbox(" 󱊣 ")
 	local bat = lain.widget.bat({

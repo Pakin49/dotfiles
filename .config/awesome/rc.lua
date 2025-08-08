@@ -57,7 +57,7 @@ local editor = os.getenv("EDITOR") or "nvim"
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames = { "  ", "  ", "  ", "  ", " 󰍹 ", "  ", "  " }
+awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 󰝚 ", "  " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	--awful.layout.suit.spiral,
@@ -326,9 +326,9 @@ awful.rules.rules = {
 	{ rule_ny = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
 
 	-- Rule to set applications to open on specific tag
-	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[6] } },
+	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[7] } },
 
-	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[7] } },
+	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[6] } },
 }
 
 -- }}}

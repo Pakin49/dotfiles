@@ -14,6 +14,10 @@ vim.cmd 'set laststatus=3'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Set vim so that they text don't push to new line when there is not enough space
+vim.opt.wrap = false
+vim.opt.sidescroll = 1
+vim.opt.sidescrolloff = 5
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
