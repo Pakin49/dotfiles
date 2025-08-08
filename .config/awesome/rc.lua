@@ -471,6 +471,7 @@ run_once({
 	"setxkbmap -layout us,th -option grp:win_space_toggle",
 	"pgrep redshift > /dev/null || redshift -l 13.7539:100.5014 -t 6500:4500 -r",
 })
+awful.spawn.with_shell("ghostty -e 'neofetch && zsh'")
 
 -- This function implements the XDG autostart specification
 --[[
