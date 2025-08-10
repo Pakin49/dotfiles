@@ -159,4 +159,13 @@ export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 # ------------ Starship ------------
 eval "$(starship init zsh)"
 
+# ------------ Yazi -----------------
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 alias mimi="source /home/pakin/Templates/scripts/mimi.sh"

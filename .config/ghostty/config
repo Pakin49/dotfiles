@@ -49,5 +49,4 @@ keybind = ctrl+alt+k=resize_split:up,10
 keybind = ctrl+alt+h=resize_split:left,10
 keybind = ctrl+alt+shift+l=clear_screen
 
-background = #000000
 #palette = 6=#1793d1

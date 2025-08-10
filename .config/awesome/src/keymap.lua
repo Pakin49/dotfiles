@@ -363,7 +363,7 @@ keys.clientkeys = mytable.join(
 	awful.key({ altkey }, "F4", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
-	awful.key({ modkey, "Control" }, "q", function(c)
+	awful.key({ modkey }, "q", function(c)
 		c:kill()
 	end, {}),
 
