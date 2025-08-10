@@ -16,7 +16,7 @@ mouse-scroll-multiplier = 2
 
 window-padding-balance = true 
 window-save-state = always
-#background = 1C2021
+background = 111111
 #foreground = d4be98
 
 # other
