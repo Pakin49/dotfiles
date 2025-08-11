@@ -167,7 +167,7 @@ keys.globalkeys = mytable.join(
 		awful.layout.inc(-1)
 	end, { description = "select previous", group = "layout" }),
 
-	awful.key({ modkey }, "m", function()
+	awful.key({ modkey, "Shift" }, "n", function()
 		local c = awful.client.restore()
 		-- Focus restored client
 		if c then
@@ -199,7 +199,6 @@ keys.globalkeys = mytable.join(
 		end
 	end, { description = "show weather", group = "widgets" }),
 	--]]
-
 	-- Screen brightness
 	awful.key({}, "XF86MonBrightnessUp", function()
 		os.execute("brightnessctl set 10%+ ")
@@ -316,10 +315,15 @@ keys.globalkeys = mytable.join(
 		awful.util.spawn("rofi -show window")
 	end, { description = "List open applications", group = "launcher" }),
 
-	-- Firefox
+	-- Browser
 	awful.key({ modkey }, "b", function()
 		awful.util.spawn(browser)
 	end, { description = browser, group = "launcher" }),
+
+	-- Zenbrowser
+	awful.key({ modkey }, "z", function()
+		awful.util.spawn("zen-browser")
+	end, { description = "zen-browser", group = "launcher" }),
 
 	--Discord
 	awful.key({ modkey }, "d", function()
@@ -331,6 +335,10 @@ keys.globalkeys = mytable.join(
 		awful.util.spawn("spotify-launcher")
 	end, { description = "open spotify", group = "launcher" }),
 
+	-- Music player rmpc
+	awful.key({ modkey }, "m", function()
+		awful.util.spawn("ghostty -e rmpc", { tag = " 󰝚 " })
+	end, { description = "open rmpc", group = "launcher" }),
 	-- flameshot
 	awful.key({ "Any" }, "Print", function()
 		awful.util.spawn("flameshot gui")

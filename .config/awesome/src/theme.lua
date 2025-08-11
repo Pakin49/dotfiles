@@ -179,39 +179,61 @@ theme.cal = lain.widget.cal({
 	},
 })
 
---[[MPD
+-- MPD
+--local musicplr = awful.util.terminal .. " -title Music -e ncmpcpp"
+local mpdicon = wibox.widget.textbox("  ")
+mpdicon:buttons(my_table.join(
+	--awful.button({ "Mod4" }, 1, function () awful.spawn(musicplr) end),
+	awful.button({}, 1, function()
+		os.execute("mpc prev")
+		theme.mpd.update()
+	end),
+	awful.button({}, 2, function()
+		os.execute("mpc toggle")
+		theme.mpd.update()
+	end),
+	awful.button({}, 3, function()
+		os.execute("mpc next")
+		theme.mpd.update()
+	end)
+))
 theme.mpd = lain.widget.mpd({
 	settings = function()
-		mpd_notification_preset.fg = white
-
-		artist = mpd_now.artist .. " "
-		title = mpd_now.title .. " "
-
-		if mpd_now.state == "pause" then
-			artist = "mpd "
+		if mpd_now.state == "play" then
+			artist = " " .. mpd_now.artist .. " "
+			title = mpd_now.title .. " "
+			mpdicon:set_text("  ")
+		elseif mpd_now.state == "pause" then
+			artist = " mpd "
 			title = "paused "
-		elseif mpd_now.state == "stop" then
+		else
 			artist = ""
 			title = ""
+			mpdicon:set_text(" 󰝛 ")
 		end
 
-		widget:set_markup(markup.font(theme.font, markup(gray, artist) .. markup(white, title)))
+		widget:set_markup(markup.font(theme.font, markup("#EA6F81", artist) .. title))
 	end,
+})
+local mpd_widget = wibox.widget({
+	mpdicon,
+	theme.mpd,
+	layout = wibox.layout.fixed.horizontal,
 })
 -- /home fs
 -- [[ commented because it needs Gio/Glib >= 2.54
 theme.fs = lain.widget.fs({
-    notification_preset = { fg = white, bg = theme.bg_normal, font = "Terminus 10.5" },
-    settings  = function()
-        local fs_header, fs_p = "", ""
+	notification_preset = { fg = white, bg = theme.bg_normal, font = "Terminus 10.5" },
+	settings = function()
+		local fs_header, fs_p = "", ""
 
-        if fs_now["/home"].percentage >= 90 then
-            fs_header = " Hdd "
-            fs_p      = fs_now["/home"].percentage
-        end
+		if fs_now["/home"].percentage >= 90 then
+			fs_header = " Hdd "
+			fs_p = fs_now["/home"].percentage
+		end
 
-        widget:set_markup(markup.font(theme.font, markup(gray, fs_header) .. markup(white, fs_p)))
-    end
+		widget:set_markup(markup.font(theme.font, markup(gray, fs_header) .. markup(white, fs_p)))
+	end,
 })
 --]]
 -- Simple volume widget (icon + text)
@@ -465,7 +487,7 @@ function theme.at_screen_connect(s)
 			layout = wibox.layout.fixed.horizontal,
 			keyboardwidget,
 			space,
-			--theme.mpd.widget,
+			--mpd_widget,
 			--theme.mail.widget,
 			--theme.fs.widget,
 			widget_highlight(volume_widget, theme.colors.green),
