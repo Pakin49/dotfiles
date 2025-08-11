@@ -298,9 +298,9 @@ keys.globalkeys = mytable.join(
         {description = "show rofi", group = "launcher"}),
     --]]
 
-	-- Nemo
+	-- Yazi
 	awful.key({ modkey }, "e", function()
-		awful.util.spawn("nemo")
+		awful.util.spawn("ghostty -e yazi")
 	end, { description = "file explorer", group = "launcher" }),
 	--
 	--	local rofi_path = strig.format("%s/.config/rofi/luanchers/type-2/luancher.sh",os.getenv("HOME"))

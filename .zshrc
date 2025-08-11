@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# ------------ user install application ------------
+export PATH="$PATH:$HOME/.local/bin"
 
 # ------------ Neovim ------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
@@ -168,4 +170,9 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-alias mimi="source /home/pakin/Templates/scripts/mimi.sh"
+# ------------ Spotify -----------------
+#source "$HOME/Credential/spotify.txt"
+#export SPOTIPY_CLIENT_ID
+#export SPOTIPY_CLIENT_SECRET
+
+alias mimi="source $HOME/scripts/mimi.sh"
