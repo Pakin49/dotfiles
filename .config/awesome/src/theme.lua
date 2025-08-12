@@ -196,7 +196,7 @@ theme.mpd = lain.widget.mpd({
 		else
 			artist = ""
 			title = ""
-			mpd_icon:set_markup(markup.font(theme.font, " 󰝛 "))
+			mpd_icon:set_markup(markup.font(theme.font, "  ")) --󰝛
 		end
 		widget:set_markup(markup.font(theme.font, markup(theme.colors.purple, artist) .. title))
 	end,
