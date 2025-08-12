@@ -3,6 +3,7 @@ local lain = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
+local naughty = require("naughty")
 
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
@@ -142,10 +143,11 @@ local markup = lain.util.markup
 local space = wibox.widget.textbox("  ")
 
 local widget_highlight = function(wid, bg)
-	local bg_color = bg or theme.bg_normal .. "DD"
+	local default_bg = theme.bg_normal .. "AA"
+	local bg_color = bg or default_bg
 	local margin = wibox.container.margin(wid, dpi(6), dpi(6), 0, 0)
 	local background = wibox.container.background(margin, bg_color, myshape)
-	if bg_color ~= theme.bg_normal .. "DD" then
+	if bg_color ~= default_bg then
 		local fg_color = theme.colors.bg
 		background.fg = fg_color
 	end
@@ -181,8 +183,30 @@ theme.cal = lain.widget.cal({
 
 -- MPD
 --local musicplr = awful.util.terminal .. " -title Music -e ncmpcpp"
-local mpdicon = wibox.widget.textbox("  ")
-mpdicon:buttons(my_table.join(
+local mpd_icon = wibox.widget.textbox(markup.font(theme.font, "  "))
+theme.mpd = lain.widget.mpd({
+	settings = function()
+		if mpd_now.state == "play" then
+			artist = " " .. mpd_now.artist .. " "
+			title = mpd_now.title .. " "
+			mpd_icon:set_markup(markup.font(theme.font, "   "))
+		elseif mpd_now.state == "pause" then
+			artist = " mpd "
+			title = "paused "
+		else
+			artist = ""
+			title = ""
+			mpd_icon:set_markup(markup.font(theme.font, " 󰝛 "))
+		end
+		widget:set_markup(markup.font(theme.font, markup(theme.colors.purple, artist) .. title))
+	end,
+})
+local mpd_widget = wibox.widget({
+	mpd_icon,
+	theme.mpd,
+	layout = wibox.layout.fixed.horizontal,
+})
+mpd_widget:buttons(my_table.join(
 	--awful.button({ "Mod4" }, 1, function () awful.spawn(musicplr) end),
 	awful.button({}, 1, function()
 		os.execute("mpc prev")
@@ -197,29 +221,6 @@ mpdicon:buttons(my_table.join(
 		theme.mpd.update()
 	end)
 ))
-theme.mpd = lain.widget.mpd({
-	settings = function()
-		if mpd_now.state == "play" then
-			artist = " " .. mpd_now.artist .. " "
-			title = mpd_now.title .. " "
-			mpdicon:set_text("  ")
-		elseif mpd_now.state == "pause" then
-			artist = " mpd "
-			title = "paused "
-		else
-			artist = ""
-			title = ""
-			mpdicon:set_text(" 󰝛 ")
-		end
-
-		widget:set_markup(markup.font(theme.font, markup("#EA6F81", artist) .. title))
-	end,
-})
-local mpd_widget = wibox.widget({
-	mpdicon,
-	theme.mpd,
-	layout = wibox.layout.fixed.horizontal,
-})
 -- /home fs
 -- [[ commented because it needs Gio/Glib >= 2.54
 theme.fs = lain.widget.fs({
@@ -477,26 +478,34 @@ function theme.at_screen_connect(s)
 	-- Add widgets to the wibox
 	s.mywibar:setup({
 		layout = wibox.layout.align.horizontal,
-		expand = "none",
+		expand = "outside",
 		{
-			wibox.container.margin(arch_icon, dpi(5), dpi(5), 0, 0),
-			layout = wibox.layout.fixed.horizontal,
+			widget_highlight(wibox.container.margin(arch_icon, dpi(5), dpi(5), 0, 0)),
+			mpd_widget,
+			space,
+			expand = "outside",
+			layout = wibox.layout.align.horizontal,
 		},
 		s.mytaglist,
 		{
-			layout = wibox.layout.fixed.horizontal,
-			keyboardwidget,
-			space,
-			--mpd_widget,
-			--theme.mail.widget,
-			--theme.fs.widget,
-			widget_highlight(volume_widget, theme.colors.green),
-			space,
-			widget_highlight(battery_widget, theme.colors.yellow),
-			space,
-			widget_highlight(clockwidget, theme.colors.cyan),
-			space,
-			space,
+			layout = wibox.layout.align.horizontal,
+			expand = inside,
+			nil,
+			nil,
+			{
+				layout = wibox.layout.fixed.horizontal,
+				keyboardwidget,
+				space,
+				--theme.mail.widget,
+				--theme.fs.widget,
+				widget_highlight(volume_widget, theme.colors.green),
+				space,
+				widget_highlight(battery_widget, theme.colors.yellow),
+				space,
+				widget_highlight(clockwidget, theme.colors.cyan),
+				space,
+				space,
+			},
 		},
 	}) --]]
 end

@@ -33,9 +33,9 @@ c.auto_save.session = True # save tabs on quit/restart
 c.tabs.indicator.width = 0 # no tab indicators
 c.window.transparent = True # apparently not needed
 
-#c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
-#c.colors.tabs.odd.bg = "#00000000"
-#c.colors.tabs.bar.bg = "#00000000"
+c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
+c.colors.tabs.odd.bg = "#00000000"
+c.colors.tabs.bar.bg = "#00000000"
 
 c.colors.webpage.preferred_color_scheme = "dark"
 c.backend = 'webengine'
