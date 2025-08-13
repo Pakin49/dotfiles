@@ -183,7 +183,7 @@ theme.cal = lain.widget.cal({
 
 -- MPD
 --local musicplr = awful.util.terminal .. " -title Music -e ncmpcpp"
-local mpd_icon = wibox.widget.textbox(markup.font(theme.font, "  "))
+local mpd_icon = wibox.widget.textbox(markup.font(theme.font, " "))
 theme.mpd = lain.widget.mpd({
 	settings = function()
 		if mpd_now.state == "play" then
@@ -191,6 +191,7 @@ theme.mpd = lain.widget.mpd({
 			title = mpd_now.title .. " "
 			mpd_icon:set_markup(markup.font(theme.font, "   "))
 		elseif mpd_now.state == "pause" then
+			mpd_icon:set_markup(markup.font(theme.font, " 󰝛 "))
 			artist = " mpd "
 			title = "paused "
 		else

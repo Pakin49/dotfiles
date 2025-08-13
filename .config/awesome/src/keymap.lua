@@ -233,35 +233,30 @@ keys.globalkeys = mytable.join(
 		beautiful.volume.update()
 	end, { description = "volume 0%", group = "hotkeys" }),
 
-	--[[
 	-- MPD control
-	awful.key({ altkey, "Control" }, "Up", function()
+	awful.key({ "Any" }, "XF86AudioPlay", function()
 		os.execute("mpc toggle")
 		beautiful.mpd.update()
 	end, { description = "mpc toggle", group = "widgets" }),
-	awful.key({ altkey, "Control" }, "Down", function()
-		os.execute("mpc stop")
-		beautiful.mpd.update()
-	end, { description = "mpc stop", group = "widgets" }),
-	awful.key({ altkey, "Control" }, "Left", function()
+	awful.key({ "Any" }, "XF86AudioPrev", function()
 		os.execute("mpc prev")
 		beautiful.mpd.update()
 	end, { description = "mpc prev", group = "widgets" }),
-	awful.key({ altkey, "Control" }, "Right", function()
+
+	awful.key({ "Any" }, "XF86AudioNext", function()
 		os.execute("mpc next")
 		beautiful.mpd.update()
 	end, { description = "mpc next", group = "widgets" }),
-	awful.key({ altkey }, "0", function()
-		local common = { text = "MPD widget ", position = "top_middle", timeout = 2 }
-		if beautiful.mpd.timer.started then
-			beautiful.mpd.timer:stop()
-			common.text = common.text .. lain.util.markup.bold("OFF")
-		else
-			beautiful.mpd.timer:start()
-			common.text = common.text .. lain.util.markup.bold("ON")
-		end
-		naughty.notify(common)
-	end, { description = "mpc on/off", group = "widgets" }),
+
+	awful.key({ "Shift" }, "XF86AudioRaiseVolume", function()
+		os.execute("mpc volume +5")
+		beautiful.volume.update()
+	end, { description = "volume up", group = "hotkeys" }),
+
+	awful.key({ "Shift" }, "XF86AudioLowerVolume", function()
+		os.execute("mpc volume -5")
+		beautiful.volume.update()
+	end, { description = "volume down", group = "hotkeys" }),
 
 	-- Copy primary to clipboard (terminals to gtk)
 	awful.key({ modkey }, "c", function()
