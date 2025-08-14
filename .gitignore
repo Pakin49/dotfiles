@@ -1,3 +1,4 @@
 .oh-my-zsh/cache
 .config/qutebrowser/autoconfig.yml
-.config/qutebrowser/quikmarks
+.config/qutebrowser/quikmarks/
+.config/mpd/database
