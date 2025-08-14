@@ -150,4 +150,46 @@
             default: (kind: Property(Filename))
         ),
     ],
+    cava: (
+        bar_symbols: ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'],
+        inverted_bar_symbols: ['▔', '🮂', '🮃', '▀', '🮄', '🮅', '🮆', '█'],
+
+
+        // possible values are "top", "bottom" and "horizontal". top makes the bars go from top to
+        // bottom, "bottom" is from bottom up, and "horizontal" is split in the middle with bars going
+        // both down and up from there.
+        // using non-default symbols with "top" and "horizontal" may produce undesired output.
+        orientation: Horizontal,
+
+        // colors can be configured in three different ways: a single color, different colors
+        // per row and a gradient. you can use the same colors as everywhere else. only specify
+        // one of these:
+
+        // every bar symbol will be red
+        //bar_color: single("red"),
+
+        // the first two rows(two lowest amplitudes) will be red, after that two green rows
+        // and the rest will be blue. you can have as many as you want here. the last value
+        // will be used if the height exceeds the length of this array.
+        //bar_color: rows([
+        //    "red",
+        //    "red",
+        //    "green",
+        //    "green",
+        //    "blue",
+        //])
+
+        // a simple color gradient. this is a map where keys are percent values of the height
+        // where the color starts. after that it is linearly interpolated towards the next value.
+        // in this example, the color will start at green for the lowest amplitudes, go towards
+        // blue at half amplitudes and finishing as red for the highest values. keys must be between
+        // 0 and 100 and if the first or last key are not 0 and 100 respectively, the lowest and highest
+        // value will be used as 0 and 100. only hex and rgb colors are supported here and your terminal
+        // must support them as well!
+        //bar_color: Gradient({
+        //      0: "rgb(  0, 255,   0)",
+        //     50: "rgb(  0,   0, 255)",
+        //    100: "rgb(255,   0,   0)",
+       // })
+    ),
 )
