@@ -325,11 +325,6 @@ keys.globalkeys = mytable.join(
 		awful.util.spawn("discord")
 	end, { description = "open discord", group = "launcher" }),
 
-	-- Spotify
-	awful.key({ modkey }, "s", function()
-		awful.util.spawn("spotify-launcher")
-	end, { description = "open spotify", group = "launcher" }),
-
 	-- Music player rmpc
 	awful.key({ modkey }, "m", function()
 		awful.util.spawn("ghostty -e rmpc", { tag = " 󰝚 " })
