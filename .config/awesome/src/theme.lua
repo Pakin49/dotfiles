@@ -239,8 +239,8 @@ theme.fs = lain.widget.fs({
 })
 --]]
 -- Simple volume widget (icon + text)
-local volume_icon = wibox.widget.textbox()
-local volume_text = wibox.widget.textbox()
+local volume_icon = wibox.widget.textbox("  ")
+local volume_text = wibox.widget.textbox("    ")
 
 theme.volume = lain.widget.alsa({
 	settings = function()

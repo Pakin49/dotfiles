@@ -159,7 +159,7 @@
         // bottom, "bottom" is from bottom up, and "horizontal" is split in the middle with bars going
         // both down and up from there.
         // using non-default symbols with "top" and "horizontal" may produce undesired output.
-        orientation: Horizontal,
+        orientation: Bottom,
 
         // colors can be configured in three different ways: a single color, different colors
         // per row and a gradient. you can use the same colors as everywhere else. only specify

@@ -207,7 +207,7 @@ keys.globalkeys = mytable.join(
 		os.execute("brightnessctl set 10%-")
 	end, { description = "backlight -10%", group = "hotkeys" }),
 	--]]
-	-- ALSA volume controh
+	-- ALSA volume control
 	awful.key({ "Any" }, "XF86AudioRaiseVolume", function()
 		os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
 		beautiful.volume.update()
@@ -250,11 +250,13 @@ keys.globalkeys = mytable.join(
 
 	awful.key({ "Shift" }, "XF86AudioRaiseVolume", function()
 		os.execute("mpc volume +5")
+		os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
 		beautiful.volume.update()
 	end, { description = "volume up", group = "hotkeys" }),
 
 	awful.key({ "Shift" }, "XF86AudioLowerVolume", function()
 		os.execute("mpc volume -5")
+		os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
 		beautiful.volume.update()
 	end, { description = "volume down", group = "hotkeys" }),
 

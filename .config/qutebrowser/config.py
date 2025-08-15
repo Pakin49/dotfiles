@@ -7,7 +7,7 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
-#c.tabs.title.format = "{audio}{current_title}"
+c.tabs.title.format = "{audio}{current_title}"
 c.fonts.web.size.default = 20
 
 c.url.searchengines = {
@@ -31,12 +31,12 @@ c.auto_save.session = True # save tabs on quit/restart
 ############################################################
 # c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
 c.tabs.indicator.width = 0 # no tab indicators
+'''
 c.window.transparent = True # apparently not needed
-
 c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
 c.colors.tabs.odd.bg = "#00000000"
 c.colors.tabs.bar.bg = "#00000000"
-
+'''
 c.colors.webpage.preferred_color_scheme = "dark"
 c.backend = 'webengine'
 
@@ -46,7 +46,7 @@ c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.images = 'never'
 #config.set('colors.webpage.darkmode.enabled', False, 'file://*')
 
-
+#c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
 ############################################################
 #                                                          #
 #                        Privacy                           #
@@ -69,25 +69,31 @@ config.set("content.javascript.clipboard", "access-paste")
 c.content.blocking.enabled = True
 c.content.blocking.method = 'adblock' # uncomment this if you install python-adblock
 c.content.blocking.adblock.lists = [
-         "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
-         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt" ]
-
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/experimental.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2025.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-general.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-mobile.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/lan-block.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/ubo-link-shorteners.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/ubol-filters.txt",
+    "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"
+]
+#"https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
 ############################################################
 #                                                          #
 #                     Key binding                          #
