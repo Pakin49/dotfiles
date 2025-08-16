@@ -1,7 +1,6 @@
 7zip
 alsa-firmware
 alsa-utils
-arduino-ide
 awesome
 base
 base-devel
@@ -58,8 +57,6 @@ networkmanager
 noto-fonts-cjk
 noto-fonts-emoji
 npm
-nvidia
-nvidia-settings
 obs-studio
 obsidian
 openssh
@@ -70,10 +67,6 @@ papirus-icon-theme
 pass
 pavucontrol
 picom
-pipewire
-pipewire-alsa
-pipewire-jack
-pipewire-pulse
 python-adblock
 python-pipx
 qutebrowser
