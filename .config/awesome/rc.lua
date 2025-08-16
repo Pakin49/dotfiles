@@ -7,65 +7,31 @@ local lain = require("lain")
 --local menubar       = require("menubar")
 local freedesktop = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- require("awful.hotkeys_popup.keys")
---local collision = require("collision")()
+require("awful.hotkeys_popup.keys")
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 
--- }}}
-
---require("src.error_handling")
-
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-	naughty.notify({
-		preset = naughty.config.presets.critical,
-		title = "Oops, there were errors during startup!",
-		text = awesome.startup_errors,
-	})
-end
-
--- Handle runtime errors after startup
-do
-	local in_error = false
-
-	awesome.connect_signal("debug::error", function(err)
-		if in_error then
-			return
-		end
-
-		in_error = true
-
-		naughty.notify({
-			preset = naughty.config.presets.critical,
-			title = "Oops, an error happened!",
-			text = tostring(err),
-		})
-
-		in_error = false
-	end)
-end
+require("src.error_handling")
 -- {{{ Variable definitions
 
 local modkey = "Mod4"
 local altkey = "Mod1"
 local terminal = "ghostty"
-local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+local vi_focus = true -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev = true -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor = os.getenv("EDITOR") or "nvim"
 
 -- set layout
 awful.util.terminal = terminal
 -- tags name
-awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 󰝚 ", "  " }
+awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 󰝚 ", "  " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	--awful.layout.suit.spiral,
 	--awful.layout.suit.tile.left,
-	--awful.layout.suit.tile.bottom,
+	awful.layout.suit.tile.bottom,
 	--awful.layout.suit.tile.top,
 	--awful.layout.suit.fair,
-	awful.layout.suit.floating,
+	--awful.layout.suit.floating,
 	--awful.layout.suit.fair.horizontal,
 	--awful.layout.suit.spiral.dwindle,
 	--awful.layout.suit.max,
@@ -326,9 +292,7 @@ awful.rules.rules = {
 	{ rule_ny = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = true } },
 
 	-- Rule to set applications to open on specific tag
-	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[7] } },
-
-	{ rule = { class = "Spotify" }, properties = { screen = 1, tag = awful.util.tagnames[6] } },
+	{ rule = { class = "discord" }, properties = { screen = 1, tag = awful.util.tagnames[8] } },
 }
 
 -- }}}

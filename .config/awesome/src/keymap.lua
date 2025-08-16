@@ -13,7 +13,13 @@ local altkey = "Mod1"
 
 local keys = {}
 keys.globalkeys = mytable.join(
-	-- Destroy all notifications
+	-- On-the-fly useless gaps change
+	awful.key({ altkey }, "+", function()
+		lain.util.useless_gaps_resize(1)
+	end, { description = "increment useless gaps", group = "tag" }),
+	awful.key({ altkey }, "-", function()
+		lain.util.useless_gaps_resize(-1)
+	end, { description = "decrement useless gaps", group = "tag" }), -- Destroy all notifications
 	awful.key({ "Control" }, "space", function()
 		naughty.destroy_all_notifications()
 	end, { description = "destroy all notifications", group = "hotkeys" }),
@@ -317,11 +323,6 @@ keys.globalkeys = mytable.join(
 		awful.util.spawn(browser)
 	end, { description = browser, group = "launcher" }),
 
-	-- Zenbrowser
-	awful.key({ modkey }, "z", function()
-		awful.util.spawn("zen-browser")
-	end, { description = "zen-browser", group = "launcher" }),
-
 	--Discord
 	awful.key({ modkey }, "d", function()
 		awful.util.spawn("discord")
@@ -334,11 +335,7 @@ keys.globalkeys = mytable.join(
 	-- flameshot
 	awful.key({ "Any" }, "Print", function()
 		awful.util.spawn("flameshot gui")
-	end, { description = "open spotify", group = "launcher" }),
-
-	awful.key({ "Shift" }, "Print", function()
-		awful.util.spawn("flameshot launcher")
-	end, { description = "open spotify", group = "launcher" })
+	end, { description = "flameshot", group = "launcher" })
 
 	--[[
 	awful.key({ modkey }, "x", function()
@@ -407,7 +404,7 @@ keys.clientkeys = mytable.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 7 do
+for i = 1, 8 do
 	keys.globalkeys = mytable.join(
 		keys.globalkeys,
 		-- View tag only.
@@ -432,6 +429,9 @@ for i = 1, 7 do
 				local tag = client.focus.screen.tags[i]
 				if tag then
 					client.focus:move_to_tag(tag)
+					local screen = awful.screen.focused()
+					local tag2 = screen.tags[i]
+					tag2:view_only()
 				end
 			end
 		end, { description = "move focused client to tag #" .. i, group = "tag" }),

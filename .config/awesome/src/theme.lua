@@ -86,8 +86,7 @@ theme.colors = colors
 theme.systray_icon_spacing = dpi(4)
 theme.bg_systray = arch_grey
 
-theme.wibox_height = dpi(20)
-theme.wibox_offset_y = 5
+theme.wibar_height = dpi(26)
 
 theme.menu_height = dpi(16)
 theme.menu_width = dpi(140)
@@ -100,18 +99,6 @@ theme.tasklist_maximized_vertical = ""
 theme.awesome_icon = theme.dir .. "/icons/awesome.png"
 theme.menu_submenu_icon = theme.dir .. "/icons/submenu.png"
 theme.useless_gap = 5
-theme.layout_tile = theme.dir .. "/icons/tile.png"
-theme.layout_tileleft = theme.dir .. "/icons/tileleft.png"
-theme.layout_tilebottom = theme.dir .. "/icons/tilebottom.png"
-theme.layout_tiletop = theme.dir .. "/icons/tiletop.png"
-theme.layout_fairv = theme.dir .. "/icons/fairv.png"
-theme.layout_fairh = theme.dir .. "/icons/fairh.png"
-theme.layout_spiral = theme.dir .. "/icons/spiral.png"
-theme.layout_dwindle = theme.dir .. "/icons/dwindle.png"
-theme.layout_max = theme.dir .. "/icons/max.png"
-theme.layout_fullscreen = theme.dir .. "/icons/fullscreen.png" -- this picture is missing
-theme.layout_magnifier = theme.dir .. "/icons/magnifier.png"
-theme.layout_floating = theme.dir .. "/icons/floating.png"
 -- Titlebar buttons (red, yellow, green circles)
 theme.titlebar_close_button_normal = theme.dir .. "/icons/titlebar/close.png"
 theme.titlebar_close_button_focus = theme.dir .. "/icons/titlebar/close.png"
@@ -125,6 +112,18 @@ theme.titlebar_maximized_button_focus_active = theme.dir .. "/icons/titlebar/max
 theme.widget_net = theme.dir .. "/icons/net.png"
 theme.widget_temp = theme.dir .. "/icons/temp.png"
 -- lain related
+theme.layout_txt_tile = "[t]"
+theme.layout_txt_tileleft = "[l]"
+theme.layout_txt_tilebottom = "[b]"
+theme.layout_txt_tiletop = "[tt]"
+theme.layout_txt_fairv = "[fv]"
+theme.layout_txt_fairh = "[fh]"
+theme.layout_txt_spiral = "[s]"
+theme.layout_txt_dwindle = "[d]"
+theme.layout_txt_max = "[m]"
+theme.layout_txt_fullscreen = "[F]"
+theme.layout_txt_magnifier = "[M]"
+theme.layout_txt_floating = "[*]"
 theme.layout_txt_cascade = "[cascade]"
 theme.layout_txt_cascadetile = "[cascadetile]"
 theme.layout_txt_centerwork = "[centerwork]"
@@ -155,7 +154,7 @@ local widget_highlight = function(wid, bg)
 end
 
 myshape = function(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 4)
+	gears.shape.rounded_rect(cr, width, height, 2)
 end
 
 -- Textclock
@@ -176,7 +175,7 @@ theme.cal = lain.widget.cal({
 	notification_preset = {
 		fg = theme.fg_normal,
 		bg = theme.bg_normal,
-		position = "top_right",
+		position = "top_middle",
 		font = theme.font,
 	},
 })
@@ -187,7 +186,7 @@ local mpd_icon = wibox.widget.textbox(markup.font(theme.font, " "))
 theme.mpd = lain.widget.mpd({
 	settings = function()
 		if mpd_now.state == "play" then
-			artist = " " .. mpd_now.artist .. " "
+			artist = mpd_now.artist .. " "
 			title = mpd_now.title .. " "
 			mpd_icon:set_markup(markup.font(theme.font, "   "))
 		elseif mpd_now.state == "pause" then
@@ -346,8 +345,13 @@ theme.mail = lain.widget.imap({
 --]]
 -- Separators
 local awesome_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", "  "))
-local arch_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 17", markup.fg.color(arch_blue, "   ")))
+local arch_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", markup.fg.color(arch_blue, "   ")))
 
+local function update_txt_layoutbox(s)
+	-- Writes a string representation of the current layout in a textbox widget
+	local txt_l = theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))] or ""
+	s.mytxtlayoutbox:set_markup(markup.font(theme.font, txt_l))
+end
 function theme.at_screen_connect(s)
 	-- If wallpaper is a function, call it with the screen
 	local wallpaper = theme.wallpaper
@@ -362,8 +366,15 @@ function theme.at_screen_connect(s)
 	-- Create a promptbox for each screen
 	--s.mypromptbox = awful.widget.prompt()
 
-	s.layoutbox = awful.widget.layoutbox(s)
-	s.layoutbox:buttons(my_table.join(
+	-- Textual layoutbox
+	s.mytxtlayoutbox = wibox.widget.textbox(theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))])
+	awful.tag.attached_connect_signal(s, "property::selected", function()
+		update_txt_layoutbox(s)
+	end)
+	awful.tag.attached_connect_signal(s, "property::layout", function()
+		update_txt_layoutbox(s)
+	end)
+	s.mytxtlayoutbox:buttons(my_table.join(
 		awful.button({}, 1, function()
 			awful.layout.inc(1)
 		end),
@@ -380,7 +391,6 @@ function theme.at_screen_connect(s)
 			awful.layout.inc(-1)
 		end)
 	))
-
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
 		screen = s,
@@ -470,9 +480,9 @@ function theme.at_screen_connect(s)
 	})
 
 	s.mywibar = awful.wibar({
-		position = "top",
+		position = "bottom",
 		screen = s,
-		height = theme.wibox_height + 2 * theme.wibox_offset_y,
+		height = theme.wibar_height,
 		bg = theme.bg_normal .. "EE",
 		fg = theme.fg_normal,
 	})
@@ -490,7 +500,7 @@ function theme.at_screen_connect(s)
 		s.mytaglist,
 		{
 			layout = wibox.layout.align.horizontal,
-			expand = inside,
+			expand = "inside",
 			nil,
 			nil,
 			{
@@ -499,6 +509,8 @@ function theme.at_screen_connect(s)
 				space,
 				--theme.mail.widget,
 				--theme.fs.widget,
+				widget_highlight(s.mytxtlayoutbox, theme.colors.purple),
+				space,
 				widget_highlight(volume_widget, theme.colors.green),
 				space,
 				widget_highlight(battery_widget, theme.colors.yellow),
