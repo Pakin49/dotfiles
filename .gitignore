@@ -2,3 +2,6 @@
 .config/qutebrowser/autoconfig.yml
 .config/qutebrowser/quikmarks/
 .config/mpd/database
+
+#nvim 
+.config/nvim/*.json
