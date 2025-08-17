@@ -1,9 +1,9 @@
--------------------- Neovim keymap --------------------
+------------------- Neovim keymap --------------------
 -- space bar leader key
 vim.g.mapleader = " "
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- ignore capitailzation mistakes
 vim.cmd("ca W w")
 vim.cmd("ca Q q")
@@ -46,6 +46,24 @@ vim.keymap.set("n", "<leader>tt", ":TransparentToggle<cr>", { desc = "[T]oggle [
 vim.keymap.set("n", "<leader>tp", ":lua require('nvim-autopairs').toggle()<cr>", { desc = "[T]oggle auto [P]airs" })
 
 -- Lsp
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Displays hover information about the symbol under the cursor" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "Code action" })
+-- Only create this keymap when lsp attach to buffer
+-- even this is auto command I put it here since it's done to define keymap in specific buffer
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		vim.keymap.set(
+			"n",
+			"K",
+			vim.lsp.buf.hover,
+			{ desc = "Displays hover information about the symbol under the cursor" }
+		)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to definition" })
+		vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "[G]oto Code [A]ction" })
+		vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
+		vim.keymap.set(
+			"n",
+			"grr",
+			require("telescope.builtin").lsp_references,
+			{ buffer = ev.buf, desc = "[G]oto [R]efferences" }
+		)
+	end,
+})

@@ -329,7 +329,6 @@ local function update_txt_layoutbox(s)
 	s.mytxtlayoutbox:set_markup(markup.font(theme.font, txt_l))
 end
 function theme.at_screen_connect(s)
-
 	-- Tags
 	awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
 
