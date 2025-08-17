@@ -53,7 +53,7 @@ alias cd=cd_ls
 
 # ------------ Bat : better cat------------
 alias cat='bat'
-export BAT_THEME=tokyonight_night
+export BAT_THEME=OneHalfDark
 
 # ------------ History ------------
 HISTSIZE=3000

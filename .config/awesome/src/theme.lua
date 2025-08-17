@@ -12,40 +12,16 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local arch_blue = "#1793d1" -- Arch Linux blue
 local arch_grey = "#2f2f2f" -- dark grey
 
--- colors inspired by Tokyonight theme
-colors = {
-	fg = "#ffffff", --"#a9b1d6", -- editor foreground
-	fg_light = "#c0caf5", -- variables, class names
-	bg = "#1a1b26", -- night background
-	bg_light = "#24283b", -- storm background
-	bg_lighter = "#414868", -- terminal black
+-- colors scheme : Tokyonight, One-dark
+colors = require("src.assets.colors.onedark")
 
-	red = "#f7768e", -- keywords, HTML elements
-	orange = "#ff9e64", -- number, booleans
-	yellow = "#e0af68", -- function params
-	green = "#9ece6a", -- strings, class names
-	cyan = "#7dcfff", -- markdown/code/import
-	blue = "#7aa2f7", -- function names
-	purple = "#bb9af7", -- control keywords
-
-	comment = "#565f89", -- comments
-	selection = "#414868", -- reused
-	line = "#414868", -- reused
-
-	-- extras
-	teal = "#73daca",
-	aqua = "#2ac3de",
-	pink = "#b4f9f8",
-	Hsubtext = "#9aa5ce",
-}
 local theme = {}
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/src/assets"
-theme.wallpaper = theme.dir .. "/wall.png"
 theme.font = "JetBrains Mono Nerd Font Propo 11"
 theme.desktop_font = "JetBrains Mono Nerd Font Bold 11"
 
-theme.fg_normal = colors.fg
+theme.fg_normal = "#FFFFFF"
 theme.fg_focus = colors.blue
 theme.fg_urgent = colors.red
 theme.fg_minimize = colors.comment
@@ -353,12 +329,6 @@ local function update_txt_layoutbox(s)
 	s.mytxtlayoutbox:set_markup(markup.font(theme.font, txt_l))
 end
 function theme.at_screen_connect(s)
-	-- If wallpaper is a function, call it with the screen
-	local wallpaper = theme.wallpaper
-	if type(wallpaper) == "function" then
-		wallpaper = wallpaper(s)
-	end
-	gears.wallpaper.maximized(wallpaper, s, true)
 
 	-- Tags
 	awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
@@ -483,7 +453,7 @@ function theme.at_screen_connect(s)
 		position = "bottom",
 		screen = s,
 		height = theme.wibar_height,
-		bg = theme.bg_normal .. "EE",
+		bg = theme.bg_normal .. "F2",
 		fg = theme.fg_normal,
 	})
 	-- Add widgets to the wibox

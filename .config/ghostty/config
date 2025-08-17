@@ -1,14 +1,14 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 13 
 
-theme = tokyonight
+theme = OneHalfDark
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 cursor-color = f4b278
 cursor-opacity = 0.7
 cursor-style-blink = false
 
-background-opacity = 0.85
+background-opacity = 0.87
 unfocused-split-opacity = 0.8
 
 mouse-hide-while-typing = true
@@ -16,7 +16,7 @@ mouse-scroll-multiplier = 2
 
 window-padding-balance = true 
 window-save-state = always
-#background = 111111
+background = #1f2329
 #foreground = d4be98
 
 # other
@@ -25,7 +25,7 @@ shell-integration = zsh
 window-decoration = false
 
 window-padding-x = 15
-window-padding-y = 10
+window-padding-y = 5
 window-padding-color = extend
 
 clipboard-paste-protection = false
