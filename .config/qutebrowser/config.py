@@ -8,7 +8,13 @@
 config.load_autoconfig(False)
 
 c.tabs.title.format = "{audio}{current_title}"
+c.fonts.default_size = "10pt"
+c.fonts.default_family = "JetBrains Mono Nerd Font"
+
 c.fonts.web.size.default = 20
+c.fonts.web.family.standard =  "Noto Serif"
+c.fonts.web.family.serif =   "Noto Serif"
+c.fonts.web.family.sans_serif = "Not Sans"
 
 c.url.searchengines = {
 # note - if you use duckduckgo, you can make use of its built in bangs, of which there are many! https://duckduckgo.com/bangs

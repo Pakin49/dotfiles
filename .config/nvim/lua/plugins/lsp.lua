@@ -1,30 +1,39 @@
 --For a list of all available packages, see https://mason-registry.dev/registry/list.
 local lsp_servers = {
-        "lua_ls",
-        "pyright",
-        "clangd",
-        "svlangserver"
+  lua_ls = {
+    settings = {
+      Lua = { diagnostics = { globals = { "vim" } } },
+    },
+  },
+  pyright = {},
+  clangd = {},
+  svlangserver = {},
 }
+
+--Convert back to array
+local lsp_installed_list = {}
+for name, _ in pairs(lsp_servers) do
+  table.insert(lsp_installed_list, name)
+end
 
 return {
   {
-      "mason-org/mason.nvim",
-      opts = {}
+    "mason-org/mason.nvim",
+    opts = {}
   },
   {
-      "mason-org/mason-lspconfig.nvim",
-      opts = {ensure_installed = lsp_servers},
+    "mason-org/mason-lspconfig.nvim",
+    opts = { ensure_installed = lsp_installed_list},
   },
   {
-      "neovim/nvim-lspconfig",
+    "neovim/nvim-lspconfig",
 
-      config = function()
-
-        local lspconfig = require("lspconfig")
-        for _ ,lsp in ipairs(lsp_servers) do
-		      lspconfig[lsp].setup({})
-        end
+    config = function()
+      local lspconfig = require("lspconfig")
+      for server,config in pairs(lsp_servers) do
+        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        lspconfig[server].setup(config)
       end
+    end
   }
 }
-

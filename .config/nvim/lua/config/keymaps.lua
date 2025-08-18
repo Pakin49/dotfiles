@@ -10,6 +10,10 @@ vim.cmd("ca Q q")
 vim.cmd("ca WQ wq")
 vim.cmd("ca Wq wq")
 
+vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "!![Q]uit Vim!!" })
+vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "[W]rite buffer" })
+vim.keymap.set("n", "<leader>c", ":c<cr>", { desc = "Quit without save" })
+
 -- windows
 vim.keymap.set("n", "<leader><left>", ":vertical resize +20<cr>", { desc = "" })
 vim.keymap.set("n", "<leader><right>", ":vertical resize -20<cr>", { desc = "" })
@@ -17,10 +21,10 @@ vim.keymap.set("n", "<leader><up>", ":resize +10<cr>", { desc = "" })
 vim.keymap.set("n", "<leader><down>", ":resize -10<cr>", { desc = "" })
 
 -- buffers
-vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "" })
-vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "" })
-vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "" })
-vim.keymap.set("n", "<leader>ml", ":b#<cr>", { desc = "" })
+vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "[N]ext Buffer" })
+vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "[P]revious Buffer" })
+vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>ml", ":b#<cr>", { desc = "Previous Buffer" })
 
 -------------------- Plugins keymap --------------------
 -- telescope
@@ -49,21 +53,26 @@ vim.keymap.set("n", "<leader>tp", ":lua require('nvim-autopairs').toggle()<cr>",
 -- Only create this keymap when lsp attach to buffer
 -- even this is auto command I put it here since it's done to define keymap in specific buffer
 vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(ev)
-		vim.keymap.set(
-			"n",
-			"K",
-			vim.lsp.buf.hover,
-			{ desc = "Displays hover information about the symbol under the cursor" }
-		)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to definition" })
-		vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "[G]oto Code [A]ction" })
-		vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
-		vim.keymap.set(
-			"n",
-			"grr",
-			require("telescope.builtin").lsp_references,
-			{ buffer = ev.buf, desc = "[G]oto [R]efferences" }
-		)
-	end,
+  callback = function(ev)
+    vim.keymap.set(
+      "n",
+      "K",
+      vim.lsp.buf.hover,
+      { desc = "Displays hover information about the symbol under the cursor" }
+    )
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to definition" })
+    vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "[G]oto Code [A]ction" })
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
+    vim.keymap.set(
+      "n",
+      "grr",
+      require("telescope.builtin").lsp_references,
+      { buffer = ev.buf, desc = "[G]oto [R]efferences" }
+    )
+  end,
 })
+
+-- auto formatting
+vim.keymap.set("", "<leader>f", function()
+  require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "[F]ormat Buffer" })

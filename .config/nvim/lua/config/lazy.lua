@@ -27,5 +27,4 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.nvim-neo-tree"),
 	require("plugins.git-signs"),
-	require("plugins.bufferline"),
 })

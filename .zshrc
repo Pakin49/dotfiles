@@ -1,14 +1,12 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="cloud"  #powerlevel10k/powerlevel10k
-#
-DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -30,7 +28,8 @@ export PATH="$PATH:$HOME/.local/bin"
 # ------------ Neovim ------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias vim='nvim'
-alias vfzf='nvim $(fzf)'
+alias v='nvim'
+alias vf='nvim $(fzf)'
 export SUDO_EDITOR=/usr/bin/nvim
 export EDITOR=/usr/bin/nvim
 
@@ -41,8 +40,9 @@ eval "$(fzf --zsh)"
 alias fzf='fzf --preview "bat --color=always --style=full --line-range=:500 {}"'
 
 # ------------ Eza : better ls ------------
-export EZA_CONFIG_DIR="$HOME/.config/eza"
-alias ls='eza --long --color=always --icons=always'
+#export EZA_CONFIG_DIR="$HOME/.config/eza"
+#alias ls='eza --long --color=always --icons=always'
+#DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
 
 # ------------ Zoxide: better cd------------
 eval "$(zoxide init zsh)" #"--cmd cd" add this before zsh to remap cd to z
@@ -52,7 +52,7 @@ cd_ls(){
 alias cd=cd_ls
 
 # ------------ Bat : better cat------------
-alias cat='bat'
+#alias cat='bat'
 export BAT_THEME=OneHalfDark
 
 # ------------ History ------------
@@ -69,8 +69,8 @@ setopt hist_find_no_dups
 # ------------ Custom alias ------------
 alias ll='ls -al'
 alias dot='z ~/.dotfiles && ll'
-alias data='cd ~/data'
-export TERM=xterm-256color
+alias conf='z ~/.dotfiles/.config && ll'
+export TERM=xterm-256color #fix erros when ssh to bandit server 
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 
 # ------------ Starship ------------
