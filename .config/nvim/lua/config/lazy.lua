@@ -18,13 +18,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	require("plugins.onedark"),
 	require("plugins.lsp"),
-  require("plugins.transparent"),
-	require("plugins.whichkey"),
 	require("plugins.telescope"),
+	require("plugins.whichkey"),
   require("plugins.autopairs"),
   require("plugins.autoformat"),
   require("plugins.autocomplete"),
 	require("plugins.treesitter"),
 	require("plugins.nvim-neo-tree"),
 	require("plugins.git-signs"),
+  require("plugins.bufferline")
 })

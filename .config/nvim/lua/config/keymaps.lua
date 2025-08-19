@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set(
       "n",
       "grr",
-      require("telescope.builtin").lsp_references,
+      builtin.lsp_references,
       { buffer = ev.buf, desc = "[G]oto [R]efferences" }
     )
   end,
