@@ -484,7 +484,7 @@ function theme.at_screen_connect(s)
 				space,
 				widget_highlight(battery_widget, theme.colors.yellow),
 				space,
-				widget_highlight(clockwidget, theme.colors.cyan),
+				widget_highlight(clockwidget, theme.colors.blue),
 				space,
 				space,
 			},
