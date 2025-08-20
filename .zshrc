@@ -40,9 +40,9 @@ eval "$(fzf --zsh)"
 alias fzf='fzf --preview "bat --color=always --style=full --line-range=:500 {}"'
 
 # ------------ Eza : better ls ------------
-#export EZA_CONFIG_DIR="$HOME/.config/eza"
-#alias ls='eza --long --color=always --icons=always'
-#DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+alias ls='eza --long --color=always --icons=always'
+DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
 
 # ------------ Zoxide: better cd------------
 eval "$(zoxide init zsh)" #"--cmd cd" add this before zsh to remap cd to z
