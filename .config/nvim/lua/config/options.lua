@@ -15,14 +15,17 @@ vim.api.nvim_set_hl(0,"Normal",{bg = "none"})
 vim.api.nvim_set_hl(0,"NormalNC",{bg = "none"})
 vim.api.nvim_set_hl(0,"EndOfBuffer",{bg = "none"})
 
--- Indentatios
-vim.opt.expandtab = true -- convert tabs to spaces
-vim.opt.tabstop = 2      -- a real tab is 2 spaces
-vim.opt.softtabstop = 2  -- editing uses 2 spaces
-vim.opt.shiftwidth = 2   -- auto-indent uses 2 spaces
+-- Indentation
+vim.opt.tabstop = 2                                -- Tab width
+vim.opt.shiftwidth = 2                             -- Indent width
+vim.opt.softtabstop = 2                            -- Soft tab stop
+vim.opt.expandtab = true                           -- Use spaces instead of tabs
+vim.opt.smartindent = true                         -- Smart auto-indenting
+vim.opt.autoindent = true                          -- Copy indent from current line
 
+--vim.opts.rocks.enabled = false
 -- Bufferline still not work
-vim.opt.showtabline = 2
+--vim.opt.showtabline = 2
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'

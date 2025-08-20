@@ -27,7 +27,6 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-
     config = function()
       local lspconfig = require("lspconfig")
       for server,config in pairs(lsp_servers) do
