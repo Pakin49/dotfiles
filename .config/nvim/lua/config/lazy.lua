@@ -16,7 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	require("plugins.onedark"),
+  require("plugins.onedark"),
 	require("plugins.lsp"),
 	require("plugins.telescope"),
 	require("plugins.whichkey"),
@@ -24,7 +24,7 @@ require("lazy").setup({
   require("plugins.autoformat"),
   require("plugins.autocomplete"),
 	require("plugins.treesitter"),
-	require("plugins.nvim-neo-tree"),
 	require("plugins.git-signs"),
   require("plugins.bufferline"),
+  require("plugins.tmux")
 })

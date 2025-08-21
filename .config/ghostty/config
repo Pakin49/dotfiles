@@ -9,14 +9,15 @@ palette = 8=#707682
 # Change to match the Darkder variation from nvim-onedark
 # https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/palette.lua
 background = 1f2329
+#background = 000000
 
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
-#cursor-color = f4b278
+cursor-color = f4b278
 cursor-opacity = 0.7
 cursor-style-blink = false
 
-background-opacity = 0.85
+background-opacity = 0.9
 unfocused-split-opacity = 0.8
 
 mouse-hide-while-typing = true
@@ -36,22 +37,7 @@ window-padding-y = 5
 window-padding-color = extend
 
 clipboard-paste-protection = false
-
 confirm-close-surface = false
 
-#keybinds
-keybind = ctrl+shift+l=new_split:right
-keybind = ctrl+shift+j=new_split:down
-keybind = ctrl+shift+k=new_split:up
-keybind = ctrl+shift+h=new_split:left
-
-keybind = ctrl+l=goto_split:right
-keybind = ctrl+j=goto_split:down
-keybind = ctrl+k=goto_split:up
-keybind = ctrl+h=goto_split:left
-
-keybind = ctrl+alt+l=resize_split:right,10
-keybind = ctrl+alt+j=resize_split:down,10
-keybind = ctrl+alt+k=resize_split:up,10
-keybind = ctrl+alt+h=resize_split:left,10
-keybind = ctrl+alt+shift+l=clear_screen
+#fix erros when ssh to bandit server 
+term=xterm-256color 

@@ -11,6 +11,7 @@ vim.cmd("ca Wq wq")
 
 vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "[Q]uit Vim!!" })
 vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "[W]rite buffer" })
+vim.keymap.set("n", "<leader>wq", ":wq<cr>", { desc = "[W]rite [Q]uit" })
 vim.keymap.set("n", "<leader>c", ":q!<cr>", { desc = "Quit without save" })
 
 -- windows
@@ -26,8 +27,8 @@ vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete Buffer" })
 vim.keymap.set("n", "<leader>bl", ":b#<cr>", { desc = "[Last] Open Buffer" })
 
 --------------------  Transparency --------------------
-local transparent =require("config.custom.transparent")
-vim.keymap.set("n", "<leader>tc", transparent.toggle_transparent,{desc = "[Toggle] [C}olors"})
+local transparent = require("config.custom.transparent")
+vim.keymap.set("n", "<leader>tc", transparent.toggle_transparent, { desc = "[Toggle] [C}olors" })
 
 -------------------- Floating terminal --------------------
 
@@ -60,8 +61,6 @@ vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagno
 vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind Recent Files ("." for repeat)' })
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
--- tree
-vim.keymap.set("n", "<leader>e", ":Neotree filesystem toggle left<cr>", { desc = "File [E]xplorer" })
 
 --Autopairs
 vim.keymap.set("n", "<leader>tp", ":lua require('nvim-autopairs').toggle()<cr>", { desc = "[T]oggle auto [P]airs" })
@@ -88,3 +87,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.keymap.set("", "<leader>bf", function()
 	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "[B]uffer [F]ormat" })
+
+-- tmux
+vim.keymap.set("n", "<C-h>", ":TmuxNavigateLeft<CR>")
+vim.keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>")
+vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>")
+vim.keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>")
+vim.keymap.set("n", "<C-\\>", ":TmuxNavigatePrevious<CR>")

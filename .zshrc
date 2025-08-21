@@ -18,7 +18,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-interactive-cd zsh-vi-mode)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-interactive-cd)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -40,9 +40,9 @@ eval "$(fzf --zsh)"
 alias fzf='fzf --preview "bat --color=always --style=full --line-range=:500 {}"'
 
 # ------------ Eza : better ls ------------
-export EZA_CONFIG_DIR="$HOME/.config/eza"
-alias ls='eza --long --color=always --icons=always'
-DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
+#export EZA_CONFIG_DIR="$HOME/.config/eza"
+#alias ls='eza --long --color=always --icons=always'
+#DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
 
 # ------------ Zoxide: better cd------------
 eval "$(zoxide init zsh)" #"--cmd cd" add this before zsh to remap cd to z
@@ -70,7 +70,6 @@ setopt hist_find_no_dups
 alias ll='ls -al'
 alias dot='z ~/.dotfiles && ll'
 alias conf='z ~/.dotfiles/.config && ll'
-export TERM=xterm-256color #fix erros when ssh to bandit server 
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 
 # ------------ Starship ------------
@@ -85,4 +84,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+#script
 alias mimi="source $HOME/scripts/mimi.sh"
+alias synce-git="source $HOME/scripts/synce-git.sh"
