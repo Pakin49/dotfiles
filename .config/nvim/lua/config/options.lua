@@ -10,10 +10,6 @@ vim.opt.sidescrolloff = 10
 -- Color scheme
 vim.opt.termguicolors = true
 require("onedark").load() -- set theme
--- Add transparency
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 
 -- Indentation
 vim.opt.tabstop = 2 -- Tab width

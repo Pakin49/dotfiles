@@ -25,15 +25,19 @@ vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "[P]revious Buffer" })
 vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete Buffer" })
 vim.keymap.set("n", "<leader>bl", ":b#<cr>", { desc = "[Last] Open Buffer" })
 
+--------------------  Transparency --------------------
+local transparent =require("config.custom.transparent")
+vim.keymap.set("n", "<leader>tc", transparent.toggle_transparent,{desc = "[Toggle] [C}olors"})
+
 -------------------- Floating terminal --------------------
 
 local term = require("config.custom.terminal")
 
 vim.keymap.set(
 	"n",
-	"<leader>t",
+	"<leader>tt",
 	term.FloatingTerminal,
-	{ noremap = true, silent = true, desc = "Toggle floating terminal" }
+	{ noremap = true, silent = true, desc = "[T]oggle floating [T]erminal" }
 )
 vim.keymap.set("t", "<Esc>", function()
 	local ts = term.terminal_state

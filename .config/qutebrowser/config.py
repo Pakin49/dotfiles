@@ -83,7 +83,6 @@ c.content.blocking.adblock.lists = [
 #                                                          #
 ############################################################
 config.bind('<space>d', 'config-cycle colors.webpage.darkmode.enabled true false')
-config.bind('<space>pw', 'spawn --userscript qute-bitwarden')
 config.bind('cm','clear-messages')
 
 ############################################################
