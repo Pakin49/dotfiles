@@ -6,10 +6,15 @@ vim.opt.cursorline = true
 vim.opt.wrap = false
 vim.opt.sidescroll = 8
 vim.opt.sidescrolloff = 10
+-- hide the bottom part of neovim
+vim.opt.laststatus = 0
+vim.opt.cmdheight = 0
 
 -- Color scheme
 vim.opt.termguicolors = true
-require("onedark").load() -- set theme
+--require("onedark").load() -- set theme
+vim.cmd("colorscheme onedark_dark")
+
 
 -- Indentation
 vim.opt.tabstop = 2 -- Tab width
@@ -20,11 +25,9 @@ vim.opt.smartindent = true -- Smart auto-indenting
 vim.opt.autoindent = true -- Copy indent from current line
 
 --vim.opt.rocks.enabled = false
-vim.opt.laststatus=0
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
--- Set vim so that they text don't push to new line when there is not enough space
 -- Save undo history
 vim.opt.undofile = true
 

@@ -4,6 +4,8 @@ local m = {}
 local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
 local normal_nc = vim.api.nvim_get_hl(0, { name = "NormalNC" })
 local end_of_buffer = vim.api.nvim_get_hl(0, { name = "EndOfBuffer" })
+local line_nr = vim.api.nvim_get_hl(0, { name = "LineNr" })
+local sign_column = vim.api.nvim_get_hl(0, { name = "SignColumn" })
 
 local home_dir = os.getenv("HOME")
 local file_path = home_dir .. "/.local/state/nvim/custom/transparent.txt"
@@ -30,16 +32,20 @@ end
 
 function m.toggle_transparent()
 	if m.transparents_enabled then
-		vim.api.nvim_set_hl(0, "Normal", { bg = normal.bg })
-		vim.api.nvim_set_hl(0, "NormalNC", { bg = normal_nc.bg })
-		vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = end_of_buffer.bg })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = normal.bg }) 
+		-- Restore original highlight groups completely
+		vim.api.nvim_set_hl(0, "Normal", normal)
+		vim.api.nvim_set_hl(0, "NormalNC", normal_nc)
+		vim.api.nvim_set_hl(0, "EndOfBuffer", end_of_buffer)
+		vim.api.nvim_set_hl(0, "LineNr", line_nr)
+		vim.api.nvim_set_hl(0, "SignColumn", sign_column)
 		m.transparents_enabled = false
 	else
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-		vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none"}) 
+		-- Make transparent while preserving foreground colors
+		vim.api.nvim_set_hl(0, "Normal", vim.tbl_extend("force", normal, { bg = "none" }))
+		vim.api.nvim_set_hl(0, "NormalNC", vim.tbl_extend("force", normal_nc, { bg = "none" }))
+		vim.api.nvim_set_hl(0, "EndOfBuffer", vim.tbl_extend("force", end_of_buffer, { bg = "none" }))
+		vim.api.nvim_set_hl(0, "LineNr", vim.tbl_extend("force", line_nr, { bg = "none" }))
+		vim.api.nvim_set_hl(0, "SignColumn", vim.tbl_extend("force", sign_column, { bg = "none" }))
 		m.transparents_enabled = true
 	end
 	save_transparent_state()
@@ -51,8 +57,9 @@ if m.transparents_enabled == true then
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 	vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none"}) 
+	vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 	m.transparents_enabled = true
 end
-vim.api.nvim_set_hl(0, "TermCursor", { bg = "none" })
+
 return m
