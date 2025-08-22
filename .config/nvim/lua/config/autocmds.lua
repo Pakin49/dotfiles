@@ -36,13 +36,3 @@ vim.api.nvim_create_autocmd('LspDetach', {
     end
   end,
 })
-
--- Try to create auto command to open telescope find file when no buffer is chosen
-vim.api.nvim_create_autocmd('VimEnter', {
-  group = vim.api.nvim_create_augroup('MyStartupEvents', { clear = true }),
-  callback = function()
-    if vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) == '' then
-      require('telescope.builtin').find_files()
-    end
-  end,
-})--]]

@@ -12,8 +12,8 @@ vim.opt.cmdheight = 0
 
 -- Color scheme
 vim.opt.termguicolors = true
---require("onedark").load() -- set theme
-vim.cmd("colorscheme onedark_dark")
+require("onedark").load() -- set theme
+--vim.cmd("colorscheme onedark_dark")
 
 
 -- Indentation

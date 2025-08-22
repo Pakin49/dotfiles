@@ -6,8 +6,10 @@ font-size = 13
 theme = OneHalfDark
 palette = 0=#707682
 palette = 8=#707682
-# Change to match the Darkder variation from nvim-onedark
-# https://github.com/navarasu/onedark.nvim/blob/master/lua/onedark/palette.lua
+
+#fix erros when ssh to bandit server 
+term=xterm-256color 
+
 #background = 1f2329
 background = 000000
 
@@ -39,5 +41,3 @@ window-padding-color = extend
 clipboard-paste-protection = false
 confirm-close-surface = false
 
-#fix erros when ssh to bandit server 
-term=xterm-256color 

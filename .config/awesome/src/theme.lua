@@ -26,7 +26,7 @@ theme.fg_focus = colors.blue
 theme.fg_urgent = colors.red
 theme.fg_minimize = colors.comment
 -- Backgrounds
-theme.bg_normal = colors.bg_light
+theme.bg_normal = colors.bg
 theme.bg_focus = colors.bg_lighter
 theme.bg_urgent = colors.bg
 theme.bg_minimize = colors.selection
@@ -460,10 +460,10 @@ function theme.at_screen_connect(s)
 		layout = wibox.layout.align.horizontal,
 		expand = "outside",
 		{
-			widget_highlight(wibox.container.margin(arch_icon, dpi(5), dpi(5), 0, 0)),
+			widget_highlight(wibox.container.margin(arch_icon, dpi(5), dpi(40), 0, 0)),
 			mpd_widget,
-			space,
-			expand = "outside",
+			wibox.container.margin(space,dpi(60),0,0,0),
+			expand = "inside",
 			layout = wibox.layout.align.horizontal,
 		},
 		s.mytaglist,

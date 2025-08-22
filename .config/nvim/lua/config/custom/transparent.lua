@@ -54,12 +54,11 @@ end
 -- this run when neovim start
 get_transparent_state()
 if m.transparents_enabled == true then
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-	vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-	vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-	m.transparents_enabled = true
+	vim.api.nvim_set_hl(0, "Normal", vim.tbl_extend("force", normal, { bg = "none" }))
+	vim.api.nvim_set_hl(0, "NormalNC", vim.tbl_extend("force", normal_nc, { bg = "none" }))
+	vim.api.nvim_set_hl(0, "EndOfBuffer", vim.tbl_extend("force", end_of_buffer, { bg = "none" }))
+	vim.api.nvim_set_hl(0, "LineNr", vim.tbl_extend("force", line_nr, { bg = "none" }))
+	vim.api.nvim_set_hl(0, "SignColumn", vim.tbl_extend("force", sign_column, { bg = "none" }))
 end
 
 return m
