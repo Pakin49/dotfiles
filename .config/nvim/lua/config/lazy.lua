@@ -25,6 +25,6 @@ require("lazy").setup({
 	require("plugins.autocomplete"),
 	require("plugins.treesitter"),
 	require("plugins.git-signs"),
-  require("plugins.bufferline"),
+  --require("plugins.bufferline"),
 	require("plugins.tmux"),
 })

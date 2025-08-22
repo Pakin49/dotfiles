@@ -15,11 +15,12 @@ vim.keymap.set("n", "<leader>wq", ":wq<cr>", { desc = "[W]rite [Q]uit" })
 vim.keymap.set("n", "<leader>c", ":q!<cr>", { desc = "Quit without save" })
 
 -- windows
-vim.keymap.set("n", "<leader>sk", ":vertical resize +20<cr>", { desc = "[S]plit vertical resize +20" })
-vim.keymap.set("n", "<leader>sj", ":vertical resize -20<cr>", { desc = "[S]plit vertical resize -20" })
-vim.keymap.set("n", "<leader>sl", ":resize +10<cr>", { desc = "[S]plit horizontal resize +10" })
-vim.keymap.set("n", "<leader>sh", ":resize -10<cr>", { desc = "[S]plit horizontal resize -10" })
-vim.keymap.set("n", "<leader>sv>", ":verical split<cr>", { desc = "[S]plit [V]ertically " })
+vim.keymap.set("n", "<leader>sl", ":vertical resize +20<cr>", { desc = "[S]plit vertical resize +20" })
+vim.keymap.set("n", "<leader>sh", ":vertical resize -20<cr>", { desc = "[S]plit vertical resize -20" })
+vim.keymap.set("n", "<leader>sk", ":resize +10<cr>", { desc = "[S]plit horizontal resize +10" })
+vim.keymap.set("n", "<leader>sj", ":resize -10<cr>", { desc = "[S]plit horizontal resize -10" })
+vim.keymap.set("n", "<leader>sv", ":vertical split<cr>", { desc = "[S]plit [V]ertically " })
+vim.keymap.set("n", "<leader>ss", ":split<cr>", { desc = "[S]plit Horontally" })
 vim.keymap.set("n", "<leader>ss", ":split<cr>", { desc = "[S]plit Horontally" })
 
 -- buffers

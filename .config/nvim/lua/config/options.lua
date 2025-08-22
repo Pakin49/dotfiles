@@ -7,8 +7,8 @@ vim.opt.wrap = false
 vim.opt.sidescroll = 8
 vim.opt.sidescrolloff = 10
 -- hide the bottom part of neovim
-vim.opt.laststatus = 0
-vim.opt.cmdheight = 0
+--vim.opt.laststatus = 0
+--vim.opt.cmdheight = 0
 
 -- Color scheme
 vim.opt.termguicolors = true

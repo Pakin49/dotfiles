@@ -35,7 +35,7 @@ shell-integration = zsh
 window-decoration = false
 
 window-padding-x = 15
-window-padding-y = 5
+#window-padding-y = 5
 window-padding-color = extend
 
 clipboard-paste-protection = false
