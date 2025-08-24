@@ -45,6 +45,7 @@ end)
 
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
+vim.opt.winborder = "rounded"
 vim.diagnostic.config({
 	severity_sort = true,
 	float = { border = "rounded", source = "if_many" },
