@@ -17,29 +17,33 @@ local lsp_servers = {
 	svlangserver = {},
 }
 
---Convert back to array
-local lsp_installed_list = {}
-for name, _ in pairs(lsp_servers) do
-	table.insert(lsp_installed_list, name)
-end
+-- Convert to array for ensure_installed
+local ensure_installed = vim.tbl_keys(lsp_servers)
 
 return {
 	{
-		"mason-org/mason.nvim",
-		opts = {},
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		opts = { ensure_installed = lsp_installed_list },
-	},
-	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ "williamboman/mason.nvim", opts = {} },
+			"williamboman/mason-lspconfig.nvim",
+			"saghen/blink.cmp",
+		},
 		config = function()
-			local lspconfig = require("lspconfig")
-			for server, config in pairs(lsp_servers) do
-				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-				lspconfig[server].setup(config)
-			end
+			-- Get capabilities from blink.cmp
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			-- Setup mason-lspconfig
+			require("mason-lspconfig").setup({
+				ensure_installed = ensure_installed, -- Fixed: use the array
+				automatic_installation = false,
+				handlers = {
+					-- Default handler for all servers
+					function(server_name)
+						local server = lsp_servers[server_name] or {} -- Fixed: use lsp_servers
+						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+						require("lspconfig")[server_name].setup(server)
+					end,
+				},
+			})
 		end,
 	},
 }

@@ -12,9 +12,6 @@ vim.opt.sidescrolloff = 10
 
 -- Color scheme
 vim.opt.termguicolors = true
-require("onedark").load() -- set theme
---vim.cmd("colorscheme onedark_dark")
-
 
 -- Indentation
 vim.opt.tabstop = 2 -- Tab width
@@ -39,6 +36,7 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
 vim.g.have_nerd_font = true
 
+-- Custom status line
 -- Synce neovim clipboard with OS
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"

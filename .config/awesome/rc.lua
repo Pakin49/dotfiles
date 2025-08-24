@@ -102,6 +102,7 @@ awful.util.tasklist_buttons = mytable.join(
 )
 
 beautiful.init(string.format("%s/.config/awesome/src/theme.lua", os.getenv("HOME")))
+require("src.wibar")
 
 -- }}}
 

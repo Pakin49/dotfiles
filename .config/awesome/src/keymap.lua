@@ -211,7 +211,7 @@ keys.globalkeys = mytable.join(
 	--]]
 	-- ALSA volume control
 	awful.key({ "Any" }, "XF86AudioRaiseVolume", function()
-		os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+		os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel,awful.util.terminal))
 		beautiful.volume.update()
 	end, { description = "volume up", group = "hotkeys" }),
 

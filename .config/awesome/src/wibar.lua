@@ -3,211 +3,65 @@ local lain = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
+local naughty = require("naughty")
+local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local theme = require("src.theme")
-
+local beautiful = require("beautiful")
 local markup = lain.util.markup
 
-local space = wibox.widget.textbox("  ")
+local myshape = function(cr, width, height)
+	gears.shape.rounded_rect(cr, width, height, 2)
+end
 
 local widget_highlight = function(wid, bg)
-	local bg_color = bg or theme.bg_normal .. "DD"
+	local default_bg = theme.bg_normal .. "AA"
+	local bg_color = bg or default_bg
 	local margin = wibox.container.margin(wid, dpi(6), dpi(6), 0, 0)
 	local background = wibox.container.background(margin, bg_color, myshape)
-	if bg_color ~= theme.bg_normal .. "DD" then
+	if bg_color ~= default_bg then
 		local fg_color = theme.colors.bg
 		background.fg = fg_color
 	end
 	return wibox.container.margin(background, dpi(4), dpi(4), dpi(3), dpi(3))
 end
 
-myshape = function(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 4)
+--------------------- Load widgets Module ---------------------
+-- List of widgets in the wibar
+local widgets_dir = "src.widgets."
+beautiful.clockwidget = require(widgets_dir .. "textclock")
+beautiful.mpd_widget = require(widgets_dir .. "mpd")
+beautiful.volume_widget = require(widgets_dir .. "volume")
+beautiful.keyboardwidget = require(widgets_dir .. "keyboard_layout")
+-- Widgets that are not in the wibar
+beautiful.cal = require(widgets_dir .. "calendar")
+
+-- Unused widgets
+-- local systray = wibox.widget.systray()
+-- local net = require(widgets_dir .. "net")
+-- local fs = require("widgets_dir .. "file_system"")
+
+local awesome_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", "  "))
+local arch_icon =
+	wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", markup.fg.color(theme.arch_blue, "   ")))
+
+--------------------- Per-screen widgets ---------------------
+local function update_txt_layoutbox(s)
+	-- Writes a string representation of the current layout in a textbox widget
+	local txt_l = theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))] or ""
+	s.mytxtlayoutbox:set_markup(markup.font(theme.font, txt_l))
 end
 
--- Textclock
-local clockicon = wibox.widget.textbox(markup.font(theme.font, " 󰥔 "))
-local clock = awful.widget.watch("date +'%R'", 60, function(widget, stdout)
-	widget:set_markup(" " .. markup.font(theme.font, stdout))
-end)
-local clockwidget = wibox.widget({
-	clockicon,
-	clock,
-	space,
-	layout = wibox.layout.fixed.horizontal,
-})
+function beautiful.at_screen_connect(s)
 
--- Calendar
-theme.cal = lain.widget.cal({
-	attach_to = { clockwidget },
-	notification_preset = {
-		fg = theme.fg_normal,
-		bg = theme.bg_normal,
-		position = "top_right",
-		font = theme.font,
-	},
-})
-
---[[MPD
-theme.mpd = lain.widget.mpd({
-	settings = function()
-		mpd_notification_preset.fg = white
-
-		artist = mpd_now.artist .. " "
-		title = mpd_now.title .. " "
-
-		if mpd_now.state == "pause" then
-			artist = "mpd "
-			title = "paused "
-		elseif mpd_now.state == "stop" then
-			artist = ""
-			title = ""
-		end
-
-		widget:set_markup(markup.font(theme.font, markup(gray, artist) .. markup(white, title)))
-	end,
-})
--- /home fs
--- [[ commented because it needs Gio/Glib >= 2.54
-theme.fs = lain.widget.fs({
-    notification_preset = { fg = white, bg = theme.bg_normal, font = "Terminus 10.5" },
-    settings  = function()
-        local fs_header, fs_p = "", ""
-
-        if fs_now["/home"].percentage >= 90 then
-            fs_header = " Hdd "
-            fs_p      = fs_now["/home"].percentage
-        end
-
-        widget:set_markup(markup.font(theme.font, markup(gray, fs_header) .. markup(white, fs_p)))
-    end
-})
---]]
--- Simple volume widget (icon + text)
-local volume_icon = wibox.widget.textbox()
-local volume_text = wibox.widget.textbox()
-
-theme.volume = lain.widget.alsa({
-	settings = function()
-		local vol_icon = "  "
-		if volume_now.status == "off" then
-			vol_icon = "  "
-		elseif tonumber(volume_now.level) <= 30 then
-			vol_icon = "  "
-		end
-
-		volume_icon:set_markup(markup.font(theme.font, vol_icon))
-		volume_text:set_markup(markup.font(theme.font, volume_now.level .. "% "))
-	end,
-})
--- Add click functionality
-local volume_widget = wibox.widget({
-	volume_icon,
-	volume_text,
-	layout = wibox.layout.fixed.horizontal,
-})
-
-volume_widget:buttons(my_table.join(
-	awful.button({}, 1, function()
-		awful.spawn(string.format("%s -e alsamixer", terminal))
-	end),
-	awful.button({}, 3, function()
-		os.execute("amixer -q set Master toggle")
-		theme.volume.update()
-	end),
-	awful.button({}, 4, function()
-		os.execute("amixer -q set Master 5%+")
-		theme.volume.update()
-	end),
-	awful.button({}, 5, function()
-		os.execute("amixer -q set Master 5%-")
-		theme.volume.update()
+	-- Textual layoutbox
+	s.mytxtlayoutbox = wibox.widget.textbox(theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))])
+	awful.tag.attached_connect_signal(s, "property::selected", function()
+		update_txt_layoutbox(s)
 	end)
-)) -- Weather
---[[ to be set before use
-theme.weather = lain.widget.weather({
-    --APPID =
-    city_id = 2643743, -- placeholder (London)
-    notification_preset = { font = theme.font, fg = white }
-})
---]]
-
--- Systemtray
-local systray = wibox.widget.systray()
-
--- Keyboard map indicator and switcher
-local mykeyboardlayout = awful.widget.keyboardlayout()
-mykeyboardlayout.widget.font = theme.font
-local keyboard_icon = wibox.widget.textbox(markup.font(theme.font, " 󰌌"))
-local keyboardwidget = wibox.widget({
-	keyboard_icon,
-	mykeyboardlayout,
-	layout = wibox.layout.fixed.horizontal,
-})
-keyboardwidget = widget_highlight(keyboardwidget, theme.colors.red)
-
--- Coretemp
-local tempicon = wibox.widget.imagebox(theme.widget_temp)
-local temp = lain.widget.temp({
-	settings = function()
-		widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
-	end,
-})
-
--- Net
-local neticon = wibox.widget.imagebox(theme.widget_net)
-local net = lain.widget.net({
-	settings = function()
-		widget:set_markup(
-			markup.font(
-				theme.font,
-				markup("#7AC82E", " " .. string.format("%06.1f", net_now.received))
-					.. " "
-					.. markup("#46A8C3", " " .. string.format("%06.1f", net_now.sent) .. " ")
-			)
-		)
-	end,
-})
-
--- Mail IMAP check
---local mailicon = wibox.widget.texbox("  ")
---[[ commented because it needs to be set before use
-mailicon:buttons(my_table.join(awful.button({ }, 1, function () awful.spawn(mail) end)))
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = ",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        if mailcount > 0 then
-            widget:set_markup(markup.font(theme.font, " " .. mailcount .. " "))
-            mailicon:set_image(theme.widget_mail_on)
-        else
-            widget:set_text("")
-            mailicon:set_image(theme.widget_mail)
-        end
-    end
-})
---]]
--- Separators
-local awesome_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", "  "))
-local arch_icon = wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 17", markup.fg.color(arch_blue, "   ")))
-
-function theme.at_screen_connect(s)
-	-- If wallpaper is a function, call it with the screen
-	local wallpaper = theme.wallpaper
-	if type(wallpaper) == "function" then
-		wallpaper = wallpaper(s)
-	end
-	gears.wallpaper.maximized(wallpaper, s, true)
-
-	-- Tags
-	awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
-
-	-- Create a promptbox for each screen
-	--s.mypromptbox = awful.widget.prompt()
-
-	s.layoutbox = awful.widget.layoutbox(s)
-	s.layoutbox:buttons(my_table.join(
+	awful.tag.attached_connect_signal(s, "property::layout", function()
+		update_txt_layoutbox(s)
+	end)
+	s.mytxtlayoutbox:buttons(my_table.join(
 		awful.button({}, 1, function()
 			awful.layout.inc(1)
 		end),
@@ -224,7 +78,13 @@ function theme.at_screen_connect(s)
 			awful.layout.inc(-1)
 		end)
 	))
+	-- Tags
+	awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
 
+	-- Create a promptbox for each screen
+	--s.mypromptbox = awful.widget.prompt()
+
+	-- Textual layoutbox
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
 		screen = s,
@@ -314,35 +174,46 @@ function theme.at_screen_connect(s)
 	})
 
 	s.mywibar = awful.wibar({
-		position = "top",
+		position = "bottom",
 		screen = s,
-		height = theme.wibox_height + 2 * theme.wibox_offset_y,
-		bg = theme.bg_normal .. "EE",
+		height = theme.wibar_height,
+		bg = theme.bg_normal .. "F2",
 		fg = theme.fg_normal,
 	})
 	-- Add widgets to the wibox
 	s.mywibar:setup({
 		layout = wibox.layout.align.horizontal,
-		expand = "none",
+		expand = "outside",
 		{
-			wibox.container.margin(arch_icon, dpi(5), dpi(5), 0, 0),
-			layout = wibox.layout.fixed.horizontal,
+			widget_highlight(wibox.container.margin(arch_icon, dpi(5), dpi(20), 0, 0)),
+			beautiful.mpd_widget,
+			wibox.container.margin(theme.space, dpi(60), 0, 0, 0),
+			expand = "inside",
+			layout = wibox.layout.align.horizontal,
 		},
 		s.mytaglist,
 		{
-			layout = wibox.layout.fixed.horizontal,
-			keyboardwidget,
-			space,
-			--theme.mpd.widget,
-			--theme.mail.widget,
-			--theme.fs.widget,
-			widget_highlight(volume_widget, theme.colors.green),
-			space,
-			widget_highlight(battery_widget, theme.colors.yellow),
-			space,
-			widget_highlight(clockwidget, theme.colors.cyan),
-			space,
-			space,
+			layout = wibox.layout.align.horizontal,
+			expand = "inside",
+			nil,
+			nil,
+			{
+				layout = wibox.layout.fixed.horizontal,
+				widget_highlight(beautiful.keyboardwidget, theme.colors.red),
+				theme.space,
+				--theme.mail.widget,
+				widget_highlight(s.mytxtlayoutbox, theme.colors.purple),
+				theme.space,
+				widget_highlight(beautiful.volume_widget, theme.colors.green),
+				theme.space,
+				widget_highlight(battery_widget, theme.colors.yellow),
+				theme.space,
+				widget_highlight(beautiful.clockwidget, theme.colors.blue),
+				theme.space,
+				theme.space,
+			},
 		},
 	}) --]]
 end
+
+return theme
