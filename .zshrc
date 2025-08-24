@@ -28,8 +28,6 @@ export PATH="$PATH:$HOME/.local/bin"
 # ------------ Neovim ------------
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias vim='nvim'
-alias v='nvim'
-alias vf='nvim $(fzf)'
 export SUDO_EDITOR=/usr/bin/nvim
 export EDITOR=/usr/bin/nvim
 
@@ -41,7 +39,7 @@ alias fzf='fzf --preview "bat --color=always --style=full --line-range=:500 {}"'
 
 # ------------ Eza : better ls ------------
 export EZA_CONFIG_DIR="$HOME/.config/eza"
-alias ls='eza --long --color=always --icons=always'
+alias ls='eza --color=always --icons=always'
 DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
 
 # ------------ Zoxide: better cd------------
@@ -90,5 +88,3 @@ function y() {
 
 #script
 alias mimi="source $HOME/scripts/mimi.sh"
-alias synce-git="source $HOME/scripts/synce-git.sh"
-alias tmux-session="source $HOME/scripts/tmux-session.sh"

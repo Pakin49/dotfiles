@@ -27,6 +27,7 @@ vim.opt.autoindent = true -- Copy indent from current line
 vim.opt.inccommand = "split"
 -- Save undo history
 vim.opt.undofile = true
+vim.opt.confirm = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true

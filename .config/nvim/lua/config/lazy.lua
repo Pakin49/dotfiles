@@ -19,6 +19,7 @@ require("lazy").setup({
 	require("plugins.onedark"),
 	require("plugins.lsp"),
 	require("plugins.telescope"),
+  require("plugins.oil"),
 	require("plugins.whichkey"),
 	require("plugins.autopairs"),
 	require("plugins.autoformat"),
