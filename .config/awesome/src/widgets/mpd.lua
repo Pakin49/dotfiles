@@ -5,7 +5,6 @@ local wibox = require("wibox")
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 local markup = lain.util.markup
 local beautiful = require("beautiful")
-
 --local musicplr = awful.util.terminal .. " -title Music -e ncmpcpp"
 local mpd_icon = wibox.widget.textbox(markup.font(beautiful.font, " "))
 beautiful.mpd = lain.widget.mpd({
@@ -20,6 +19,7 @@ beautiful.mpd = lain.widget.mpd({
 			title = "paused "
 		else
 			artist = ""
+	local mpdh = string.format("%s:%s", host, port)
 			title = ""
 			mpd_icon:set_markup(markup.font(beautiful.font, "  ")) --󰝛
 		end
@@ -28,7 +28,7 @@ beautiful.mpd = lain.widget.mpd({
 })
 local mpd_widget = wibox.widget({
 	mpd_icon,
-	beautiful.mpd.widget,
+	beautiful.mpd,
 	layout = wibox.layout.fixed.horizontal,
 })
 mpd_widget:buttons(my_table.join(

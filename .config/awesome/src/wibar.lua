@@ -30,6 +30,7 @@ end
 local widgets_dir = "src.widgets."
 beautiful.clock_widget = require(widgets_dir .. "textclock")
 beautiful.mpd_widget = require(widgets_dir .. "mpd")
+--beautiful.mpd_widget = lain.widget.mpd()
 beautiful.volume_widget = require(widgets_dir .. "volume")
 beautiful.keyboard_widget = require(widgets_dir .. "keyboard_layout")
 beautiful.battery_widget = require(widgets_dir .. "battery")
