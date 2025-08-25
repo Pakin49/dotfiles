@@ -43,3 +43,10 @@ confirm-close-surface = false
 
 keybind = control+shift+l=clear_screen
 keybind = alt+3=unbind
+keybind = control+"=new_split:down
+keybind = control+%=new_split:right
+
+keybind = control+h=goto_split:left
+keybind = control+j=goto_split:down
+keybind = control+k=goto_split:up
+keybind = control+l=goto_split:right
