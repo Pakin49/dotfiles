@@ -28,7 +28,7 @@ beautiful.mpd = lain.widget.mpd({
 })
 local mpd_widget = wibox.widget({
 	mpd_icon,
-	beautiful.mpd,
+	beautiful.mpd.widget,
 	layout = wibox.layout.fixed.horizontal,
 })
 mpd_widget:buttons(my_table.join(

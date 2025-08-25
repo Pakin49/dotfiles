@@ -28,10 +28,11 @@ end
 --------------------- Load widgets Module ---------------------
 -- List of widgets in the wibar
 local widgets_dir = "src.widgets."
-beautiful.clockwidget = require(widgets_dir .. "textclock")
+beautiful.clock_widget = require(widgets_dir .. "textclock")
 beautiful.mpd_widget = require(widgets_dir .. "mpd")
 beautiful.volume_widget = require(widgets_dir .. "volume")
-beautiful.keyboardwidget = require(widgets_dir .. "keyboard_layout")
+beautiful.keyboard_widget = require(widgets_dir .. "keyboard_layout")
+beautiful.battery_widget = require(widgets_dir .. "battery")
 -- Widgets that are not in the wibar
 beautiful.cal = require(widgets_dir .. "calendar")
 
@@ -45,46 +46,16 @@ local arch_icon =
 	wibox.widget.textbox(markup.font("JetBrains Mono Nerd Font 15", markup.fg.color(theme.arch_blue, "   ")))
 
 --------------------- Per-screen widgets ---------------------
-local function update_txt_layoutbox(s)
-	-- Writes a string representation of the current layout in a textbox widget
-	local txt_l = theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))] or ""
-	s.mytxtlayoutbox:set_markup(markup.font(theme.font, txt_l))
-end
-
+local mytxtlayoutbox = require(widgets_dir .. "layoutbox")
 function beautiful.at_screen_connect(s)
-
-	-- Textual layoutbox
-	s.mytxtlayoutbox = wibox.widget.textbox(theme["layout_txt_" .. awful.layout.getname(awful.layout.get(s))])
-	awful.tag.attached_connect_signal(s, "property::selected", function()
-		update_txt_layoutbox(s)
-	end)
-	awful.tag.attached_connect_signal(s, "property::layout", function()
-		update_txt_layoutbox(s)
-	end)
-	s.mytxtlayoutbox:buttons(my_table.join(
-		awful.button({}, 1, function()
-			awful.layout.inc(1)
-		end),
-		awful.button({}, 2, function()
-			awful.layout.set(awful.layout.layouts[1])
-		end),
-		awful.button({}, 3, function()
-			awful.layout.inc(-1)
-		end),
-		awful.button({}, 4, function()
-			awful.layout.inc(1)
-		end),
-		awful.button({}, 5, function()
-			awful.layout.inc(-1)
-		end)
-	))
-	-- Tags
+	-- setup Tags
 	awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
+
+  s.layoutbox = mytxtlayoutbox(s)
 
 	-- Create a promptbox for each screen
 	--s.mypromptbox = awful.widget.prompt()
 
-	-- Textual layoutbox
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist({
 		screen = s,
@@ -141,37 +112,6 @@ function beautiful.at_screen_connect(s)
 			layout = wibox.layout.align.vertical,
 		},
 	})
-	-- Create battery widget
-	local baticon = wibox.widget.textbox(" 󱊣 ")
-	local bat = lain.widget.bat({
-		full_notify = "off",
-		settings = function()
-			local color = theme.colors.yellow
-			local bat_icon = " 󱊣 "
-			if bat_now.status and bat_now.status ~= "N/A" then
-				if bat_now.ac_status == 1 then
-					bat_icon = " 󰂄 "
-				elseif bat_now.perc and tonumber(bat_now.perc) <= 33 then
-					bat_icon = " 󱊡 "
-				elseif bat_now.perc and tonumber(bat_now.perc) <= 66 then
-					bat_icon = " 󱊢 "
-				else
-					bat_icon = " 󱊣 "
-				end
-				baticon:set_markup(markup.font(theme.font, bat_icon))
-				widget:set_markup(markup.font(theme.font, bat_now.perc .. " % "))
-			else
-				widget:set_markup(markup.font(theme.font, "AC "))
-				baticon:set_markup(markup.font(theme.font, "  "))
-			end
-		end,
-	})
-
-	local battery_widget = wibox.widget({
-		baticon,
-		bat.widget,
-		layout = wibox.layout.fixed.horizontal,
-	})
 
 	s.mywibar = awful.wibar({
 		position = "bottom",
@@ -199,16 +139,16 @@ function beautiful.at_screen_connect(s)
 			nil,
 			{
 				layout = wibox.layout.fixed.horizontal,
-				widget_highlight(beautiful.keyboardwidget, theme.colors.red),
+				widget_highlight(beautiful.keyboard_widget, theme.colors.red),
 				theme.space,
 				--theme.mail.widget,
-				widget_highlight(s.mytxtlayoutbox, theme.colors.purple),
+				widget_highlight(s.layoutbox, theme.colors.purple),
 				theme.space,
 				widget_highlight(beautiful.volume_widget, theme.colors.green),
 				theme.space,
-				widget_highlight(battery_widget, theme.colors.yellow),
+				widget_highlight(beautiful.battery_widget, theme.colors.yellow),
 				theme.space,
-				widget_highlight(beautiful.clockwidget, theme.colors.blue),
+				widget_highlight(beautiful.clock_widget, theme.colors.blue),
 				theme.space,
 				theme.space,
 			},
