@@ -11,7 +11,6 @@ vim.cmd("ca Wq wq")
 
 vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "[Q]uit Vim!!" })
 vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "[W]rite buffer" })
-vim.keymap.set("n", "<leader>wq", ":wq<cr>", { desc = "[W]rite [Q]uit" })
 vim.keymap.set("n", "<leader>c", ":q!<cr>", { desc = "Quit without save" })
 
 -- windows
