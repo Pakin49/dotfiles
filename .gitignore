@@ -1,0 +1,8 @@
+.oh-my-zsh/
+.config/qutebrowser/autoconfig.yml
+.config/qutebrowser/quikmarks/
+.config/qutebrowser/qsettings/
+.config/mpd/database
+
+#nvim 
+.config/nvim/*.json

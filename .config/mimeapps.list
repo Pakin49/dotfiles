@@ -1,0 +1,34 @@
+[Added Associations]
+application/pdf=mupdf.desktop;org.pwmt.zathura-pdf-poppler.desktop;
+text/javascript=nvim.desktop;
+text/x-lua=nvim.desktop;
+image/png=sxiv.desktop;
+image/jpeg=sxiv.desktop;
+inode/directory=yazi.desktop;
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/chrome=org.qutebrowser.qutebrowser.desktop;
+x-scheme-handler/ror2mm=r2modman.desktop;
+application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;
+
+[Default Applications]
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/chrome=org.qutebrowser.qutebrowser.desktop
+text/javascript=nvim.desktop
+text/x-lua=nvim.desktop
+inode/directory=yazi.desktop
+application/pdf=mupdf.desktop
+image/png=sxiv.desktop
+image/jpeg=sxiv.desktop
+image/svg+xml=sxiv.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=libreoffice-impress.desktop
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet=libreoffice-calc.desktop
+audio/mpeg=mpv.desktop
+audio/x-wav=mpv.desktop
+video/mp4=mpv.desktop
+video/x-matroska=mpv.desktop
+x-scheme-handler/ror2mm=r2modman.desktop

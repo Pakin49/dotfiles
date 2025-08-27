@@ -1,0 +1,135 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+format = """
+$os\
+$hostname\
+$username\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$c\
+$cpp\
+$rust\
+$python\
+$character"""
+
+[os]
+disabled = false
+format = "[$symbol  ]($style)"
+style = 'fg:#1793d1'
+
+[hostname]
+format = "[$hostname]($style) "
+style = "bold white"
+
+
+[username]
+format = '[$user]($style) '
+disabled = false
+show_always = true
+style_root = 'red bold'
+
+[directory]
+truncation_length = 3
+format = "[$path]($style)[$read_only]($read_only_style)($style) "
+read_only = " 󰌾"
+read_only_style = "green"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = " "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[git_commit]
+tag_symbol = '  '
+
+[c]
+format = "[$symbol($version(-$name))]($style) "
+symbol = " "
+
+[cpp]
+format = "[$symbol($version)]($style) "
+symbol = " "
+
+[rust]
+format = "[$symbol($version)]($style) "
+symbol = "󱘗 "
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
+symbol = " "
+
+[sudo]
+style = "yellow"
+disabled = false
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+Nobara = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[palettes.onedark]
+red = "#e55561"
+orange = "#cc9057"
+yellow = "#e2b86b"
+green = "#8ebd6b"
+cyan = "#48b0bd"
+blue = "#4fa6ed"
+purple = "#bf68d9"
+
