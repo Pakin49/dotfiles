@@ -11,7 +11,7 @@ palette = 8=#707682
 #term=xterm-256color 
 
 #background = 1f2329
-background = 000000
+background = 0e1013
 
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
@@ -19,7 +19,7 @@ cursor-color = f4b278
 cursor-opacity = 0.7
 cursor-style-blink = false
 
-background-opacity = 0.8
+background-opacity = 0.9
 unfocused-split-opacity = 0.8
 
 mouse-hide-while-typing = true
@@ -35,7 +35,7 @@ shell-integration = zsh
 window-decoration = false
 
 window-padding-x = 15
-#window-padding-y = 5
+window-padding-y = 0
 window-padding-color = extend
 
 clipboard-paste-protection = false
