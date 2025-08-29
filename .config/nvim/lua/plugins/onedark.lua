@@ -6,7 +6,7 @@ return {
 			style = "darker",
 			transparent = false,
 			colors = {
-        --bg0 = "#000000"
+        bg0 = "#0e1013"
 			},
 		})
 		-- Enable theme
