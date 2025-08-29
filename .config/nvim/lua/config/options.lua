@@ -7,7 +7,7 @@ vim.opt.wrap = false
 vim.opt.sidescroll = 8
 vim.opt.sidescrolloff = 10
 -- hide the bottom part of neovim
---vim.opt.laststatus = 0
+vim.opt.laststatus = 0
 --vim.opt.cmdheight = 0
 
 -- Color scheme
@@ -21,13 +21,11 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.smartindent = true -- Smart auto-indenting
 vim.opt.autoindent = true -- Copy indent from current line
 
---vim.opt.rocks.enabled = false
-
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 -- Save undo history
 vim.opt.undofile = true
-vim.opt.confirm = true
+--vim.opt.confirm = true -- Confirm y/n when closing unwritten file
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true

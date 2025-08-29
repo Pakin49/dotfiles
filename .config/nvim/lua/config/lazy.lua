@@ -27,6 +27,7 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.git-signs"),
 	require("plugins.tmux"),
+  	require("plugins.bufferline"),
 }, {
 	rocks = { enabled = false },
 })
