@@ -35,7 +35,7 @@ show_always = true
 style_root = 'red bold'
 
 [directory]
-truncation_length = 3
+truncation_length = 4
 format = "[$path]($style)[$read_only]($read_only_style)($style) "
 read_only = " 󰌾"
 read_only_style = "green"
