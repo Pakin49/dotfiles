@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>ss", ":split<cr>", { desc = "[S]plit Horontally" })
 -- buffers
 vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "[N]ext Buffer" })
 vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "[P]revious Buffer" })
-vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "[D]elete [B]uffer" })
 vim.keymap.set("n", "<leader>bl", ":b#<cr>", { desc = "[Last] Open Buffer" })
 
 --------------------  Transparency --------------------
