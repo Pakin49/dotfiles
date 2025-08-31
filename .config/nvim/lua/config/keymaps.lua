@@ -28,6 +28,8 @@ vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "[P]revious Buffer" })
 vim.keymap.set("n", "<leader>x", ":bd<cr>", { desc = "[D]elete [B]uffer" })
 vim.keymap.set("n", "<leader>bl", ":b#<cr>", { desc = "[Last] Open Buffer" })
 
+-- Diagnostic
+vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>", { desc = "Show [D]iagnostic" })
 --------------------  Transparency --------------------
 local transparent = require("config.custom.transparent")
 vim.keymap.set("n", "<leader>tc", transparent.toggle_transparent, { desc = "[Toggle] [C}olors" })

@@ -3,7 +3,7 @@ return { -- Autoformat
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	opts = {
-		-- formatter list :help conform-formatter
+		-- formatter list :help conform-formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
 			-- Conform can also run multiple formatters sequentially
