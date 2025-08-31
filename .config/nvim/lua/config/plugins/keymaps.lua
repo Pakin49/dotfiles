@@ -1,6 +1,9 @@
 -------------------- Plugins keymap --------------------
 -- oil
+local oil = require("oil")
 vim.keymap.set("n", "<leader>e", ":Oil<cr>", { desc = "Oil file management" })
+vim.keymap.set("n", "<leader>th", oil.toggle_hidden, {desc = "[T]oggle [H]idden files"})
+
 -- telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })

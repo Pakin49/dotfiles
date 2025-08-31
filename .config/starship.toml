@@ -20,7 +20,7 @@ $character"""
 
 [os]
 disabled = false
-format = "[$symbol  ]($style)"
+format = "[$symbol ]($style)"
 style = 'fg:#1793d1'
 
 [hostname]
