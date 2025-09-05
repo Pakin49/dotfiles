@@ -11,7 +11,7 @@ c.tabs.title.format = "{audio}{current_title}"
 c.fonts.default_size = "10pt"
 c.fonts.default_family = "JetBrains Mono Nerd Font"
 
-c.fonts.web.size.default = 20
+c.fonts.web.size.default = 16
 c.fonts.web.family.standard =  "Noto Serif"
 c.fonts.web.family.serif =   "Noto Serif"
 c.fonts.web.family.sans_serif = "Not Sans"
@@ -83,6 +83,8 @@ c.content.blocking.adblock.lists = [
 #                                                          #
 ############################################################
 config.bind('<space>d', 'config-cycle colors.webpage.darkmode.enabled true false')
+config.bind('<space>n', 'tab-next')
+config.bind('<space>p', 'tab-prev')
 config.bind('cm','clear-messages')
 
 ############################################################
