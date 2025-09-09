@@ -114,6 +114,7 @@ function beautiful.at_screen_connect(s)
 		},
 	})
 
+  s.mypromptbox = awful.widget.prompt()
 	s.mywibar = awful.wibar({
 		position = "bottom",
 		screen = s,
@@ -127,8 +128,8 @@ function beautiful.at_screen_connect(s)
 		expand = "outside",
 		{
 			widget_highlight(wibox.container.margin(arch_icon, dpi(5), dpi(20), 0, 0)),
+      s.mypromptbox,
 			beautiful.mpd_widget,
-			wibox.container.margin(theme.space, dpi(60), 0, 0, 0),
 			expand = "inside",
 			layout = wibox.layout.align.horizontal,
 		},

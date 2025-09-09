@@ -20,7 +20,7 @@ theme.arch_grey = "#2f2f2f" -- dark grey
 theme.default_dir = require("awful.util").get_themes_dir() .. "default"
 theme.dir = os.getenv("HOME") .. "/.config/awesome/src/assets"
 theme.font = "JetBrains Mono Nerd Font Propo 11"
-theme.desktop_font = "JetBrains Mono Nerd Font Bold 11"
+theme.desktop_font = "JetBrains Mono Nerd Font 11"
 
 theme.fg_normal = "#FFFFFF"
 theme.fg_focus = colors.blue
@@ -47,6 +47,7 @@ theme.taglist_fg_focus = colors.fg_light
 theme.taglist_bg_focus = colors.blue .. "55"
 theme.taglist_fg_normal = colors.fg
 theme.taglist_bg_normal = "transparent"
+--theme.taglist_spacing = 1
 -- Titlebar
 theme.titlebar_bg_focus = colors.bg
 theme.titlebar_bg_normal = colors.bg_light

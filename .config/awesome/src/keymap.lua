@@ -44,7 +44,9 @@ keys.globalkeys = mytable.join(
 	awful.key({ modkey }, "h", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "l", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
-
+	awful.key({ modkey, "Shift" }, "r", function()
+		lain.util.rename_tag()
+	end, { description = "rename tag", group = "tag" }),
 	-- Non-empty tag browsing
 	awful.key({ modkey }, "k", function()
 		lain.util.tag_view_nonempty(-1)
@@ -211,7 +213,7 @@ keys.globalkeys = mytable.join(
 	--]]
 	-- ALSA volume control
 	awful.key({ "Any" }, "XF86AudioRaiseVolume", function()
-		os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel,awful.util.terminal))
+		os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel, awful.util.terminal))
 		beautiful.volume.update()
 	end, { description = "volume up", group = "hotkeys" }),
 
