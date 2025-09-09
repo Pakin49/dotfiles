@@ -435,7 +435,7 @@ run_once({
 	"urxvtd",
 	"unclutter -root",
   "xrandr --output DP-4 --mode 1920x1080 --rate 165",
-  "nitrogen --random --set-auto ~/Pictures/Wallpaper",
+  "nitrogen --random --set-auto ~/Pictures/wallpapers",
 	"setxkbmap -layout us,th -option grp:win_space_toggle",
 	"pgrep redshift > /dev/null || redshift -l 13.7539:100.5014 -t 6500:4500 -r",
 	"picom --config ~/.config/picom/picom.conf",

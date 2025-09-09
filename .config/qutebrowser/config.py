@@ -11,7 +11,7 @@ c.tabs.title.format = "{audio}{current_title}"
 c.fonts.default_size = "10pt"
 c.fonts.default_family = "JetBrains Mono Nerd Font"
 
-c.fonts.web.size.default = 16
+c.fonts.web.size.default = 18
 c.fonts.web.family.standard =  "Noto Serif"
 c.fonts.web.family.serif =   "Noto Serif"
 c.fonts.web.family.sans_serif = "Not Sans"
@@ -93,7 +93,7 @@ config.bind('cm','clear-messages')
 #                                                          #
 ############################################################
 # c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
-c.tabs.indicator.width = 0 # no tab indicators
+#c.tabs.indicator.width = 0 # no tab indicators
 '''
 c.window.transparent = True # apparently not needed
 c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
@@ -215,7 +215,7 @@ c.colors.tabs.indicator.error = fg_error
 c.colors.tabs.odd.fg = fg_default
 c.colors.tabs.odd.bg = bg_default
 c.colors.tabs.even.fg = fg_default
-c.colors.tabs.even.bg = bg_selection
+c.colors.tabs.even.bg = bg_lighter
 c.colors.tabs.pinned.even.bg = bg_passthrough_mode
 c.colors.tabs.pinned.even.fg = bg_lightest
 c.colors.tabs.pinned.odd.bg = fg_matched_text
@@ -224,8 +224,8 @@ c.colors.tabs.pinned.selected.even.bg = bg_selection
 c.colors.tabs.pinned.selected.even.fg = fg_default
 c.colors.tabs.pinned.selected.odd.bg = bg_selection
 c.colors.tabs.pinned.selected.odd.fg = fg_default
-c.colors.tabs.selected.odd.fg = bg_insert_mode #fg_default
-c.colors.tabs.selected.odd.bg = bg_default
-c.colors.tabs.selected.even.fg = bg_insert_mode #fg_default
-c.colors.tabs.selected.even.bg = bg_selection
+c.colors.tabs.selected.odd.fg =  bg_insert_mode #fg_default
+c.colors.tabs.selected.odd.bg = bg_default #bg_selection
+c.colors.tabs.selected.even.fg =  bg_insert_mode #fg_default
+c.colors.tabs.selected.even.bg = bg_lighter #bg_selection
 # c.colors.webpage.bg = bg_default
