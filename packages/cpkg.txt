@@ -195,10 +195,3 @@ compat_libs=(
  ncurses5-compat-libs
 )
 
-# Miscellaneous
-misc=(
- kindlegen
- python-adblock
- resvg
- tinyxxd
-)
