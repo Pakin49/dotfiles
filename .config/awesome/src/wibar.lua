@@ -128,8 +128,8 @@ function beautiful.at_screen_connect(s)
 		expand = "outside",
 		{
 			widget_highlight(wibox.container.margin(arch_icon, dpi(5), dpi(20), 0, 0)),
-      s.mypromptbox,
 			beautiful.mpd_widget,
+      s.mypromptbox,
 			expand = "inside",
 			layout = wibox.layout.align.horizontal,
 		},

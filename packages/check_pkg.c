@@ -1,6 +1,6 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define PKG_LENGHT 100
 
