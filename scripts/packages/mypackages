@@ -201,3 +201,7 @@ compat_libs=(
  resvg
  tinyxxd
 )
+
+# Data mining=(
+altair-ai-studio
+)
