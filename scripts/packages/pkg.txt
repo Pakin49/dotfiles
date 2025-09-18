@@ -24,6 +24,7 @@ fzf
 gdb
 ghostty
 git
+git-lfs
 github-cli
 gnu-netcat
 go
@@ -95,9 +96,7 @@ tinyxxd
 tldr
 tmux
 ttf-jetbrains-mono-nerd
-ttf-ms-fonts
 ufw
-unetbootin
 unzip
 uv
 vivado
