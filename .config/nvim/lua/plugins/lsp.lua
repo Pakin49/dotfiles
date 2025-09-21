@@ -14,7 +14,6 @@ local lsp_servers = {
 	},
 	pyright = {},
 	clangd = {},
-	svlangserver = {},
 }
 
 -- Convert to array for ensure_installed
