@@ -438,9 +438,9 @@ run_once({
   "nitrogen --random --set-auto ~/Pictures/wallpapers",
 	"setxkbmap -layout us,th -option grp:win_space_toggle",
 	"pgrep redshift > /dev/null || redshift -l 13.7539:100.5014 -t 6500:4500 -r",
-	"sleep 0.1 && picom --config ~/.config/picom/picom.conf",
 })
 
+awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 -- This function implements the XDG autostart specification
 --[[
 awful.spawn.with_shell(

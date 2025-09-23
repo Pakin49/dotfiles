@@ -93,4 +93,5 @@ alias mimi="source $HOME/scripts/mimi.sh"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 export PATH=$PATH:$HOME/go/bin 
-
+# my custom script
+export PATH=$PATH:$HOME/scripts
