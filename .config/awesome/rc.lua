@@ -25,8 +25,8 @@ awful.util.terminal = terminal
 -- tags name
 awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 󰝚 ", "  " }
 awful.layout.layouts = {
-	awful.layout.suit.tile,
-	--awful.layout.suit.spiral,
+	--awful.layout.suit.tile,
+	awful.layout.suit.spiral,
 	--awful.layout.suit.tile.left,
 	awful.layout.suit.tile.bottom,
 	--awful.layout.suit.tile.top,
@@ -267,8 +267,8 @@ awful.rules.rules = {
 				"Blueman-manager",
 				"Gpick",
 				"Kruler",
-        "VirtualBox Manager",
-        "steam",
+				"VirtualBox Manager",
+				"steam",
 				"MessageWin", -- kalarm.
 				"Sxiv",
 				"Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
@@ -436,12 +436,12 @@ end
 run_once({
 	"urxvtd",
 	"unclutter -root",
-  "xrandr --output DP-4 --mode 1920x1080 --rate 165",
-  "nitrogen --random --set-auto ~/Pictures/wallpapers",
-	"setxkbmap -layout us,th -option grp:win_space_toggle",
-	"pgrep redshift > /dev/null || redshift -l 13.7539:100.5014 -t 6500:4500 -r",
+	"redshift -l 13.7539:100.5014 -t 6500:4500 -r",
 })
 
+awful.spawn.with_shell("xrandr --output DP-4 --mode 1920x1080 --rate 165")
+awful.spawn.with_shell("nitrogen --random --set-auto ~/Pictures/wallpapers")
+awful.spawn.with_shell("setxkbmap -layout us,th -option grp:win_space_toggle")
 awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
 -- This function implements the XDG autostart specification
 --[[
