@@ -30,6 +30,12 @@ vim.keymap.set("n", "<leader>bl", ":b#<cr>", { desc = "[Last] Open Buffer" })
 
 -- Diagnostic
 vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>", { desc = "Show [D]iagnostic" })
+
+function ToggleRelative()
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end
+vim.keymap.set("n", "<leader>tr", ToggleRelative, { desc = "[T]oggle [R]elative line number"})
+
 --------------------  Transparency --------------------
 local transparent = require("config.custom.transparent")
 vim.keymap.set("n", "<leader>tc", transparent.toggle_transparent, { desc = "[Toggle] [C}olors" })

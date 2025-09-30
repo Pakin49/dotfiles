@@ -25,8 +25,8 @@ awful.util.terminal = terminal
 -- tags name
 awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 󰝚 ", "  " }
 awful.layout.layouts = {
-	--awful.layout.suit.tile,
-	awful.layout.suit.spiral,
+	awful.layout.suit.tile,
+	--awful.layout.suit.spiral,
 	--awful.layout.suit.tile.left,
 	awful.layout.suit.tile.bottom,
 	--awful.layout.suit.tile.top,
