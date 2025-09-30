@@ -14,6 +14,9 @@ local lsp_servers = {
 	},
 	pyright = {},
 	clangd = {},
+	verible = {
+		cmd = { "verible-verilog-ls", "--rules_config_search" },
+	},
 }
 
 -- Convert to array for ensure_installed
