@@ -6,8 +6,8 @@ local naughty = require("naughty")
 local lain = require("lain")
 --local menubar       = require("menubar")
 local freedesktop = require("freedesktop")
-local hotkeys_popup = require("awful.hotkeys_popup")
-require("awful.hotkeys_popup.keys")
+--local hotkeys_popup = require("awful.hotkeys_popup") // this create tmux and vim entry in help menu
+--require("awful.hotkeys_popup.keys")
 local mytable = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 require("src.error_handling")
@@ -26,12 +26,12 @@ awful.util.terminal = terminal
 awful.util.tagnames = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 󰝚 ", "  " }
 awful.layout.layouts = {
 	awful.layout.suit.tile,
-	--awful.layout.suit.spiral,
+	awful.layout.suit.spiral,
 	--awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
+	--awful.layout.suit.tile.bottom,
 	--awful.layout.suit.tile.top,
 	--awful.layout.suit.fair,
-	--awful.layout.suit.floating,
+	awful.layout.suit.floating,
 	--awful.layout.suit.fair.horizontal,
 	--awful.layout.suit.spiral.dwindle,
 	--awful.layout.suit.max,
@@ -436,7 +436,6 @@ end
 run_once({
 	"urxvtd",
 	"unclutter -root",
-	"redshift -l 13.7539:100.5014 -t 6500:4500 -r",
 })
 
 awful.spawn.with_shell("xrandr --output DP-4 --mode 1920x1080 --rate 165")
