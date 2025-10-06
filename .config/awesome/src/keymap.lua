@@ -43,8 +43,8 @@ keys.globalkeys = mytable.join(
 	-- Tag browsing
 	awful.key({ modkey, "Control" }, "h", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey, "Control" }, "l", awful.tag.viewnext, { description = "view next", group = "tag" }),
-	awful.key({ modkey, "Control" }, "k", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ modkey, "Control" }, "j", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ modkey, "Control" }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	awful.key({ modkey, "Control" }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	--awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 	awful.key({ modkey, "Shift" }, "r", function()
 		lain.util.rename_tag()
