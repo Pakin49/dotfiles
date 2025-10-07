@@ -33,7 +33,7 @@ window-save-state = always
 # other
 #copy-on-select = clipboard
 shell-integration = zsh
-window-decoration = false
+window-decoration = server
 
 window-padding-x = 15
 window-padding-y = 0

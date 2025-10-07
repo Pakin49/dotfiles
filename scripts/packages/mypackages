@@ -1,4 +1,4 @@
-# Core Linux system
+# Core Linux - bootloader, kernel, firmware only
 core=(
  base
  base-devel
@@ -9,86 +9,45 @@ core=(
  efibootmgr
  grub
  os-prober
- pacman-contrib
 )
 
-# Audio system
-audio=(
+# Essential - audio/network/bluetooth needed for basic system operation
+essential=(
  alsa-firmware
  alsa-utils
  pipewire
  pipewire-alsa
+ pipewire-audio
  pipewire-jack
  pipewire-pulse
  wireplumber
- pavucontrol
  sof-firmware
- cava
- mpd
- mpc
- rmpc
+ networkmanager
+ openssh
+ bluez
+ bluez-utils
 )
 
-# Xorg display server
-xorg=(
- xclip
- xdg-user-dirs
- xorg-bdftopcf
- xorg-font-util
- xorg-iceauth
- xorg-mkfontscale
- xorg-server
- xorg-setxkbmap
- xorg-xauth
- xorg-xcmsdb
- xorg-xcursorgen
- xorg-xdpyinfo
- xorg-xev
- xorg-xinit
- xorg-xinput
- xorg-xkbcomp
- xorg-xkbutils
- xorg-xkill
- xorg-xlsclients
- xorg-xmodmap
- xorg-xprop
- xorg-xrandr
- xorg-xrdb
- xorg-xset
- xorg-xsetroot
- xorg-xwininfo
+# System - display server, login, hardware drivers, maintenance
+system=(
+ cosmic-session
+ cliphist
+ wl-clipboard
+ ly
+ nvidia
+ nvidia-utils
+ nvidia-settings
+ timeshift
+ gparted
+ ufw
+ udisks2
+ exfatprogs
 )
 
-# Window manager and desktop
-window_manager=(
- awesome
- lain-git
- lightdm
- lightdm-gtk-greeter
- lightdm-slick-greeter
- rofi
- picom
- nitrogen
-)
-
-# Theming and appearance
-theming=(
- lxappearance-gtk3
- orchis-theme
- papirus-icon-theme
- kvantum-qt5
- kvantum-theme-orchis-git
-)
-
-# Fonts
-fonts=(
- noto-fonts-cjk
- noto-fonts-emoji
- ttf-jetbrains-mono-nerd
-)
-
-# Development tools
-development=(
+# Dev - compilers, version control, language toolchains
+dev=(
+ vivado
+ git-lfs
  gcc
  gdb
  git
@@ -101,11 +60,10 @@ development=(
  neovim
 )
 
-# System utilities
-utils=(
+# Tools - CLI utilities, file managers, shell enhancements
+tools=(
  7zip
  bat
- betterlockscreen
  brightnessctl
  btop
  calc
@@ -121,40 +79,21 @@ utils=(
  tldr
  tmux
  tree
- udisks2
  unzip
  wget
  yay
  yazi
  zoxide
  zsh
-)
-
-# Network and security
-network_security=(
- networkmanager
- openssh
- ufw
  gnu-netcat
  inetutils
- bitwarden
- pass
- seahorse
+ grim
 )
 
-# Media and graphics
-media=(
- flameshot
- mpv
- obs-studio
- sxiv
- redshift
-)
-
-# Applications
-applications=(
+# Personal - apps, themes, fonts, media, security managers
+personal=(
+ zen-browser-bin
  discord
- firefox
  ghostty
  obsidian
  qalculate-qt
@@ -162,46 +101,35 @@ applications=(
  steam
  zathura
  zathura-pdf-mupdf
+ flameshot
+ mpv
+ obs-studio
+ sxiv
+ cava
+ mpd
+ mpc
+ rmpc
+ bitwarden
+ pass
+ seahorse
+ libreoffice-fresh
 )
 
-# System maintenance
-maintenance=(
- timeshift
- gparted
- aria2
+#theme and fonts
+theme=(
+ orchis-theme
+ papirus-icon-theme
+ noto-fonts-cjk
+ noto-fonts-emoji
+ ttf-jetbrains-mono-nerd
+ kvantum-qt5
+ kvantum-theme-orchis-git
 )
 
-# Hardware support
-hardware=(
- bluez
- bluez-utils
- evemu
- evtest
- nvidia
- nvidia-settings
-)
-
-# File systems and archives
-filesystem=(
- exfatprogs
- cpio
-)
-
-# Compatibility libraries
-compat_libs=(
- lib32-libpng12
- libpng12
- libxcrypt-compat
- ncurses5-compat-libs
-)
-
-# Misc=(
+# Misc - uncategorizable/niche tools
+misc=(
  kindlegen
  python-adblock
  resvg
  tinyxxd
-)
-
-# Data mining=(
-altair-ai-studio
 )
