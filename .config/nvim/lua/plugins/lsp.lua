@@ -17,6 +17,14 @@ local lsp_servers = {
 	verible = {
 		cmd = { "verible-verilog-ls", "--rules_config_search" },
 	},
+	jsonls = {
+    filetypes = {"json", "jsonc"},
+		settings = {
+			json = {
+				validate = { enable = true },
+			},
+		},
+	},
 }
 
 -- Convert to array for ensure_installed

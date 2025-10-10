@@ -7,7 +7,6 @@ core=(
  linux-headers
  intel-ucode
  efibootmgr
- grub
  os-prober
 )
 
@@ -26,6 +25,7 @@ essential=(
  openssh
  bluez
  bluez-utils
+ pavucontrol
 )
 
 # System - display server, login, hardware drivers, maintenance
@@ -62,7 +62,9 @@ dev=(
 
 # Tools - CLI utilities, file managers, shell enhancements
 tools=(
+ imagemagick
  7zip
+ power-profiles-daemon
  bat
  brightnessctl
  btop
@@ -87,7 +89,7 @@ tools=(
  zsh
  gnu-netcat
  inetutils
- grim
+ rofi
 )
 
 # Personal - apps, themes, fonts, media, security managers
@@ -117,6 +119,7 @@ personal=(
 
 #theme and fonts
 theme=(
+ nwg-look
  orchis-theme
  papirus-icon-theme
  noto-fonts-cjk
@@ -132,4 +135,17 @@ misc=(
  python-adblock
  resvg
  tinyxxd
+)
+
+hyprland=(
+ swaync
+ wev
+ hyprland
+ hyprpicker
+ hypridle
+ hyprlock
+ hyprpaper
+ xdg-desktop-portal-hyprland
+ waybar
+ grim
 )
