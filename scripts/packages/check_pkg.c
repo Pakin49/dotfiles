@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -55,8 +56,8 @@ bool pkg_in(char *pkg, char (*cpkg_list)[PKG_LENGHT], int count) {
 int main(int argc, char **argv) {
   const int NUMS_PACKAGE = 300;
   int count_cpkg = 0;
-  if (argc != 3) {
-    printf("Incorrect usage: ./check_pkg <categorized package list> <generated package list>\n");
+  if (argc != 2) {
+    printf("Incorrect usage: ./check_pkg <categorized package list>\n");
     return -1;
   }
   char buffer[PKG_LENGHT];
@@ -97,7 +98,8 @@ int main(int argc, char **argv) {
   pkg_ptr = generated_pkg_list;
   int count_pkg = 0;
 
-  fptr1 = fopen(argv[2], "r");
+  system("pacman -Qqe > generated_pkg");
+  fptr1 = fopen("generated_pkg", "r");
   if (!fptr1) {
     printf("Invalid generated package list\n");
     return -1;

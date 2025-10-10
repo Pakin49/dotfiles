@@ -42,18 +42,10 @@ vim.keymap.set("n", "<leader>tc", transparent.toggle_transparent, { desc = "[Tog
 
 -------------------- Floating terminal --------------------
 
-local term = require("config.custom.terminal")
-
-vim.keymap.set(
-	"n",
-	"<leader>tt",
-	term.FloatingTerminal,
-	{ noremap = true, silent = true, desc = "[T]oggle floating [T]erminal" }
-)
-vim.keymap.set("t", "<Esc>", function()
-	local ts = term.terminal_state
-	if ts.is_open then
-		vim.api.nvim_win_close(ts.win, false)
-		ts.is_open = false
-	end
-end, { noremap = true, silent = true, desc = "Close floating terminal from terminal mode" })
+vim.keymap.set("n", "<leader>tt", function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0,8)
+end)
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>",{})

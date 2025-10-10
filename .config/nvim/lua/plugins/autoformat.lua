@@ -9,7 +9,8 @@ return { -- Autoformat
 			-- Conform can also run multiple formatters sequentially
 			python = { "isort", "black" },
       C = {"astyle"},
-			--
+      json = {"jq"},
+      jsonc = {"jq"},
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
 		},
