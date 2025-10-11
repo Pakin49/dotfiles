@@ -135,6 +135,7 @@ misc=(
  python-adblock
  resvg
  tinyxxd
+ jq
 )
 
 hyprland=(
