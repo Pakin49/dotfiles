@@ -1,5 +1,7 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "9a52857"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
@@ -10,3 +12,4 @@ hash = "c0bf69ad2c44005892d586e9693993c6"
 use = "yazi-rs/flavors:dracula"
 rev = "2d73b79"
 hash = "fc6944561718351d70cffde75839211f"
+

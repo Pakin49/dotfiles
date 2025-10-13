@@ -89,6 +89,14 @@ config.bind('<space>n', 'tab-next')
 config.bind('<space>p', 'tab-prev')
 config.bind('cm','clear-messages')
 
+config.unbind('h')
+config.unbind('l')
+config.unbind('j')
+config.unbind('k')
+config.bind('h','cmd-run-with-count 5 scroll left')
+config.bind('l','cmd-run-with-count 5 scroll right')
+config.bind('j','cmd-run-with-count 5 scroll down')
+config.bind('k','cmd-run-with-count 5 scroll up')
 ############################################################
 #                                                          #
 #                   Style and Colors                       #
