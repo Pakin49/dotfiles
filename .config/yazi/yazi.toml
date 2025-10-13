@@ -1,9 +1,19 @@
+[mgr]
+ratio = [2,3,3]
 [opener]
 zathura = [
     { run = 'zathura "$@"', desc = "Open with Zathura" }
+]
+nvim = [
+  { run = "nvim '$@'", desc = "Open with Neovim"}
 ]
 [open]
 prepend_rules = [
     { name = "*.pdf", use = "zathura" },
     { name = "*.epub", use = "zathura" },
+]
+
+edit = [
+	{ run = '$EDITOR "$@"', block = true, for = "unix" },
+	{ run = "%EDITOR% %*",  block = true, for = "windows" },
 ]
