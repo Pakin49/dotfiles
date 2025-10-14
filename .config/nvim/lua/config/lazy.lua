@@ -19,7 +19,7 @@ require("lazy").setup({
 	require("plugins.onedark"),
 	require("plugins.lsp"),
 	require("plugins.telescope"),
-  require("plugins.oil"),
+	require("plugins.oil"),
 	require("plugins.whichkey"),
 	require("plugins.autopairs"),
 	require("plugins.autoformat"),
@@ -27,7 +27,8 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.git-signs"),
 	require("plugins.tmux"),
-  	require("plugins.bufferline"),
+	require("plugins.bufferline"),
+	require("plugins.iron"),
 }, {
 	rocks = { enabled = false },
 })

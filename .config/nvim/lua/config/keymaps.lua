@@ -20,7 +20,6 @@ vim.keymap.set("n", "<leader>sk", ":resize +10<cr>", { desc = "[S]plit horizonta
 vim.keymap.set("n", "<leader>sj", ":resize -10<cr>", { desc = "[S]plit horizontal resize -10" })
 vim.keymap.set("n", "<leader>sv", ":vertical split<cr>", { desc = "[S]plit [V]ertically " })
 vim.keymap.set("n", "<leader>ss", ":split<cr>", { desc = "[S]plit Horontally" })
-vim.keymap.set("n", "<leader>ss", ":split<cr>", { desc = "[S]plit Horontally" })
 
 -- buffers
 vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "[N]ext Buffer" })
