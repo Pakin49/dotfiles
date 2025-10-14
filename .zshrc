@@ -23,13 +23,15 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # ------------ user install application ------------
+# move to .zshenv
 export PATH="$PATH:$HOME/.local/bin"
 
 # ------------ Neovim ------------
+# move to .zshenv
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias vim='nvim'
-export SUDO_EDITOR=/usr/bin/nvim
-export EDITOR=/usr/bin/nvim
+#export SUDO_EDITOR=nvim
+#export EDITOR=nvim
 
 # ------------ Fuzzy finder ------------
 # Set up fzf key bindings and fuzzy completion
@@ -38,7 +40,7 @@ eval "$(fzf --zsh)"
 alias fzf='fzf --preview "bat --color=always --style=full --line-range=:500 {}"'
 
 # ------------ Eza : better ls ------------
-export EZA_CONFIG_DIR="$HOME/.config/eza"
+# export EZA_CONFIG_DIR="$HOME/.config/eza" # move to .zshenv
 alias ls='eza --color=always --long'
 DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
 
@@ -51,9 +53,10 @@ alias cd=cd_ls
 
 # ------------ Bat : better cat------------
 alias cat='bat --style=plain'
-export BAT_THEME=OneHalfDark
+#export BAT_THEME=OneHalfDark # move to .zshenv
 # Man page
-export MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
+#export MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
+# move to .zshenv
 # use bat for help
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
