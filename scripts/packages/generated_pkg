@@ -12,7 +12,6 @@ btop
 calc
 cava
 cliphist
-cosmic-session
 curl
 discord
 efibootmgr
@@ -30,7 +29,7 @@ gnu-netcat
 go
 gparted
 grim
-hypridle
+grub
 hyprland
 hyprlock
 hyprpaper
@@ -42,7 +41,6 @@ jq
 kindlegen
 kvantum-qt5
 kvantum-theme-orchis-git
-libreoffice-fresh
 linux
 linux-firmware
 linux-headers
@@ -52,6 +50,9 @@ mpc
 mpd
 mpv
 ncdu
+nemo
+nemo-fileroller
+nemo-preview
 neofetch
 neovim
 networkmanager
