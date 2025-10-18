@@ -30,7 +30,6 @@ essential=(
 
 # System - display server, login, hardware drivers, maintenance
 system=(
- cosmic-session
  cliphist
  wl-clipboard
  ly
@@ -94,6 +93,7 @@ tools=(
 
 # Personal - apps, themes, fonts, media, security managers
 personal=(
+ nemo
  zen-browser-bin
  discord
  ghostty

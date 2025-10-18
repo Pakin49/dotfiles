@@ -29,7 +29,7 @@ gnu-netcat
 go
 gparted
 grim
-grub
+hypridle
 hyprland
 hyprlock
 hyprpaper
@@ -41,6 +41,7 @@ jq
 kindlegen
 kvantum-qt5
 kvantum-theme-orchis-git
+libreoffice-fresh
 linux
 linux-firmware
 linux-headers
