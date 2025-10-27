@@ -26,6 +26,8 @@ essential=(
  bluez
  bluez-utils
  pavucontrol
+ powertop
+ power-profiles-daemon
 )
 
 # System - display server, login, hardware drivers, maintenance
@@ -61,9 +63,10 @@ dev=(
 
 # Tools - CLI utilities, file managers, shell enhancements
 tools=(
+ timg
+ imv
  imagemagick
  7zip
- power-profiles-daemon
  bat
  brightnessctl
  btop
@@ -136,6 +139,7 @@ misc=(
  resvg
  tinyxxd
  jq
+ tgpt
 )
 
 hyprland=(
