@@ -125,13 +125,13 @@ int main(int argc, char **argv) {
   }
   printf("\ntotal %d packages are uncategorized\n\n", count_uncategorized);
 
-  printf("---------- List of deleted package ----------\n");
+  printf("---------- List of packages that are categorized but not in the system----------\n");
   for (int i = 0; i < count_cpkg; i++){
     if(!pkg_in(categorized_pkg_list[i], generated_pkg_list, count_pkg)){
       printf(" %s\n",categorized_pkg_list[i]);
     }
   }
-  printf("\ntotal %d packages are already deleted\n", count_deleted);
+  printf("\ntotal %d packages\n", count_deleted);
   printf("---------------------------------------------------\n");
 
   return 0;
