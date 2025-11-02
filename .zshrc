@@ -91,4 +91,5 @@ function y() {
 
 #script
 alias mimi="source $HOME/scripts/mimi.sh"
+alias fuck="source $HOME/scripts/fuck.sh"
 export PATH=$PATH:$HOME/scripts
