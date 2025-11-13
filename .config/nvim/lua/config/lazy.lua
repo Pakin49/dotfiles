@@ -23,12 +23,12 @@ require("lazy").setup({
 	require("plugins.whichkey"),
 	require("plugins.autopairs"),
 	require("plugins.autoformat"),
+  require("plugins.jupynium"),
 	require("plugins.autocomplete"),
 	require("plugins.treesitter"),
 	require("plugins.git-signs"),
 	require("plugins.tmux"),
 	require("plugins.bufferline"),
-	require("plugins.iron"),
 }, {
 	rocks = { enabled = false },
 })

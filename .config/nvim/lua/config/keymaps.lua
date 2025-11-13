@@ -101,39 +101,3 @@ vim.keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>")
 vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>")
 vim.keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>")
 vim.keymap.set("n", "<C-\\>", ":TmuxNavigatePrevious<CR>")
-
--- iron
--- [[
-local iron = require("iron.core")
-vim.keymap.set("n", "<space>irs", "<cmd>IronRepl<cr>", { desc = "[I]ron [R]EPL [S]tart" })
-vim.keymap.set("n", "<space>irr", "<cmd>IronRestart<cr>", { desc = "[I]ron [R]EPL [Restart]" })
-vim.keymap.set("n", "<space>irf", "<cmd>IronFocus<cr>", { desc = "[I]ron [R]EPL [F]ocus" })
-vim.keymap.set("n", "<space>irh", "<cmd>IronHide<cr>", { desc = "[I]ron [R]EPL [H]ide" })
-vim.keymap.set("n", "<space>ic", function()
-  iron.send(nil, "\x0c")  -- Ctrl-L works universally
-end, {desc = "[I]ron [C]lear"})
--- Send code keymaps
-vim.keymap.set("n", "<space>isp", function()
-	iron.send_paragraph()
-end, { desc = "[I]ron [S]end [P]aragraph" })
-
-vim.keymap.set("n", "<space>isb", function()
-	iron.send_code_block()
-end, { desc = "[I]ron [S]end Code [Block]"})
-
-vim.keymap.set("n", "<space>isl", function()
-	iron.send_line()
-end, { desc = "[I]ron [S]end [L]ine" })
-
-vim.keymap.set("v", "<space>is", function()
-	iron.visual_send()
-end, { desc = "[I]ron [S]end" })
-
-vim.keymap.set("n", "<space>isc", function()
-	iron.send_until_cursor()
-end, { desc = "[I]ron [S]end Until [C]ursor" })
-
-vim.keymap.set("n", "<space>isf", function()
-	iron.send_file()
-end, { desc = "[I]ron [S]end [F]ile" })
---]]
