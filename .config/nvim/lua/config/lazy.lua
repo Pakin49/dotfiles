@@ -24,7 +24,7 @@ require("lazy").setup({
 	require("plugins.autopairs"),
 	require("plugins.autoformat"),
   require("plugins.jupynium"),
-	require("plugins.autocomplete"),
+	require("plugins.blinkcmp"),
 	require("plugins.treesitter"),
 	require("plugins.git-signs"),
 	require("plugins.tmux"),
