@@ -98,8 +98,8 @@ int main(int argc, char **argv) {
   pkg_ptr = generated_pkg_list;
   int count_pkg = 0;
 
-  system("pacman -Qqe > generated_pkg");
-  fptr1 = fopen("generated_pkg", "r");
+  system("pacman -Qqe > .generated_pkg");
+  fptr1 = fopen(".generated_pkg", "r");
   if (!fptr1) {
     printf("Invalid generated package list\n");
     return -1;
@@ -117,21 +117,21 @@ int main(int argc, char **argv) {
   // comparing each generated package name to categorize package list
   // if not inside => need to be categorize
   int count_uncategorized = 0, count_deleted = 0;
-  printf("---------- List of uncategorized package ----------\n");
+  printf("----- Package in the system, not in the list -----\n");
   for (int i = 0; i < count_pkg; i++){
     if(!pkg_in(generated_pkg_list[i], categorized_pkg_list, count_cpkg)){
       printf(" %s\n",generated_pkg_list[i]);
     }
   }
-  printf("\ntotal %d packages are uncategorized\n\n", count_uncategorized);
+  //printf("\ntotal %d packages are uncategorized\n\n", count_uncategorized);
 
-  printf("---------- List of packages that are categorized but not in the system----------\n");
+  printf("----- Packages in the list, not in the system -----\n");
   for (int i = 0; i < count_cpkg; i++){
     if(!pkg_in(categorized_pkg_list[i], generated_pkg_list, count_pkg)){
       printf(" %s\n",categorized_pkg_list[i]);
     }
   }
-  printf("\ntotal %d packages\n", count_deleted);
+  //printf("\ntotal %d packages\n", count_deleted);
   printf("---------------------------------------------------\n");
 
   return 0;

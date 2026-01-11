@@ -27,15 +27,15 @@ essential=(
  bluez-utils
  pavucontrol
  powertop
- power-profiles-daemon
+ cosmic-session
 )
 
 # System - display server, login, hardware drivers, maintenance
 system=(
- cliphist
+ tlp
+ network-manager-applet
  wl-clipboard
- ly
- nvidia
+ nvidia-open
  nvidia-utils
  nvidia-settings
  timeshift
@@ -63,6 +63,7 @@ dev=(
 
 # Tools - CLI utilities, file managers, shell enhancements
 tools=(
+ aria2
  timg
  imv
  imagemagick
@@ -96,7 +97,7 @@ tools=(
 
 # Personal - apps, themes, fonts, media, security managers
 personal=(
- nemo
+ spotify-launcher
  zen-browser-bin
  discord
  ghostty
@@ -117,7 +118,6 @@ personal=(
  bitwarden
  pass
  seahorse
- libreoffice-fresh
 )
 
 #theme and fonts
@@ -139,18 +139,6 @@ misc=(
  resvg
  tinyxxd
  jq
- tgpt
-)
-
-hyprland=(
- swaync
- wev
- hyprland
- hyprpicker
- hypridle
- hyprlock
- hyprpaper
- xdg-desktop-portal-hyprland
- waybar
- grim
+ gvfs-mtp
+ geckodriver
 )

@@ -51,3 +51,16 @@ debug=(
  evemu
  evtest
 )
+
+hyprland=(
+ swaync
+ wev
+ hyprland
+ hyprpicker
+ hypridle
+ hyprlock
+ hyprpaper
+ xdg-desktop-portal-hyprland
+ waybar
+ grim
+)
