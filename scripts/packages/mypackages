@@ -27,11 +27,13 @@ essential=(
  bluez-utils
  pavucontrol
  powertop
- cosmic-session
 )
 
 # System - display server, login, hardware drivers, maintenance
 system=(
+ power-profiles-daemon
+ greetd
+ cosmic-greeter
  tlp
  network-manager-applet
  wl-clipboard
@@ -93,6 +95,10 @@ tools=(
  gnu-netcat
  inetutils
  rofi
+ nemo
+ nemo-fileroller
+ nemo-terminal
+ selectdefaultapplication-fork-git
 )
 
 # Personal - apps, themes, fonts, media, security managers
@@ -130,6 +136,8 @@ theme=(
  ttf-jetbrains-mono-nerd
  kvantum-qt5
  kvantum-theme-orchis-git
+ qt5-wayland
+ qt6-wayland
 )
 
 # Misc - uncategorizable/niche tools
@@ -138,7 +146,20 @@ misc=(
  python-adblock
  resvg
  tinyxxd
- jq
  gvfs-mtp
  geckodriver
+)
+
+hyprland=(
+ swaync
+ wev
+ hyprland
+ hypridle
+ hyprlock
+ hyprpolkitagent
+ hyprpaper
+ xdg-desktop-portal-hyprland
+ waybar
+ grim
+ xorg-xhost
 )
