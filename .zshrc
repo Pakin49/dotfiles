@@ -45,11 +45,11 @@ alias ls='eza --color=always --long'
 DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
 
 # ------------ Zoxide: better cd------------
-eval "$(zoxide init zsh)" #"--cmd cd" add this before zsh to remap cd to z
-cd_ls(){
-  z "$@" && ls
-}
-alias cd=cd_ls
+#eval "$(zoxide init zsh)" #"--cmd cd" add this before zsh to remap cd to z
+#cd_ls(){
+#  z "$@" && ls
+#}
+#alias cd=cd_ls
 
 # ------------ Bat : better cat------------
 alias cat='bat --style=plain'
@@ -73,8 +73,8 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 # ------------ Custom alias ------------
 alias ll='ls -al'
-alias dot='z ~/.dotfiles && ll'
-alias conf='z ~/.dotfiles/.config && ll'
+alias dot='cd ~/.dotfiles && ll'
+alias conf='cd /.dotfiles/.config && ll'
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 
 # ------------ Starship ------------
