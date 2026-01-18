@@ -46,7 +46,7 @@ end)
 vim.opt.winborder = "rounded"
 vim.diagnostic.config({
 	severity_sort = true,
-	float = { border = "rounded", source = "if_many" },
+	float = { border = "rounded", source = "always" },
 	virtual_text = true,
 	signs = true,
 })

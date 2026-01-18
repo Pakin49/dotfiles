@@ -17,14 +17,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	require("plugins.onedark"),
+	require("plugins.blinkcmp"),
+	require("plugins.conform"),
 	require("plugins.lsp"),
+	require("plugins.lint"),
 	require("plugins.telescope"),
 	require("plugins.oil"),
 	require("plugins.whichkey"),
-	require("plugins.autopairs"),
-	require("plugins.autoformat"),
-  require("plugins.jupynium"),
-	require("plugins.blinkcmp"),
+	require("plugins.nvim-autopairs"),
 	require("plugins.treesitter"),
 	require("plugins.git-signs"),
 	require("plugins.tmux"),
