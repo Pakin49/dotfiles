@@ -49,6 +49,7 @@ syste_util=(
 
 # Dev - compilers, version control, language toolchains
 dev=(
+ luarocks
  verilator
  vivado
  git-lfs
@@ -117,14 +118,12 @@ personal=(
  flameshot
  mpv
  obs-studio
- sxiv
  cava
  mpd
  mpc
  rmpc
  bitwarden
  pass
- seahorse
 )
 
 #theme and fonts
@@ -144,9 +143,7 @@ theme=(
 
 # Misc - uncategorizable/niche tools
 misc=(
- kindlegen
  python-adblock
- resvg
  tinyxxd
  gvfs-mtp
  geckodriver
