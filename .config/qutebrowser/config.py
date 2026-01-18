@@ -7,7 +7,7 @@ c = c
 ############################################################
 
 # Change the argument to True to still load settings configured via autoconfig.yml
-config.load_autoconfig(False)
+config.load_autoconfig(True)
 
 c.tabs.title.format = "{audio}{current_title}"
 c.fonts.default_size = "10pt"

@@ -27,7 +27,7 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 
 window-padding-balance = true 
-window-save-state = always
+window-save-state = never
 #foreground = d4be98
 
 # other

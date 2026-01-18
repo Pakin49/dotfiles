@@ -11,7 +11,7 @@ core=(
 )
 
 # Essential - audio/network/bluetooth needed for basic system operation
-essential=(
+base_system=(
  alsa-firmware
  alsa-utils
  pipewire
@@ -30,7 +30,7 @@ essential=(
 )
 
 # System - display server, login, hardware drivers, maintenance
-system=(
+syste_util=(
  power-profiles-daemon
  greetd
  cosmic-greeter
@@ -49,6 +49,7 @@ system=(
 
 # Dev - compilers, version control, language toolchains
 dev=(
+ verilator
  vivado
  git-lfs
  gcc
@@ -61,10 +62,15 @@ dev=(
  python-pipx
  uv
  neovim
+ fzf
+ yazi
 )
 
 # Tools - CLI utilities, file managers, shell enhancements
 tools=(
+ thunderbird
+ solaar
+ libreoffice-fresh-th
  aria2
  timg
  imv
@@ -76,7 +82,6 @@ tools=(
  calc
  curl
  eza
- fzf
  man-db
  ncdu
  neofetch
@@ -89,15 +94,11 @@ tools=(
  unzip
  wget
  yay
- yazi
- zoxide
  zsh
- gnu-netcat
  inetutils
  rofi
  nemo
  nemo-fileroller
- nemo-terminal
  selectdefaultapplication-fork-git
 )
 
@@ -133,6 +134,7 @@ theme=(
  papirus-icon-theme
  noto-fonts-cjk
  noto-fonts-emoji
+ ttf-ms-fonts
  ttf-jetbrains-mono-nerd
  kvantum-qt5
  kvantum-theme-orchis-git

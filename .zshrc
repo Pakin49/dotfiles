@@ -65,16 +65,16 @@ HISTSIZE=3000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
-setopt sharehistory
+#setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 # ------------ Custom alias ------------
-alias ll='ls -al'
-alias dot='cd ~/.dotfiles && ll'
-alias conf='cd /.dotfiles/.config && ll'
+#alias ll='ls -al'
+alias dot='cd ~/.dotfiles && ls -al'
+#alias conf='cd /.dotfiles/.config && ll'
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 
 # ------------ Starship ------------
