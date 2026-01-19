@@ -69,6 +69,7 @@ vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind recent files ("." for repeat)' })
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = " [F]ind existing buffers" })
 vim.keymap.set("n", "<leader>ft", builtin.treesitter, { desc = "[F]ind [T]reesitter" })
+vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "[F]ind [C]olors" })
 
 --Autopairs
 vim.keymap.set("n", "<leader>tp", ":lua require('nvim-autopairs').toggle()<cr>", { desc = "[T]oggle auto [P]airs" })

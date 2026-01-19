@@ -8,7 +8,7 @@ return {
     },
     highlights = {
       fill = {
-        bg = "#000000" ,
+        --bg = "#000000" ,
       },
       buffer_selected = {
         italic = false,

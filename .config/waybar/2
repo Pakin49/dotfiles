@@ -2,25 +2,24 @@
   "layer": "top",
   "position": "top",
   "height": 24,
-  "spacing": 4,
+  "spacing": 5,
   "modules-left": [
     "tray"
   ],
   "modules-center": [
     "hyprland/workspaces"
   ],
-"modules-right": [
-    "network",
-    "bluetooth",
-    "battery",
-    "backlight",
-    "wireplumber",
+  "modules-right": [
     "idle_inhibitor",
+    "wireplumber",
+    "battery",
     "hyprland/language",
-    //"power-profiles-daemon",
+    "backlight",
+    "power-profiles-daemon",
+    "bluetooth",
+    "network",
     "clock"
-],
-
+  ],
   "hyprland/workspaces": {
     "format": "<span size='larger'>{icon}</span>",
     "on-click": "activate",
@@ -39,20 +38,35 @@
       "5": []
     }
   },
-
   "clock": {
-    "interval": 60,
-    "tooltip": true,
-    "format": "{:%H.%M}",
-    "tooltip-format": "{:%Y-%m-%d}"
+    "format": "{:%H:%M}  ",
+    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
   "wireplumber": {
-    "format": "󰕾 {volume}%",
-    "format-muted": "󰝟 {volume}%",
+    "format": "󰕾  {volume}%",
+    "format-muted": "󰝟  {volume}%",
     "max-volume": 100,
     "scroll-step": 5,
-    "on-click" : "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-right": "pavucontrol"
+    "on-click": "pavucontrol"
   },
   "battery": {
     "bat": "BAT1",
@@ -90,7 +104,7 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "blueman-manager"
+    "on-click": "blueman"
   },
   "hyprland/language": {
     "format": "{short}"
@@ -108,7 +122,7 @@
   },
   "backlight": {
     "device": "intel_backlight",
-    "format": " {icon} {percent}%",
+    "format": "{percent}% {icon}",
     "format-icons": [
       "",
       ""

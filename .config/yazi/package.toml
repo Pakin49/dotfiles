@@ -12,3 +12,8 @@ hash = "d9da921c3bd37ba32ee27a8a7a40461f"
 use = "yazi-rs/flavors:dracula"
 rev = "2d73b79"
 hash = "fc6944561718351d70cffde75839211f"
+
+[[flavor.deps]]
+use = "damjee/onedark"
+rev = "8a7796c"
+hash = "e7d277fd8cec72b6fa26586b6d51f597"

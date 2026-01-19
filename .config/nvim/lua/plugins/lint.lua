@@ -6,7 +6,7 @@ return {
       --verilog = { "verible_verilog_lint" }, -- or "iverilog"
 			python = { "pylint" }, -- or "ruff"
 			lua = { "luacheck" },
-			c = { "clangtidy" },
+			--c = { "cpplint" },
 		}
 	end,
 }

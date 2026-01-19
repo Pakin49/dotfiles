@@ -75,7 +75,6 @@ tools=(
  aria2
  timg
  imv
- imagemagick
  7zip
  bat
  brightnessctl
@@ -86,7 +85,6 @@ tools=(
  man-db
  ncdu
  neofetch
- ripgrep
  starship
  stow
  tldr
@@ -139,6 +137,16 @@ theme=(
  kvantum-theme-orchis-git
  qt5-wayland
  qt6-wayland
+)
+
+yazi=(
+ ripgrep
+ fd
+ zoxide
+ ffmpeg
+ jq
+ resvg
+ imagemagick
 )
 
 # Misc - uncategorizable/niche tools

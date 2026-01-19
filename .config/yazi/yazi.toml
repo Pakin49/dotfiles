@@ -1,5 +1,3 @@
-[mgr]
-ratio = [2,3,3]
 [opener]
 zathura = [
     { run = 'zathura "$@"', orphan = true, desc = "Open with Zathura" }

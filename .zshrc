@@ -1,9 +1,9 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-#ZSH_THEME="cloud"  #powerlevel10k/powerlevel10k
+#ZSH_THEME="oxide"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -17,8 +17,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-interactive-cd)
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+plugins=(git  zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -91,5 +91,4 @@ function y() {
 
 #script
 alias mimi="source $HOME/scripts/mimi.sh"
-alias fuck="source $HOME/scripts/fuck.sh"
 export PATH=$PATH:$HOME/scripts

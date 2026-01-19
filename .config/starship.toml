@@ -124,12 +124,12 @@ Windows = "󰍲 "
 [package]
 symbol = "󰏗 "
 
-[palettes.onedark]
-red = "#e55561"
-orange = "#cc9057"
-yellow = "#e2b86b"
-green = "#8ebd6b"
-cyan = "#48b0bd"
-blue = "#4fa6ed"
-purple = "#bf68d9"
+#[palettes.onedark]
+#red = "#e55561"
+#orange = "#cc9057"
+#yellow = "#e2b86b"
+#green = "#8ebd6b"
+#cyan = "#48b0bd"
+#blue = "#4fa6ed"
+#purple = "#bf68d9"
 

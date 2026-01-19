@@ -1,6 +1,6 @@
 @define-color foreground #eeeeee;
 @define-color foreground-inactive #aaaaaa;
-@define-color background #000000;
+@define-color background rgba(0,0,0,0.8);
 
 * {
     font-family: JetBrainsMono Nerd Font;
@@ -31,6 +31,8 @@
 #idle_inhibitor,
 #language,
 #network,
+#backlight,
+#power-profiles-daemon,
 #bluetooth,
 #clock{
     padding-right: 1em 
