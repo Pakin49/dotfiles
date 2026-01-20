@@ -1,4 +1,5 @@
 -------------------- Neovim options --------------------
+-- luacheck:globals vim
 -- Basic settings
 vim.opt.number = true -- enable line number
 vim.opt.relativenumber = true --enable relative linenumber

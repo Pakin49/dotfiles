@@ -1,25 +1,21 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 13 
-font-feature = -calt, -liga, -dlig
+#font-feature = -calt, -liga, -dlig
 
-# One dark theme but fig the auto suggestion not visible
-#https://github.com/ghostty-org/ghostty/issues/3450
-theme =  One Half Dark 
-#palette = 0=#707682
-#palette = 8=#707682
-
+theme = Nvim Default
+#custom theme
+# Primary Palette (Dark)
 #fix erros when ssh to bandit server 
 #term=xterm-256color 
+#background = 0c0c0c
 
-background = 0e1013
-
-shell-integration-features = no-cursor,sudo,no-title
+shell-integration-features = no-cursor,sudo,title
 cursor-style = block
 cursor-color = f4b278
 cursor-opacity = 0.7
 cursor-style-blink = false
 
-background-opacity = 0.90
+background-opacity = 0.9
 unfocused-split-opacity = 0.8
 
 mouse-hide-while-typing = true
@@ -35,18 +31,10 @@ shell-integration = zsh
 window-decoration = server
 
 window-padding-x = 15
-window-padding-y = 0
+window-padding-y = 5
 window-padding-color = extend
 
 clipboard-paste-protection = false
 confirm-close-surface = false
 
 keybind = control+shift+l=clear_screen
-keybind = alt+3=unbind
-#keybind = control+"=new_split:down
-#keybind = control+%=new_split:right
-
-#keybind = control+h=goto_split:left
-#keybind = control+j=goto_split:down
-#keybind = control+k=goto_split:up
-#keybind = control+l=goto_split:right

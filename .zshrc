@@ -74,6 +74,7 @@ setopt hist_find_no_dups
 # ------------ Custom alias ------------
 #alias ll='ls -al'
 alias dot='cd ~/.dotfiles && ls -al'
+alias ref='$HOME/kyber-ref/NIST-PQ-Submission-Kyber-20201001/Reference_Implementation/crypto_kem/kyber768'
 #alias conf='cd /.dotfiles/.config && ll'
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 

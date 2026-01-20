@@ -1,3 +1,4 @@
+--luacheck: globals vim
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -6,6 +7,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- LSP
 -- Return to last edit position when opening files
 vim.api.nvim_create_autocmd("BufReadPost", {
 	callback = function()
@@ -16,13 +18,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
-
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
     vim.lsp.stop_client(vim.lsp.get_clients())
   end,
 })
-
 vim.api.nvim_create_autocmd('LspDetach', {
   callback = function(args)
     -- Get the detaching client
@@ -36,6 +36,7 @@ vim.api.nvim_create_autocmd('LspDetach', {
     end
   end,
 })
+
 
 -- Terminal
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -52,5 +53,14 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
     -- try_lint without arguments runs the linters defined in `linters_by_ft`
     -- for the current filetype
     require("lint").try_lint()
+  end,
+})
+
+-- Man page
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "help", "man" },
+  callback = function()
+    vim.cmd("wincmd |") -- max width
+    vim.cmd("wincmd _") -- max height
   end,
 })

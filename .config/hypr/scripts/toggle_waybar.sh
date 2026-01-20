@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/zsh
 if pgrep -x waybar; then
   pkill waybar
 else
-  waybar
+  waybar -c $HOME/.config/waybar/hyprland.jsonc
 fi

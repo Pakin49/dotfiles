@@ -9,7 +9,9 @@ vim.cmd("ca W w")
 vim.cmd("ca Q q")
 vim.cmd("ca WQ wq")
 vim.cmd("ca Wq wq")
-
+-- test bowen
+vim.keymap.set("n", "]b", [[:silent /\v[\{\[\(\'"":]<CR>:nohlsearch<CR>]])
+vim.keymap.set("n", "[b", [[:silent ?\v[\{\[\(\'"":]<CR>:nohlsearch<CR>]])
 --vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "[Q]uit Vim!!" })
 --im.keymap.set("n", "<leader>w", ":w<cr>", { desc = "[W]rite buffer" })
 --vim.keymap.set("n", "<leader>c", ":q!<cr>", { desc = "Quit without save" })
@@ -68,6 +70,7 @@ vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagno
 vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = '[F]ind recent files ("." for repeat)' })
 vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = " [F]ind existing buffers" })
+vim.keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "[F]ind [M]an Pages" })
 vim.keymap.set("n", "<leader>ft", builtin.treesitter, { desc = "[F]ind [T]reesitter" })
 vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "[F]ind [C]olors" })
 
