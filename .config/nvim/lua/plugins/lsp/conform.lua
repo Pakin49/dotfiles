@@ -16,4 +16,10 @@ return { -- Autoformat
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
 		},
 	},
+
+  keys = {
+    {'<leader>bf', function() require('conform').format({ async = true, lsp_format = "fallback" }) end,
+      desc = "[B]uffer [F]ormat"
+    }
+  },
 }

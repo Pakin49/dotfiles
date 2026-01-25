@@ -14,26 +14,26 @@
     background-color: @background;
 }
 
+#workspaces{
+  padding-left:1em;
+}
+
 #workspaces button {
     color: @foreground;
 }
-
 #workspaces button.empty {
     color: @foreground-inactive;
 }
 
-#tray {
-  padding-left:1em;
-}
 
 #wireplumber,
-#battery,
 #idle_inhibitor,
 #language,
 #network,
 #backlight,
 #power-profiles-daemon,
 #bluetooth,
+#tray,
 #clock{
     padding-right: 1em 
 }

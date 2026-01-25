@@ -18,24 +18,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
-vim.api.nvim_create_autocmd("VimLeavePre", {
-  callback = function()
-    vim.lsp.stop_client(vim.lsp.get_clients())
-  end,
-})
-vim.api.nvim_create_autocmd('LspDetach', {
-  callback = function(args)
-    -- Get the detaching client
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    -- Remove the autocommand to format the buffer on save, if it exists
-    if client:supports_method('textDocument/formatting') then
-      vim.api.nvim_clear_autocmds({
-        event = 'BufWritePre',
-        buffer = args.buf,
-      })
-    end
-  end,
-})
 
 
 -- Terminal
@@ -47,14 +29,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
--- Linter
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter" }, {
-  callback = function()
-    -- try_lint without arguments runs the linters defined in `linters_by_ft`
-    -- for the current filetype
-    require("lint").try_lint()
-  end,
-})
 
 -- Man page
 vim.api.nvim_create_autocmd("FileType", {

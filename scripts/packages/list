@@ -1,1 +1,119 @@
- swaync wev hyprland hyprpicker hypridle hyprlock hyprpaper xdg-desktop-portal-hyprland waybar grim
+########################################
+## System
+########################################
+# !!Core!! 
+base
+base-devel
+intel-ucode
+linux
+linux-firmware
+linux-headers
+# Network
+inetutils
+networkmanager
+network-manager-applet
+# Nvidia
+nvidia-open
+nvidia-settings
+nvidia-utils
+# Power management
+tlp
+auto-cpufreq
+# Sounds
+alsa-firmware
+alsa-utils
+pavucontrol
+# Bluetooth
+bluez
+bluez-utils
+blueman
+
+# Utilities
+man-db
+brightnessctl
+curl
+ncdu
+# System monitor
+btop
+htop
+# File system
+efibootmgr
+exfatprogs
+gvfs-mtp
+gparted
+
+########################################
+## Desktop & Theme
+########################################
+# hyprland ecosystem
+hyprland
+hyprpaper
+hyprpolkitagent
+hypridle
+hyprlock
+hyprpicker
+
+cosmic-greeter
+# System utils
+flameshot
+grim
+calc
+7zip
+imv
+
+# Theme
+nwg-look
+kvantum-qt5
+kvantum-theme-orchis-git
+# Font
+noto-fonts-emoji
+noto-fonts-cjk
+########################################
+## Personal
+########################################
+# Terminal 
+alacritty
+zsh
+fzf
+bat
+eza
+fd
+neovim
+neofetch
+zoxide
+# Internet
+firefox
+librewolf-bin
+# Yazi and dependency
+yazi
+imagemagick
+# Entertainment
+discord
+mpd
+mpv
+rmpc
+# Dev
+git
+git-lfs
+gcc
+gdb
+go
+npm
+python-pip
+pipx
+luarocks
+# Tools
+libreoffice-fresh-th
+aria2
+jq
+
+# Music
+rmpc
+cava
+
+# Misc
+
+
+##
+foot
+foot-terminfo

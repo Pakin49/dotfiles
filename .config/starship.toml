@@ -1,78 +1,115 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = true
-format = """
-$os\
-$hostname\
-$username\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$c\
-$cpp\
-$rust\
-$python\
-$character"""
+[aws]
+symbol = " "
 
-[os]
-disabled = false
-format = "[$symbol ]($style)"
-style = 'fg:#1793d1'
+[buf]
+symbol = " "
 
-[hostname]
-format = "[$hostname]($style) "
-style = "bold white"
+[bun]
+symbol = " "
 
+[c]
+symbol = " "
 
-[username]
-format = '[$user]($style) '
-disabled = false
-show_always = true
-style_root = 'red bold'
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[deno]
+symbol = " "
 
 [directory]
-truncation_length = 4
-format = "[$path]($style)[$read_only]($read_only_style)($style) "
 read_only = " 󰌾"
-read_only_style = "green"
 
-[git_branch]
-format = "[$symbol$branch]($style) "
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fortran]
+symbol = " "
+
+[fossil_branch]
 symbol = " "
 
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
+[gcloud]
+symbol = " "
+
+[git_branch]
+symbol = " "
 
 [git_commit]
 tag_symbol = '  '
 
-[c]
-format = "[$symbol($version(-$name))]($style) "
-symbol = " "
+[golang]
+symbol = " "
 
-[cpp]
-format = "[$symbol($version)]($style) "
-symbol = " "
+[gradle]
+symbol = " "
 
-[rust]
-format = "[$symbol($version)]($style) "
-symbol = "󱘗 "
+[guix_shell]
+symbol = " "
 
-[python]
-format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
-symbol = " "
+[haskell]
+symbol = " "
 
-[sudo]
-style = "yellow"
-disabled = false
+[haxe]
+symbol = " "
 
-[character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[ocaml]
+symbol = " "
 
 [os.symbols]
 Alpaquita = " "
@@ -80,12 +117,14 @@ Alpine = " "
 AlmaLinux = " "
 Amazon = " "
 Android = " "
+AOSC = " "
 Arch = " "
 Artix = " "
 CachyOS = " "
 CentOS = " "
 Debian = " "
 DragonFly = " "
+Elementary = " "
 Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
@@ -94,6 +133,7 @@ Garuda = "󰛓 "
 Gentoo = " "
 HardenedBSD = "󰞌 "
 Illumos = "󰈸 "
+Ios = "󰀷 "
 Kali = " "
 Linux = " "
 Mabox = " "
@@ -120,16 +160,46 @@ Ubuntu = " "
 Unknown = " "
 Void = " "
 Windows = "󰍲 "
+Zorin = " "
 
 [package]
 symbol = "󰏗 "
 
-#[palettes.onedark]
-#red = "#e55561"
-#orange = "#cc9057"
-#yellow = "#e2b86b"
-#green = "#8ebd6b"
-#cyan = "#48b0bd"
-#blue = "#4fa6ed"
-#purple = "#bf68d9"
+[perl]
+symbol = " "
 
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[pixi]
+symbol = "󰏗 "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[status]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[xmake]
+symbol = " "
+
+[zig]
+symbol = " "

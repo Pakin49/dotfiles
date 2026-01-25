@@ -45,7 +45,7 @@ alias ls='eza --color=always --long'
 DISABLE_LS_COLORS="true" # to show the correct theme disable LS_COLORS 
 
 # ------------ Zoxide: better cd------------
-#eval "$(zoxide init zsh)" #"--cmd cd" add this before zsh to remap cd to z
+eval "$(zoxide init zsh --cmd cd)" #"--cmd cd" add this before zsh to remap cd to z
 #cd_ls(){
 #  z "$@" && ls
 #}
@@ -74,7 +74,8 @@ setopt hist_find_no_dups
 # ------------ Custom alias ------------
 #alias ll='ls -al'
 alias dot='cd ~/.dotfiles && ls -al'
-alias ref='$HOME/kyber-ref/NIST-PQ-Submission-Kyber-20201001/Reference_Implementation/crypto_kem/kyber768'
+alias kyber='cd $HOME/kyber'
+alias ref='cd $HOME/kyber-ref/kyber768'
 #alias conf='cd /.dotfiles/.config && ll'
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd)
 

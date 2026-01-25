@@ -1,5 +1,6 @@
 -------------------- Neovim options --------------------
 -- luacheck:globals vim
+--vim.cmd[[colorscheme tokyonight]]
 -- Basic settings
 vim.opt.number = true -- enable line number
 vim.opt.relativenumber = true --enable relative linenumber
@@ -42,12 +43,3 @@ vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
 
--- Diagnostic Config
--- See :help vim.diagnostic.Opts
-vim.opt.winborder = "rounded"
-vim.diagnostic.config({
-	severity_sort = true,
-	float = { border = "rounded", source = "always" },
-	virtual_text = true,
-	signs = true,
-})
