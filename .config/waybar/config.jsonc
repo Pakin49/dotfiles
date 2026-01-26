@@ -1,13 +1,13 @@
 {
   "layer": "top",
-  "position": "top",
-  "height": 28,
+  "position": "bottom",
+  "height": 24,
   "spacing": 4,
   "modules-left": [
-    "hyprland/workspaces"
+    "sway/workspaces"
   ],
   "modules-center": [
-    "hyprland/window"
+    "sway/window"
   ],
 "modules-right": [
     "tray",
@@ -17,29 +17,20 @@
     "backlight",
     "wireplumber",
     "idle_inhibitor",
-    "hyprland/language",
+    "sway/language",
     //"power-profiles-daemon",
     "clock"
 ],
 
-  "hyprland/workspaces": {
-    "format": "<span size='larger'>{icon}</span>",
-    "on-click": "activate",
-    "format-icons": {
-      "active": "",
-      "default": ""
-    },
-    "icon-size": 12,
-    "sort-by-number": true,
-    "all-outputs": true,
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": []
-    }
-  },
+//  "sway/workspaces": {
+//    "persistent-workspaces": {
+//      "1": [],
+//      "2": [],
+//      "3": [],
+//      "4": [],
+//      "5": []
+//    }
+//  },
     "clock": {
     "interval": 60,
     "tooltip": true,
@@ -92,7 +83,7 @@
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "blueman-manager"
   },
-  "hyprland/language": {
+  "sway/language": {
     "format": "{short}"
   },
   "tray": {

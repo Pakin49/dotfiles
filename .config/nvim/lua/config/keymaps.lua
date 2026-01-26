@@ -9,21 +9,19 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.cmd("ca W w")
 vim.cmd("ca Q q")
 vim.cmd("ca WQ wq")
+
 vim.cmd("ca Wq wq")
--- test bowen
-vim.keymap.set("n", "]b", [[:silent /\v[\{\[\(\'"":]<CR>:nohlsearch<CR>]])
-vim.keymap.set("n", "[b", [[:silent ?\v[\{\[\(\'"":]<CR>:nohlsearch<CR>]])
 --vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "[Q]uit Vim!!" })
 --im.keymap.set("n", "<leader>w", ":w<cr>", { desc = "[W]rite buffer" })
 --vim.keymap.set("n", "<leader>c", ":q!<cr>", { desc = "Quit without save" })
 
 -- windows
---vim.keymap.set("n", "<leader>sl", ":vertical resize +20<cr>", { desc = "[S]plit vertical resize +20" })
---vim.keymap.set("n", "<leader>sh", ":vertical resize -20<cr>", { desc = "[S]plit vertical resize -20" })
---vim.keymap.set("n", "<leader>sk", ":resize +10<cr>", { desc = "[S]plit horizontal resize +10" })
---vim.keymap.set("n", "<leader>sj", ":resize -10<cr>", { desc = "[S]plit horizontal resize -10" })
---vim.keymap.set("n", "<leader>sv", ":vertical split<cr>", { desc = "[S]plit [V]ertically " })
---vim.keymap.set("n", "<leader>ss", ":split<cr>", { desc = "[S]plit Horontally" })
+vim.keymap.set("n", "<leader>wl", ":vertical resize +20<cr>", { desc = "[S]plit vertical resize +20" })
+vim.keymap.set("n", "<leader>wh", ":vertical resize -20<cr>", { desc = "[S]plit vertical resize -20" })
+vim.keymap.set("n", "<leader>wk", ":resize +10<cr>", { desc = "[S]plit horizontal resize +10" })
+vim.keymap.set("n", "<leader>wj", ":resize -10<cr>", { desc = "[S]plit horizontal resize -10" })
+vim.keymap.set("n", "<leader>wv", ":vertical split<cr>", { desc = "[S]plit [V]ertically " })
+vim.keymap.set("n", "<leader>ws", ":split<cr>", { desc = "[S]plit Horontally" })
 
 -- buffers
 vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "[N]ext Buffer" })
@@ -48,6 +46,3 @@ vim.keymap.set("n", "<leader>tt", function()
 	vim.api.nvim_win_set_height(0, 8)
 end)
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
-
--------------------- Plugins keymap --------------------
-

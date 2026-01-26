@@ -1,0 +1,41 @@
+# Wiki is in the man page : man -k sway
+# Include config files
+include keybinds
+include styles
+########################################
+## Auto Start
+########################################
+exec waybar
+exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+### Idle configuration : man swayidle
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'systemctl suspend' \
+         before-sleep 'swaylock -f -c 000000'
+         #timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+
+
+########################################
+## Output configuration
+########################################
+output * bg $HOME/Pictures/wallpapers/cosmic/orion_nebula_nasa_heic0601a.jpg fill
+output eDP-1 resolution 1920x1080@165Hz position 1920,0
+#output HDMI-A-1 resolution 1920x1080 position 1920,0
+#use : swaymsg -t get_outputs
+
+
+########################################
+## Output configuration
+########################################
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+input type:keyboard {
+    xkb_layout us,th
+    xkb_options grp:win_space_toggle,ctrl:nocaps
+}
+
+include /etc/sway/config.d/*

@@ -45,12 +45,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Diagnostic Config
 -- See :help vim.diagnostic.Opts
+local severity = vim.diagnostic.severity
+
 vim.opt.winborder = "rounded"
 vim.diagnostic.config({
 	severity_sort = true,
-	float = { border = "rounded", source = "always" },
+	float = { border = "rounded" },
 	virtual_text = true,
-	signs = true,
+  signs = {
+    text = {
+      [severity.ERROR] = " ",
+      [severity.WARN] = " ",
+      [severity.HINT] = "󰠠 ",
+      [severity.INFO] = " ",
+    },
+  },
 })
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
