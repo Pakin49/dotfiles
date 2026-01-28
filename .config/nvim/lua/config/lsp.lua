@@ -1,10 +1,20 @@
 -- Add Blink.cmp capabilities
-vim.lsp.enable("hdl_checker")
+vim.lsp.config("slang-server", {
+  cmd = { "slang-server" },
+  root_markers = { ".git", ".slang" },
+  filetypes = {
+    "systemverilog",
+    "verilog",
+  },
+})
+
+--vim.lsp.enable("hdl-checker")
+vim.lsp.enable("slang-server")
+vim.lsp.enable("verible")
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 vim.lsp.config('*', {
-  root_markers = { '.git'},
-  capabiltiles ={ capabilities }
+  capabilities = capabilities
 })
 
 -- Only create this keymap when lsp attach to buffer
@@ -50,7 +60,10 @@ local severity = vim.diagnostic.severity
 vim.opt.winborder = "rounded"
 vim.diagnostic.config({
 	severity_sort = true,
-	float = { border = "rounded" },
+	float = { 
+    border = "rounded",
+    source = true
+  },
 	virtual_text = true,
   signs = {
     text = {
@@ -62,11 +75,13 @@ vim.diagnostic.config({
   },
 })
 
+--[[
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
     vim.lsp.stop_client(vim.lsp.get_clients())
   end,
 })
+]]
 vim.api.nvim_create_autocmd('LspDetach', {
   callback = function(args)
     -- Get the detaching client

@@ -14,13 +14,13 @@ exec swayidle -w \
          before-sleep 'swaylock -f -c 000000'
          #timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 
-
 ########################################
-## Output configuration
+## Output sdasdasdjklsconfiguration
 ########################################
 output * bg $HOME/Pictures/wallpapers/cosmic/orion_nebula_nasa_heic0601a.jpg fill
 output eDP-1 resolution 1920x1080@165Hz position 1920,0
-#output HDMI-A-1 resolution 1920x1080 position 1920,0
+output HDMI-A-1 resolution 3840x2160@60Hz position 3840,1020
+output HDMI-A-1 enable
 #use : swaymsg -t get_outputs
 
 
@@ -35,7 +35,7 @@ input type:touchpad {
 }
 input type:keyboard {
     xkb_layout us,th
-    xkb_options grp:win_space_toggle,ctrl:nocaps
+    xkb_options grp:win_space_toggle
 }
 
 include /etc/sway/config.d/*

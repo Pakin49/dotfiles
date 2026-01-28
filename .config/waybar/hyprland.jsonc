@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "bottom",
-  "height": 24,
+  "height": 28,
   "spacing": 4,
   "modules-left": [
     "hyprland/workspaces"
@@ -30,7 +30,7 @@
         "update-active-window": true,
         "format": "{icon} {title:.22}",
         "icon-size": 18,
-        "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
+        "on-click-window": "$HOME/.config/hypr/sfocus-window.sh {address} {button}"
     }
 },
     "clock": {

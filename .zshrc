@@ -94,3 +94,4 @@ function y() {
 #script
 alias mimi="source $HOME/scripts/mimi.sh"
 export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$home/.local/bin

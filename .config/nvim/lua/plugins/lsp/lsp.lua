@@ -4,7 +4,6 @@ return {
 		ensure_installed = {
 			"lua_ls",
 			"pyright",
-			"verible",
 			"stylua",
 		},
 	},
