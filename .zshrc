@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="oxide"
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+#DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -30,6 +30,7 @@ export PATH="$PATH:$HOME/.local/bin"
 # move to .zshenv
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 alias vim='nvim'
+alias v='nvim'
 #export SUDO_EDITOR=nvim
 #export EDITOR=nvim
 
@@ -95,3 +96,4 @@ function y() {
 alias mimi="source $HOME/scripts/mimi.sh"
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$home/.local/bin
+alias f=fastfetch

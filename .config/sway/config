@@ -2,11 +2,11 @@
 # Include config files
 include keybinds
 include styles
+xwayland force
 ########################################
 ## Auto Start
 ########################################
 exec waybar
-exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
 ### Idle configuration : man swayidle
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
@@ -19,7 +19,7 @@ exec swayidle -w \
 ########################################
 output * bg $HOME/Pictures/wallpapers/cosmic/orion_nebula_nasa_heic0601a.jpg fill
 output eDP-1 resolution 1920x1080@165Hz position 1920,0
-output HDMI-A-1 resolution 3840x2160@60Hz position 3840,1020
+output HDMI-A-1 resolution 2560x1440@60Hz position 2560,1080
 output HDMI-A-1 enable
 #use : swaymsg -t get_outputs
 

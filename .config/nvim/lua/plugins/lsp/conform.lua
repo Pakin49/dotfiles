@@ -17,9 +17,22 @@ return { -- Autoformat
 		},
 	},
 
-  keys = {
-    {'<leader>bf', function() require('conform').format({ async = true, lsp_format = "fallback" }) end,
-      desc = "[B]uffer [F]ormat"
-    }
-  },
+	keys = {
+		{
+			"<leader>bf",
+			function()
+				require("conform").format({ async = true, lsp_format = "fallback" })
+			end,
+			desc = "[B]uffer [F]ormat",
+		},
+	},
+	config = function(_, opts)
+		require("conform").setup(opts)
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*",
+			callback = function(args)
+				require("conform").format({ bufnr = args.buf })
+			end,
+		})
+	end,
 }

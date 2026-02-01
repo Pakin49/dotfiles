@@ -9,7 +9,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.cmd("ca W w")
 vim.cmd("ca Q q")
 vim.cmd("ca WQ wq")
-
 vim.cmd("ca Wq wq")
 --vim.keymap.set("n", "<leader>q", ":q<cr>", { desc = "[Q]uit Vim!!" })
 --im.keymap.set("n", "<leader>w", ":w<cr>", { desc = "[W]rite buffer" })

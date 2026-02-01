@@ -91,8 +91,6 @@ hyprpicker
 xdg-desktop-portal-hyprland
 
 # Display manager & greeter
-greetd
-greetd-gtkgreet
 ly
 
 # System utils
@@ -106,6 +104,7 @@ calc
 imv
 thunar
 thunar-archive-plugin
+file-roller
 zathura
 zathura-pdf-mupdf
 
@@ -129,6 +128,7 @@ ttf-ms-fonts
 ########################################
 # Terminal 
 foot
+fastfetch
 foot-terminfo
 tmux
 tree
@@ -175,6 +175,7 @@ solaar
 spotify-launcher
 
 # Dev
+code
 uv
 vivado
 rust
