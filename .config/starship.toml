@@ -12,9 +12,6 @@ symbol = " "
 [c]
 symbol = " "
 
-[cpp]
-symbol = " "
-
 [cmake]
 symbol = " "
 
@@ -44,9 +41,6 @@ symbol = " "
 
 [fennel]
 symbol = " "
-
-[fortran]
-symbol = " "
 
 [fossil_branch]
 symbol = " "
@@ -174,9 +168,6 @@ symbol = " "
 [pijul_channel]
 symbol = " "
 
-[pixi]
-symbol = "󰏗 "
-
 [python]
 symbol = " "
 
@@ -197,9 +188,6 @@ symbol = " "
 
 [swift]
 symbol = " "
-
-[xmake]
-symbol = " "
 
 [zig]
 symbol = " "
