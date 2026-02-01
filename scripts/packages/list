@@ -24,7 +24,6 @@ nvidia-utils
 
 # Power management
 tlp
-auto-cpufreq
 power-profiles-daemon
 powertop
 
