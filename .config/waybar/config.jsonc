@@ -1,10 +1,10 @@
 {
   "layer": "top",
   "position": "bottom",
-  "height": 24,
+  "height": 28,
   "spacing": 4,
   "modules-left": [
-    "sway/workspaces"
+    "hyprland/workspaces"
   ],
   "modules-center": [
   ],
@@ -16,12 +16,21 @@
     "backlight",
     "wireplumber",
     "idle_inhibitor",
-    "sway/language",
+    "hyprland/language",
     //"power-profiles-daemon",
     "clock"
 ],
 
-"sway/workspaces": {
+"hyprland/workspaces": {
+    "format": "{icon}: {windows}",
+    "format-window-separator": "",
+    "workspace-taskbar": {
+        "enable": true,
+        "update-active-window": true,
+        "format": "{icon} {title:.22}",
+        "icon-size": 18,
+        "on-click-window": "$HOME/.config/hypr/sfocus-window.sh {address} {button}"
+    }
 },
     "clock": {
     "interval": 60,
@@ -75,7 +84,7 @@
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "blueman-manager"
   },
-  "sway/language": {
+  "hyprland/language": {
     "format": "{short}"
   },
   "tray": {

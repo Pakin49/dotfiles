@@ -101,4 +101,4 @@ alias f=fastfetch
 alias mimi="source $HOME/scripts/mimi.sh"
 alias shutdown='sudo shutdown now'
 alias reboot='sudo reboot'
-alias vivado='ssh -XC pakin@10.0.3.158'
+alias vivado='ssh -XC vivado20252.local'
