@@ -93,7 +93,12 @@ function y() {
 }
 
 #script
-alias mimi="source $HOME/scripts/mimi.sh"
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$home/.local/bin
+
+# Alias
 alias f=fastfetch
+alias mimi="source $HOME/scripts/mimi.sh"
+alias shutdown='sudo shutdown now'
+alias reboot='sudo reboot'
+alias vivado='ssh -XC pakin@10.0.3.158'
