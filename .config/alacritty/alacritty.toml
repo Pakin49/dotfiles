@@ -23,7 +23,7 @@ history = 3000
 multiplier = 3
 
 [font]
-size = 13.0
+size = 9.0
 normal = {family = "Jetbrains Mono Nerd Font", style = "Regular"}
 
 [selection]

@@ -11,9 +11,9 @@ set $up e
 set $right i
 # Default applications
 set $term alacritty
-set $menu --no-startup-id i3-dmenu-desktop
-set $browser flatpak run org.mozilla.firefox   
-set $filemanager thunar
+set $menu rofi -show drun
+set $browser firefox   
+set $filemanager nemo
 
 floating_modifier $mod
 tiling_drag modifier titlebar
