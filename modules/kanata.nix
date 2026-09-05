@@ -32,7 +32,7 @@
             caps
           )
           (defvar
-            tap-time 180
+            tap-time 200
             hold-time 200
           )
 
