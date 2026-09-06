@@ -31,7 +31,7 @@ hex from the source palette:
 | # | File | What carries the theme |
 |---|------|------------------------|
 | 1 | `config/.config/eza/theme.yml` | **Symlink** — repoint to `eza-themes/themes/<name>.yml` (kanagawa-dragon.yml, gruvbox-dark.yml, catppuccin-mocha.yml, ...) |
-| 2 | `config/.config/nvim/lua/plugins/themes.lua` | nvim colorscheme plugin + `require("kanagawa").setup({ theme = "dragon" })` + `vim.cmd("colorscheme ...")`. Swap plugin repo + `theme =` for other schemes. |
+| 2 | `config/.config/nvim/lua/plugins/themes.lua` | **DO NOT TOUCH** — user configures nvim theme themselves. When applying a theme, skip this file and remind the user to update their nvim theme to match. |
 | 3 | `config/.config/foot/foot.ini` | `[colors-dark]` ANSI block — sync with `files/Templates/themes/<name>`: `cursor`/`foreground`/`background`/`selection-*`/`regular0-7`/`bright0-7`. 6-digit hex, no `#`, `alpha=0.9`. |
 | 4 | `files/Templates/themes/<name>` | **Theme source** — canonical per-theme palette (foot format). Reference/edit this when introducing or changing a theme. |
 | 5 | `config/.config/dwl/config.h` | `rootcolor` + `colors[][3]` at lines ~42-53: `SchemeNorm/Sel/Urg/Bar`, each `{ fg, bg, border }`. Format `0xRRGGBBff`. |
@@ -53,19 +53,24 @@ hex from the source palette:
 2. Create or pick `files/Templates/themes/<name>` as the reference palette.
 3. Run every file in the master list through the mapping; edit each hex/value.
    - `eza/theme.yml`: `ln -sfn eza-themes/themes/<name>.yml config/.config/eza/theme.yml`
+   - **Skip `config/.config/nvim/lua/plugins/themes.lua`** — the user handles their
+     nvim theme themselves.
    - Keep `foot.ini` and `files/Templates/themes/<name>` dark section identical.
    - Keep `config/.config/mako/config` matching `home.nix` mako colors.
    - Apps that don't map 1:1 from the palette (e.g. waylock status colors, `bat`
      theme in `.zshenv`) get the closest match chosen manually.
 4. Verify: grep for leftover hexes from the previous theme source (grep pattern
    above).
-5. Tell the user what needs redeploy/restart (below).
+5. **Remind the user**: the nvim theme was skipped — they need to configure
+   `config/.config/nvim/lua/plugins/themes.lua` themselves to match the new theme.
+6. Tell the user what needs redeploy/restart (below).
 
 ## Deploy/restart notes
 
 - `home.nix`, `home-manager/theme.nix`, dwl (`config.h`/`blocks.h` are
   compiled), mako → `sudo nixos-rebuild switch --flake ~/'nixos-dotfiles?submodules=1#'nixos-T480` (`rebuild` alias).
-- `foot`, `ncspot`, `eza`, `nvim` → reload the app (`nvim` re-sources plugins
-  on restart; kanagawa diff colors need `:colorscheme` re-run).
+- `foot`, `ncspot`, `eza` → reload the app.
+- `nvim` → **not touched** by this skill; user reloads/updates their theme
+  themselves after configuring `config/.config/nvim/lua/plugins/themes.lua`.
 - `.zshrc` / `.zprofile` / `.zshenv` / `.profile` → new shell or login.
 - `dwl/autostart` (waylock) → applies on next lock.

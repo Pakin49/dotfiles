@@ -5,7 +5,10 @@ return {
 		config = function()
 			require("kanagawa").setup({
 				theme = "dragon",
-				transparent = true,
+				transparent = false,
+        background = {
+          dark = "dragon"
+        }
 			})
 			-- Enable theme
 			require("kanagawa").load()
