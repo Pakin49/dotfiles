@@ -84,17 +84,17 @@ alias lg=lazygit
 
 # ------------ mpd alias ------------
 music-sync() {
-  for dir in "$HOME"/gdrive/Music/*/; do
+  for dir in "$HOME"/Music/*/; do
     name="$(basename "$dir")"
     [ "$name" = "playlists" ] && continue
-    fd . "$dir" -E "*.spotdl" -e mp3 | sed "s|^$HOME/gdrive/Music/||" > "$HOME/gdrive/Music/playlists/$name.m3u"
+    fd . "$dir" -E "*.spotdl" -e mp3 | sed "s|^$HOME/Music/||" > "$HOME/Music/playlists/$name.m3u"
   done
   if mountpoint -q "/run/media/pakin/ECHO MINI"; then
     echo "Sync File to Snowsky"
     rsync -av --modify-window=2 --exclude "*.spotdl" --exclude "/playlists" --delete --progress ~/gdrive/Music/ "/run/media/pakin/ECHO MINI"
+  else
+    echo "Echo Mini is not mounted"
   fi
-  #echo "Sync File to ~/Music"
-  #rsync -av --exclude "*.spotdl" --delete --progress  ~/gdrive/Music/ ~/Music
 }
 
 my-spotdl(){
@@ -106,7 +106,7 @@ my-spotdl-with-yt() {
   echo "$1|$2"
   spotdl "$1|$2"
 }
-# use when don't want to check song accuracy : --dont-filter-results 
+
 alias pot-provider-setup="cd $HOME/nixos-dotfiles/submodules/bgutil-ytdlp-pot-provider/server/ &&  deno install --allow-scripts=npm:canvas --frozen"
 alias pot-provider="cd $HOME/nixos-dotfiles/submodules/bgutil-ytdlp-pot-provider/server/node_modules && deno run --allow-env --allow-net --allow-ffi=. --allow-read=. ../src/main.ts"
 

@@ -8,7 +8,7 @@
     #dev
     rclone
     fuse3
-    keymapp
+    synology-drive-client
 
     # desktop utils
     bluetui
@@ -27,7 +27,7 @@
     imv
 
     vesktop
-    #synology-drive-client
+    keymapp
 
     #libreoffice
     #thunderbird
