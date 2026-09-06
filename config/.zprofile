@@ -8,11 +8,16 @@ export BMENU_BACKEND=wayland
 export BEMENU_OPTS="\
 -i -c -l 10 -W 0.25 -p '' -H 28 --fixed-height \
 --fn \"JetBrainsMono Nerd Font Propo 13\"  \
---tf #b3f6c0 --tb #14161be6 \
---nf #e0e2ea --nb #14161be6 \
---ff #e0e2ea --fb #14161be6 \
---hf #8cf8f7 --hb #14161be6 \
---af #e0e2ea --ab #14161be6"
+--tf #8a9a7b --tb #181616e6 \
+--nf #c5c9c5 --nb #181616e6 \
+--ff #c5c9c5 --fb #181616e6 \
+--hf #8ea4a2 --hb #181616e6 \
+--af #c5c9c5 --ab #181616e6"
+
+# waylock colors (used by lock/powermenu scripts)
+export LOCK_INIT_COLOR=0x282727
+export LOCK_INPUT_COLOR=0x2b3328
+export LOCK_FAIL_COLOR=0x43242b
 
 export PATH="$HOME/.local/bin:$HOME/Scripts:$PATH"
 

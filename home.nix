@@ -44,9 +44,9 @@
     settings = {
 
       font = "JetBrainsMonoNerdFont Regular 12";
-      background-color = "#14161bff";
-      text-color = "#e0e2ea";
-      border-color = "#b3f6c0ff";
+      background-color = "#181616ff";
+      text-color = "#c5c9c5";
+      border-color = "#8a9a7bff";
       border-radius = 4;
       border-size = 1;
       default-timeout = 5000;

@@ -39,16 +39,16 @@ static const int topbar                    = 0; /* 0 means bottom bar */
 static const int vertpad                   = 0; /* vertical padding of bar */
 static const int sidepad                   = 0; /* horizontal padding of bar */
 static const char *fonts[]                 = {"JetBrainsMono Nerd Font Propo:size=11.5:style=Medium"};
-static const float rootcolor[]             = COLOR(0x2c2e33ff);
+static const float rootcolor[]             = COLOR(0x282727ff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 static const int respect_monitor_reserved_area = 1;  /* 1 to monitor center while respecting the monitor's reserved area, 0 to monitor center */
 static uint32_t colors[][3]                = {
 	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xe0e2eaff, 0x14161bff, 0x2c2e33ff },
-	[SchemeSel]  = { 0xb3f6c0ff, 0x2c2e33ff, 0x8cf8f7ff },
-	[SchemeUrg]  = { 0xffc0b9ff, 0x2c2e33ff, 0xffc0b9ff },
-	[SchemeBar]  = { 0,          0,          0xa6dbffff },
+	[SchemeNorm] = { 0xc5c9c5ff, 0x181616ff, 0x282727ff },
+	[SchemeSel]  = { 0x8a9a7bff, 0x282727ff, 0x8ea4a2ff },
+	[SchemeUrg]  = { 0xc4746eff, 0x282727ff, 0xc4746eff },
+	[SchemeBar]  = { 0,          0,          0x8ba4b0ff },
 
 };
 /* keyboard layout change notification for status bar */

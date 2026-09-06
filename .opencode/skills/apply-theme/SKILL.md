@@ -45,6 +45,7 @@ hex from the source palette:
 | 13 | `config/.zshenv` | `BAT_THEME=<bat-builtin-name>` (bat has no kanagawa; keeps `gruvbox-dark` as closest). |
 | 14 | `home-manager/theme.nix` | GTK theme (`gtk.theme`, `GTK_THEME`, `dconf` gtk-theme) + icon theme. Only for GTK themes packaged in nixpkgs. |
 | 15 | `config/.config/starship.toml` | No colors currently (symbol overrides only); theme only if user adds a starship palette/preset. |
+| 16 | `config/.profile` | `LOCK_INIT_COLOR` / `LOCK_INPUT_COLOR` / `LOCK_FAIL_COLOR` (`0xRRGGBB`) — waylock colors consumed by lock/powermenu scripts (e.g. `wmenu-powermenu`). Keep in sync with `config/.config/dwl/autostart`. |
 
 ## Apply flow
 
@@ -66,5 +67,5 @@ hex from the source palette:
   compiled), mako → `sudo nixos-rebuild switch --flake ~/'nixos-dotfiles?submodules=1#'nixos-T480` (`rebuild` alias).
 - `foot`, `ncspot`, `eza`, `nvim` → reload the app (`nvim` re-sources plugins
   on restart; kanagawa diff colors need `:colorscheme` re-run).
-- `.zshrc` / `.zprofile` / `.zshenv` → new shell or login.
+- `.zshrc` / `.zprofile` / `.zshenv` / `.profile` → new shell or login.
 - `dwl/autostart` (waylock) → applies on next lock.
