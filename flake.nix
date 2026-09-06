@@ -73,7 +73,6 @@
             ./hosts/hardware-configuration-home.nix
             ./configuration.nix
             ./modules/nvidia.nix
-            ./modules/cosmic-desktop.nix
             { networking.hostName = "nixos-home"; }
             home-manager.nixosModules.home-manager
             {
