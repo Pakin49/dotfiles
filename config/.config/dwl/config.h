@@ -69,7 +69,7 @@ static const Rule rules[] = {
 	{ "ncspot",           NULL,       1 << 6,       1,            0,           -1,       -1, -1, -1,     -1 },   /* Start on ONLY tag "9" */
 	{ "Spotify",          NULL,       1 << 6,       1,            0,           -1,       -1, -1, -1,     -1 },   /* Start on ONLY tag "9" */
 	{ "vesktop",          NULL,       1 << 7,       1,            0,           -1,       -1, -1, -1,     -1 },   /* Start on ONLY tag "8" */
-	{ "thunderbird",      NULL,       1 << 8,       1,            0,           -1,       -1, -1, -1,     -1 },   /* Start on ONLY tag "7" */
+	{ "aerc",             NULL,       1 << 8,       1,            0,           -1,       -1, -1, -1,     -1 },   /* Start on ONLY tag "7" */
 	{ "wiremix",          NULL,       0,            0,            1,           -1,       -1, -1,0.8,    0.8 },
 	{ "impala",           NULL,       0,            0,            1,           -1,       -1, -1,0.8,    0.8 },
 	{ "bluetui",          NULL,       0,            0,            1,           -1,       -1, -1,0.8,    0.8 },
@@ -199,7 +199,7 @@ static const char *ncspot[] = { "sh", "-c", "pgrep ncspot || foot -T ncspot -a n
 static const char *bluetui[] = { "foot", "--app-id", "bluetui", "-T", "bluetui","bluetui", NULL };
 static const char *impala[] = { "foot", "--app-id", "impala", "-T", "impala","impala", NULL };
 static const char *wiremix[] = { "foot", "--app-id", "wiremix", "-T", "wiremix", "wiremix", NULL };
-static const char *thunderbird[] = {"thunderbird", NULL };
+static const char *email[] = { "foot", "--app-id", "aerc", "-T", "aerc", "aerc", NULL };
 
 #define MEHKEY WLR_MODIFIER_SHIFT|WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT
 #define MODSHIFT WLR_MODIFIER_LOGO|WLR_MODIFIER_SHIFT
@@ -212,7 +212,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_w,           spawn,            {.v = web_browser} },
 	{ MODKEY,                    XKB_KEY_Escape,      spawn,            {.v = web_browser} },
 	{ 0,                         XKB_KEY_Print,       spawn,            {.v = screenshot} },
-  { MODSHIFT,                  XKB_KEY_t,           spawn,            {.v = thunderbird} },
+  { MODSHIFT,                  XKB_KEY_e,           spawn,            {.v = email} },
 	{ MODSHIFT,                  XKB_KEY_v,           spawn,            {.v = discord} },
   { MODSHIFT,                  XKB_KEY_n,           spawn,            {.v = impala} },
   { MODSHIFT,                  XKB_KEY_s,           spawn,            {.v = ncspot} },
