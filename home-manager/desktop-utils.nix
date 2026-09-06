@@ -30,7 +30,8 @@
     #synology-drive-client
 
     #libreoffice
-    thunderbird
+    #thunderbird
+    aerc
     bitwarden-desktop
   ];
 
