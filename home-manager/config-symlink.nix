@@ -45,6 +45,7 @@ in
     // {
       # custom
       ".profile".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/config/.profile";
+      "Music".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/SynologyDrive/Music";
     };
 
 }
