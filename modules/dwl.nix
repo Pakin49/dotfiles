@@ -1,16 +1,22 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   dwl =
     (pkgs.dwl.override {
       configH = ../config/.config/dwl/config.h;
-    }).overrideAttrs (oldAttrs: {
-      src = ../submodules/dwl;
+    }).overrideAttrs
+      (oldAttrs: {
+        src = ../submodules/dwl;
 
-      buildInputs = (oldAttrs.buildInputs or []) ++ [
-        pkgs.fcft
-        pkgs.libdrm
-      ];
-    });
+        buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
+          pkgs.fcft
+          pkgs.libdrm
+        ];
+      });
 
   someblocks = pkgs.stdenv.mkDerivation {
     pname = "someblocks";
@@ -39,9 +45,17 @@ in
     someblocks
   ];
 
+  services.displayManager.sessionPackages = [
+    (pkgs.symlinkJoin {
+      name = "dwl-session";
+      paths = [ dwl ];
+      passthru.providedSessions = [ "dwl" ];
+    })
+  ];
+
   xdg.portal = {
     enable = true;
-    
+
     wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
