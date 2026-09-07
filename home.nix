@@ -19,6 +19,7 @@
     ./home-manager/wayland.nix
     ./home-manager/music.nix
     ./home-manager/desktop-utils.nix
+    #./home-manager/synology-drive.nix
   ];
 
   programs.git = {

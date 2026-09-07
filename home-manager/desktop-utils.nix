@@ -6,9 +6,7 @@
 {
   home.packages = with pkgs; [
     #dev
-    rclone
     fuse3
-    synology-drive-client
 
     # desktop utils
     bluetui

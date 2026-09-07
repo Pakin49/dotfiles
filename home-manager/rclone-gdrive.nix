@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 {
+
+  home.packages = with pkgs;[
+    rclone
+  ];
+
   # google drive rclone
   systemd.user.tmpfiles.rules = [
     "d /home/pakin/gdrive 0755 pakin users -"
@@ -29,4 +34,5 @@
       WantedBy = [ "default.target" ];
     };
   };
+
 }

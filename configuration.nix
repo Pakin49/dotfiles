@@ -12,6 +12,7 @@
   imports = [
     ./modules/dwl.nix
     ./modules/udev.nix
+    ./modules/synology-drive.nix
   ];
 
   # allow unfree software

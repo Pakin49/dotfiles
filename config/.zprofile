@@ -3,6 +3,7 @@
 export GBM_BACKEND=nvidia-drm
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
+export MENU_TERM=foot
 export MENU_LAUNCHER=bemenu
 export BMENU_BACKEND=wayland
 export BEMENU_OPTS="\
