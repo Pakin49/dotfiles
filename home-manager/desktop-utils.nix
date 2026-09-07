@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     #dev
     fuse3
+    synology-drive-client
 
     # desktop utils
     bluetui
