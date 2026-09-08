@@ -95,16 +95,6 @@
   programs.zsh.enable = true;
   users.users.pakin.shell = pkgs.zsh;
 
-  # thunar
-  services.tumbler.enable = true;
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
-  };
-
   # system packages
   environment.systemPackages =
     with pkgs;

@@ -20,6 +20,7 @@
     jmtpfs
     gnome-clocks
 
+    yazi
     # Media
     zathura
     mpv

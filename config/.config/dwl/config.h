@@ -75,8 +75,8 @@ static const Rule rules[] = {
 	{ "bluetui",          NULL,       0,            0,            1,           -1,       -1, -1,0.8,    0.8 },
   { "mpv",              NULL,       0,            0,            1,           -1,       -1, -1,  1,      1 },
   { "imv",              NULL,       0,            0,            1,           -1,       -1, -1,  1,      1 },
-  { "bitwarden",        NULL,       0,            0,            0,           -1,       -1, -1, -1,     -1 },
-  { "zathura",          NULL,       0,            0,            0,           -1,       -1, -1,  1,      1 },
+  { "bitwarden",        NULL,       0,            0,            1,           -1,       -1, -1,0.6,    0.6 },
+  { "zathura",          NULL,       0,            0,            1,           -1,       -1, -1,  1,      1 },
   
     /* default/example rule: can be changed but cannot be eliminated; at least one rule must exist */
 };
@@ -187,7 +187,7 @@ static const char *toggle_bluetooth[] = { "toggle_bluetooth.sh", NULL };
 static const char *brightness_up[] = {"brightnessctl", "set", "+10%", NULL };
 static const char *brightness_down[] = {"brightnessctl", "set", "10%-", NULL };
 static const char *termcmd[] = { "foot", NULL };
-static const char *filemanager[] = { "thunar", NULL };
+static const char *filemanager[] = { "foot", "-a", "yazi", "-T", "yazi", "yazi", NULL };
 static const char *web_browser[] = { "firefox", NULL };
 static const char *discord[] = { "vesktop"};
 //static const char *menucmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
@@ -196,10 +196,10 @@ static const char *menucmd[] = { "wmenu-drun", NULL };
 static const char *powermenu[] = { "wmenu-powermenu", "-l", "5", NULL };
 static const char *screenshot[] = {"screenshot.sh", NULL };
 static const char *ncspot[] = { "sh", "-c", "pgrep ncspot || foot -T ncspot -a ncspot ncspot ", NULL };
-static const char *bluetui[] = { "foot", "--app-id", "bluetui", "-T", "bluetui","bluetui", NULL };
-static const char *impala[] = { "foot", "--app-id", "impala", "-T", "impala","impala", NULL };
-static const char *wiremix[] = { "foot", "--app-id", "wiremix", "-T", "wiremix", "wiremix", NULL };
-static const char *email[] = { "foot", "--app-id", "aerc", "-T", "aerc", "aerc", NULL };
+static const char *bluetui[] = { "foot", "-a", "bluetui", "-T", "bluetui","bluetui", NULL };
+static const char *impala[] = { "foot", "-a", "impala", "-T", "impala","impala", NULL };
+static const char *wiremix[] = { "foot", "-a", "wiremix", "-T", "wiremix", "wiremix", NULL };
+static const char *email[] = { "foot", "-a", "aerc", "-T", "aerc", "aerc", NULL };
 
 #define MEHKEY WLR_MODIFIER_SHIFT|WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT
 #define MODSHIFT WLR_MODIFIER_LOGO|WLR_MODIFIER_SHIFT

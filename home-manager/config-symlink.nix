@@ -8,6 +8,7 @@ let
     "ncspot"
     "nvim"
     "opencode"
+    "yazi"
     "yt-dlp/plugins"
     "starship.toml"
     "xdg-desktop-portal"

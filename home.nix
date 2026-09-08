@@ -15,11 +15,10 @@
     ./home-manager/neovim.nix
     ./home-manager/terminal.nix
     ./home-manager/firefox.nix
-    #./home-manager/rclone-gdrive.nix
     ./home-manager/wayland.nix
     ./home-manager/music.nix
     ./home-manager/desktop-utils.nix
-    #./home-manager/synology-drive.nix
+    ./home-manager/xdg-mime.nix
   ];
 
   programs.git = {
