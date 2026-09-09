@@ -29,10 +29,12 @@
     vesktop
     keymapp
 
-    #libreoffice
+    libreoffice
     #thunderbird
     aerc
     bitwarden-desktop
+
+    blanket # ambient sound
   ];
 
 }

@@ -103,8 +103,7 @@
       solaar
       file
       libinput
-    ]
-    ++ [ pkgs-unstable.slang-server ];
+    ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
